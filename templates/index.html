@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!--firebase-->  
+<!-- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script> -->
+<!-- <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDyPzj8WCPutDgQJXg5kgcyH4NgnFAYQ_w",
+    authDomain: "swapdropenroll-fe342.firebaseapp.com",
+    databaseURL: "https://swapdropenroll-fe342.firebaseio.com",
+    storageBucket: "swapdropenroll-fe342.appspot.com",
+  };
+  firebase.initializeApp(config);
+
+  // Ajax this shit to the server and then secret it 
+  function Firebase() {
+
+    var onyen = document.getElementById('onyen').value;
+
+    var user = {};
+    user[onyen] = {
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      course: document.getElementById("course").value
+    }
+    firebase.database().ref('users').update(user);
+  }
+
+</script> -->
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" conent="Stop, Drop, Enroll!">
+  <title>Stop, Drop, Enroll!</title>
+  <script type="text/javascript"
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> <!-- boot strap -->
+  
+  <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
+  
+  </head>
+
+<!doctype html>
+<html>
+<head>
+<title>Paper Fucking Classes</title>
+</head>
+
+
+
+<body>
+
+<div class="container">
+
+  <div class="row">
+    <div class="jumbotron">
+    <h2>Hola<small> My name is derek!</small></h2>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+
+
+
+
+
+
+
+  
+    
+    <div class="col-sm-4">
+      
+    </div>
+
+    <div class="col-sm-4">
+      <h5 class="title">Onyen</h5>
+      <input type="text" size="5" name="words" id="onyen" placeholder="onions" class="form-control">
+      
+      <h5 class="title">Password</h5>
+      <input type="password" size="5" name="words" id="password" placeholder="goheels" class="form-control">
+      
+      <h5 class="title">Desired class</h5>
+      <input type="text" size="5" name="words" id="course" placeholder="AAAD 101-001" class="form-control">
+      
+      <h5 class="title">Email address</h5>
+      <input type="text" size="5" name="words" id="email" class="form-control" placeholder="kanye.west@live.unc.edu">
+
+
+
+
+
+
+
+
+      <button id="thebutton" type="button" onclick="Firebase();" class="btn btn-primary center-block">Sign me up!</button>
+    </div>
+  
+    <div class="col-sm-4"></div>
+  
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4">
+      <h2>How It Works<br>
+        <small>
+          <ul>
+            <li>Waits patiently for e-mail from classchecker</li>
+            <li>If status changes from "closed" to "open", automatically registers you</li>
+            <li>Screenshots and emails you the result</li>
+            <li><i><b>We store your password with this thing called Secrets.</b>It’s passed directly to ConnectCarolina when a spot opens up. To us, it’s always *****.</i></li> <!-- Lie -->
+          </ul>
+        </small>
+      </h2>
+      
+    </div>
+      
+    <div class="col-sm-4"></div>
+    
+    <div class="col-sm-4">
+      <blockquote class="blockquote-reverse">
+        <p style="color:black">We are not affiliated with UNC in any way and, by clicking the submit button, you are voluntarily sending your information to my wonderful program to help your ass get into your desired class. </p>
+        <footer>About</footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<style>
+  h5.title {
+    text-align: center;
+  }
+
+
+
+</style>
+</body>
+<html>
