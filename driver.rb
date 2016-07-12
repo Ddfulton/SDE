@@ -11,7 +11,7 @@ session.find('.loginbutton').click()
 puts("LOGGING IN...\n")
 session.find('#onyen').send_keys('ddfulton')
 session.find('#onyenPassword').send_keys('bojangles5\'')
-session.find('#action').click()
+session.find('#action').click() # breaks on heroku
 
 puts("ENTERING SHOPPING CART...\n")
 #ENTER SHOPPING CART
