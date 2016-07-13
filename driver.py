@@ -1,6 +1,6 @@
 
 from time import sleep, time
-import json, http.client
+import json
 import sendgrid
 from sendgrid.helpers.mail import *
 import os
