@@ -1,1 +1,1 @@
-web: gunicorn jqueryexample:app --log-file=-
+web: gunicorn swapdropenroll:app --log-file=-

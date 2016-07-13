@@ -1,27 +1,10 @@
-# MOst important: add the fuckers to class checker
-# Decrement priority
-# Second most important: Protect passwords
-# Second most important: Make sure folks get notified when they start
-# Deal with it if it's not in the cart!
-# Third most important: Find a way to check if they got in or not. Detailed status report.
-# Third most important: Recitations etc
-# H12 request timeout
-# Deprecate priorities
-# TODO: Put imports at top
-# TODO: Swap drop enroll
-# TODO: Spinner and checkmark when submit
-# TODO: Honors classes
-# TODO: Fix sleep(1)
 
-from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
 from time import sleep, time
 import json, http.client
 import sendgrid
+from sendgrid.helpers.mail import *
+import os
+
 
 def classchecker(course="CHEM 262-001", email='registerer69@gmail.com', driver="PhantomJS()"): # not tested 6-1-16
   import time
@@ -74,28 +57,19 @@ def classchecker(course="CHEM 262-001", email='registerer69@gmail.com', driver="
   return result
 
 
-def sendgridemail(recipient, body="DEFAULT BODY ARG", picture=False):
-  client = sendgrid.SendGridClient("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")
+def sendgridemail(): # broken
+  
+  sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('XwenEGkCTOq3WrPLRI0k_A'))
+  from_email = Email("fuck@yo.u")
+  subject = "Hello World from the SendGrid Python Library"
+  to_email = Email("fulton.derek@gmail.com")
+  content = Content("text/plain", "Fuck you")
+  mail = Mail(from_email, subject, to_email, content)
+  response = sg.client.mail.send.post(request_body=mail.get())
+  print(response.status_code)
+  print(response.body)
+  print(response.headers)
 
-  recipient = "<" + recipient + ">"
-
-  message = sendgrid.Mail()
-  message.add_to('Derek Fulton' + recipient)
-  message.set_subject('Example')
-  message.set_html(body)
-  message.set_text(body)
-  message.set_from('Enroll Ninja <enroll@ninjan.com>')
-
-
-
-
-  if picture == True:
-    message.add_attachment('templates/images/ss.png', './templates/images/ss.png')
-  else:
-    pass
-
-  status, msg = client.send(message)
-  return status, msg
 
 def get_course(text):
   #TODO: Validate email text

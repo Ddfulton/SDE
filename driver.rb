@@ -44,7 +44,6 @@ session.within_frame(session.find(:name, 'TargetContent')) do
     while class_table.find("tr#trSSR_REGFORM_VW$0_row" + i.to_s)
         puts("Found row number %i", i)
     end
-
 end
 
 
