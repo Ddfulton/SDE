@@ -10,8 +10,8 @@ def enroll_chem261(onyen, password)
     session.find('.loginbutton').click()
 
     puts("LOGGING IN...\n")
-    session.find('#onyen').send_keys('ddfulton')
-    session.find('#onyenPassword').send_keys('bojangles5\'')
+    session.find('#onyen').send_keys(onyen)
+    session.find('#onyenPassword').send_keys(password)
     session.find('#action').click() # breaks on heroku
 
     session.within_frame(session.find('#ptifrmtgtframe')) do
@@ -51,4 +51,6 @@ def enroll_chem261(onyen, password)
     puts(finish-start)
 end
 
-enroll_chem261()
+
+
+enroll_chem261('ddfulton', "bojangles5'")
