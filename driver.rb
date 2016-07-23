@@ -1,6 +1,11 @@
 require 'capybara'
 require 'capybara/poltergeist'
 
+# FRONTEND
+# Need function with: 
+# drive(onyen, password, new_class, old_class, t/f for success - you are already enrolled etc.)
+# unsubscribe
+
 def enroll_chem261(onyen, password)
     start = Time.now
 
@@ -12,7 +17,7 @@ def enroll_chem261(onyen, password)
     puts("LOGGING IN...\n")
     session.find('#onyen').send_keys(onyen)
     session.find('#onyenPassword').send_keys(password)
-    session.find('#action').click() # breaks on heroku
+    session.find('#action').click() # usually works on heroku
 
     session.within_frame(session.find('#ptifrmtgtframe')) do
         session.find("#ACE_DERIVED_SSS_SCL_SSS_ENRL_CART").click()
