@@ -3,8 +3,18 @@
 __author__ = 'Sam Andersen'
 __version__ = '20160729'
 
+### DEPENDENCIES ###
+
+# MySQL Connection #
 import MySQLdb
+
+# IO #
 import sys
+
+# Encryption Dependencies #
+from Crypto.Cipher import AES
+import base64
+import struct
 
 ### DEFINE CONNECTION PARAMETERS ###
 
@@ -91,7 +101,7 @@ class SQLManager:
 	def addOnyen(self, newOnyen, onyenPassword):
 		print("INFO: Adding new onyen")
 
-		baseStatement = """REPLACE INTO `onyendb` (`Onyen`, `Password`)
+		baseStatement = """INSERT INTO `onyendb` (`Onyen`, `Password`)
 			VALUES (%s, %s)"""
 
 		try:
@@ -144,28 +154,74 @@ class SQLManager:
 			print "WARN: Error %d: %s" % (e.args[0],e.args[1])
 			sys.exit(1)
 
+	def getLoginInfo(self, onyen):
+		print("INFO: Retrieving login information for user %s" % onyen)
+
+		baseQuery = """SELECT
+				`Password`
+			FROM
+				`onyendb`
+			WHERE
+				`Onyen` LIKE %s"""
+
+		try:
+			self.c.execute(baseQuery, (onyen,))
+
+		except MySQLdb.Error, e:
+			print "WARN: Error %d: %s" % (e.args[0], e.args[1])
+			sys.exit(1)
+
+		return (self.c.fetchone())[0]
+
+### CRYPTO UTILITIES ###
+
+def pad16(s):
+	t = struct.pack('>I', len(s)) + s
+	return t + '\x00' * ((16 - len(t) % 16) % 16)
+
+def unpad16(s):
+	n = struct.unpack('>I', s[:4])[0]
+	return s[4:n + 4]
+
+class CryptoManager:
+	# Configuration #
+	secretKey = None
+	AESCipher = None
+
+	def __init__(self):
+		print("INFO: Starting CryptoManager")
+
+		sys.stdout.write("Enter cipher: ")
+		tmpCipher = raw_input()
+
+		sys.stdout.write("Reenter cipher: ")
+		tmpCipherV = raw_input()
+
+		if tmpCipher != tmpCipherV:
+			print "WARN: Cipher mismatch. Exiting..."
+			sys.exit(1)
+
+		self.secretKey = pad16(tmpCipher)
+		self.AESCipher = AES.new(self.secretKey, AES.MODE_ECB)
+
+	def encodeText(self, targetText):
+		return base64.b64encode(self.AESCipher.encrypt(pad16(targetText)))
+
+	def decodeText(self, targetEnc):
+		return unpad16(self.AESCipher.decrypt(base64.b64decode(targetEnc)))
+
 if __name__ == '__main__':
 
+	CM = CryptoManager()
 	SQLM = SQLManager()
+
 	SQLM.openConnection()
 
-	# Sample of query execution from SQLM
+	#SQLM.addOnyen("swa8", CM.encodeText("password"))
 
-	SQLM.c.execute("SELECT COUNT(*) FROM `requestedclasses`")
+	encP = SQLM.getLoginInfo("swa8")
 
-	# Retrieve the result; know there is only one
-
-	x = SQLM.c.fetchone()
-	print("Total records: %d" % x)
-
-	SQLM.showOnyenClassRequests("swa8")
-
-	SQLM.addOnyen("Sam", "OtherPassword")
-
-	SQLM.addClassRequest("swa8", "CHIN305")
-
+	print("Password for swa8: %s" % CM.decodeText(encP))
 
 	SQLM.sql.close()
 	
-
-
