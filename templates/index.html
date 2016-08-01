@@ -1,63 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <!--firebase-->  
-<!-- <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script> -->
-<!-- <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDyPzj8WCPutDgQJXg5kgcyH4NgnFAYQ_w",
-    authDomain: "swapdropenroll-fe342.firebaseapp.com",
-    databaseURL: "https://swapdropenroll-fe342.firebaseio.com",
-    storageBucket: "swapdropenroll-fe342.appspot.com",
-  };
-  firebase.initializeApp(config);
-
-  // Ajax this shit to the server and then secret it 
-  function Firebase() {
-
-    var onyen = document.getElementById('onyen').value;
-
-    var user = {};
-    user[onyen] = {
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      course: document.getElementById("course").value
-    }
-    firebase.database().ref('users').update(user);
-  }
-
-</script> -->
-
+<html>
   <head>
+  
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" conent="Stop, Drop, Enroll!">
-  <title>Stop, Drop, Enroll!</title>
-  <script type="text/javascript"
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> <!-- boot strap -->
+  <title>Swap, Drop, Enroll</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      
+    <script src="static/app.js"></script>
   
   <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
+
+  
+  <script>
+    $(document).ready(function() {
+      // Pre selected for increased speed
+      var content1 = $('#content1');
+      var content2 = $('#content2');
+      var oldHeight = $('div#main').height();
+
+      $('#click').click(function() {
+          content1.slideToggle();
+          content2.slideToggle();
+          $('div#main').height(oldHeight);
+          $('img#MJ')
+            .delay(2000)
+            .queue( function(next){ 
+              $(this).css(
+                'border: 3px solid green'); 
+                next(); 
+              });
+            
+            });
+    });
+  </script>
+
+
+
+
+
   
   </head>
 
 <!doctype html>
 <html>
 <head>
-<title>Paper Fucking Classes</title>
+
 </head>
 
 
 
 <body>
 
+
 <div class="container">
 
   <div class="row">
     <div class="jumbotron">
-    <h2>Hola<small> My name is derek!</small></h2>
+
+    
+    <h2>Swap, Drop, Enroll</h2>
+    <hr>
+      
+
 
     </div>
   </div>
@@ -67,38 +81,48 @@
 
 
 
-
-
-
-
   
     
-    <div class="col-sm-4">
+    <div class="col-sm-4" >
       
     </div>
 
-    <div class="col-sm-4">
-      <h5 class="title">Onyen</h5>
-      <input type="text" size="5" name="words" id="onyen" placeholder="onions" class="form-control">
+    <div class="col-sm-4" id="main">
+      <div id="signup">
+        <div class="box" data-step="1" id="content1">
+          <form class="form-horizontal center-box">
+            <h3 class="text-center no-top-margin">Sign Up</h3>
+              <div class="form-group">
+                  <label for="signup_step_1_email" class="control-label col-xs-2">Email</label>
+                  <div class="col-xs-10">
+                      <input type="email" class="form-control" id="signup_step_1_email" name="email" placeholder="Email">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="signup_step_1_password" class="control-label col-xs-2">Password</label>
+                  <div class="col-xs-10">
+                      <input type="password" class="form-control" id="signup_step_1_password" name="password" placeholder="Password">
+                  </div>
+              </div>
+              <div class="form-group last-form-group text-center">
+                <button id="click" type="button" class="btn btn-primary" data-next="true">Create an account</button>
+              </div>
+          </form>
+        </div>
+            
+    <div class="box" data-step="2" style="display:none" id="content2">
+    <form class="form-horizontal center-box">
+      <h3 class="text-center no-top-margin">
+        <img id="MJ" src="static/MJ.jpg"></img>
+        <!-- <video id="MJ" src="blob:https%3A//www.youtube.com/5d3d9d12-3472-4262-804f-54652b14145f"></video> -->
+      </h3>
       
-      <h5 class="title">Password</h5>
-      <input type="password" size="5" name="words" id="password" placeholder="goheels" class="form-control">
-      
-      <h5 class="title">Desired class</h5>
-      <input type="text" size="5" name="words" id="course" placeholder="AAAD 101-001" class="form-control">
-      
-      <h5 class="title">Email address</h5>
-      <input type="text" size="5" name="words" id="email" class="form-control" placeholder="kanye.west@live.unc.edu">
-
-
-
-
-
-
-
-
-      <button id="thebutton" type="button" onclick="Firebase();" class="btn btn-primary center-block">Sign me up!</button>
+    </form>
+  </div>
+</div>
     </div>
+  
+
   
     <div class="col-sm-4"></div>
   
@@ -129,14 +153,19 @@
     </div>
   </div>
 </div>
+<script>
 
+
+
+
+</script>
 <style>
-  h5.title {
-    text-align: center;
-  }
-
-
-
+.box { border:0px solid black; padding:20px; margin: 20px; }
+img#MJ {
+    height: 400;
+    width: 80%;
+    background-color: powderblue;
+}
 </style>
 </body>
 <html>
