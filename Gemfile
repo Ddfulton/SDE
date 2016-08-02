@@ -5,5 +5,4 @@ gem 'capybara'
 gem 'poltergeist'
 gem 'selenium-webdriver'
 gem 'sendgrid-ruby'
-gem 'mail'
-gem 'openssl'
+
