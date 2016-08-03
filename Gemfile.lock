@@ -13,8 +13,6 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
     ffi (1.9.13)
-    mail (2.6.4)
-      mime-types (>= 1.16, < 4)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -22,7 +20,6 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
-    openssl (0.2.0)
     pkg-config (1.1.7)
     poltergeist (1.10.0)
       capybara (~> 2.1)
@@ -51,9 +48,8 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  mail
-  openssl
   poltergeist
+  ruby_http_client
   selenium-webdriver
   sendgrid-ruby
 

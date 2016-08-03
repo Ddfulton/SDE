@@ -1,16 +1,20 @@
 require 'sendgrid-ruby'
-require 'ruby_http_client'
+require 'mail'
 
-include SendGrid
+sendgrid = SendGrid::Client.new do |c|
+  c.api_key = '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'
+end
 
-from = Email.new(email: 'test@example.com')
-subject = 'Hello World from the SendGrid Ruby Library!'
-to = Email.new(email: 'fulton.derek@gmail.com')
-content = Content.new(type: 'text/plain', value: 'Hello, Email!')
-mail = Mail.new(from, subject, to, content)
+email = SendGrid::Mail.new do |m|
+  m.to      = 'fulton.derek@gmail.com'
+  m.from    = 'you@youremail.com'
+  m.subject = 'Sending with SendGrid is Fun'
+  m.html    = 'and easy to do anywhere, even with Ruby'
+end
 
-sg = SendGrid::API.new(api_key: ENV['XwenEGkCTOq3WrPLRI0k_A'])
-response = sg.client.mail._('send').post(request_body: mail.to_json)
-puts response.status_code
-puts response.body
-puts response.headers
+sendgrid.send(email)
+
+
+
+
+

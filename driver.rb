@@ -1,5 +1,7 @@
 require 'capybara'
 require 'capybara/poltergeist'
+require 'sendgrid-ruby'
+include SendGrid
 
 def enroll(onyen, password, class1)
     start = Time.now
@@ -10,7 +12,7 @@ def enroll(onyen, password, class1)
     session.find('.loginbutton').click()
 
     puts("LOGGING IN...\n")
-    session.save_screenshot('break.png')
+
     session.find('#username').send_keys('ddfulton')
     session.find('#password').send_keys('bojangles5\'')
     session.find(:class, '.form-element.form-button').click()
@@ -87,12 +89,20 @@ def enroll(onyen, password, class1)
     end
  
     finish = Time.now
+
     puts("\n\nTime to enroll:")
+
     puts(finish-start)
 
-    sleep(3)
-    session.save_screenshot('final.png')
+    image_title = "%s" %(onyen) + "_%s" %(class1) + "_%s" %(finish) + ".png"
+
+    session.save_screenshot(image_title)
+    send_email('ddfulton@live.unc.edu', IMAGE, 'Did you get your class?', 'Here is the report:\n')
 
 end
+
+
+
+
 
 enroll("ddfulton" , "bojangles5'" , "MATH 232-001 (2142)")
