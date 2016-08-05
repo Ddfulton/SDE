@@ -33,7 +33,7 @@ def enroll(onyen, password, class1)
         
         	fall_2016_xpath = "//*[@id=\"trSSR_DUMMY_RECV1$0_row2\"]/td[1]"
 
-        	session.find(:xpath, fall_2016_xpath).click(); #TODO Improve and adapt for no term select page
+        	session.find(:xpath, fall_2016_xpath).click();
 
 
         	session.find("a#DERIVED_SSS_SCT_SSR_PB_GO").click()
@@ -97,12 +97,16 @@ def enroll(onyen, password, class1)
     image_title = "%s" %(onyen) + "_%s" %(class1) + "_%s" %(finish) + ".png"
 
     session.save_screenshot(image_title)
-    send_email('ddfulton@live.unc.edu', IMAGE, 'Did you get your class?', 'Here is the report:\n')
-
 end
 
 
+def class_checker(course)
+    session = Capybara::Session.new(:poltergeist)
+    session.visit "https://www.coursicle.com/notify/#unc"
 
+    session.find(:id, "alternateMethodLink").click()
 
+    session.find(:id, "emailInput").send_keys('inbound@registerer69.bymail.in') # INBOUND PARSE
+end
 
-enroll("ddfulton" , "bojangles5'" , "MATH 232-001 (2142)")
+class_checker('CHEM 262-001')

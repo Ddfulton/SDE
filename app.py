@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template, request, url_for
-from werkzeug.datastructures import ImmutableMultiDict
-
-import json, driver
+import json
 import subprocess
+import email_driver
 
 
 app = Flask(__name__)
@@ -16,6 +15,7 @@ def index():
     if request.method == "POST":
         goods = request.data.decode('utf-8')
         goods = json.loads(goods) # solid dictionary
+        email_driver.send_email('ddfulton@live.unc.edu', 'Fuck you', 'Here are the goods:\n%s' % (goods))
         print(goods)
     else:
         pass
