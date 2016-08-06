@@ -2,7 +2,7 @@ import sendgrid
 import os
 import json
 import base64
-import request
+from flask import request
 
 
 def send_email(recipient, subject, body):
@@ -38,7 +38,6 @@ def send_email(recipient, subject, body):
     return response.status_code, response.body, response.headers
 
 
-
 def parse_email(envelope):
     # Get some header information
     to_address = envelope['to'][0]
@@ -49,18 +48,10 @@ def parse_email(envelope):
     text = request.form.get('text')
     html = request.form.get('html')
     subject = request.form.get('subject')
-    print("Subject is %s" % (subject))
-    print("Text is %s" % (text))
+    print("Subject is %s" % subject)
+    print("Text is %s" % text)
 
     return from_address, to_address, subject, body
-
-
-
-
-
-
-
-
 
 #
 #
