@@ -13,11 +13,11 @@ app = Flask(__name__)
 
 def index():
     if request.method == "POST":
-    	print("GOT THE MOTHATFUCKING SENDGRID. HERE IT IS %r" % request.data) 
-        # goods = request.data.decode('utf-8')
-        # goods = json.loads(goods) # solid dictionary
-        # email_driver.send_email('ddfulton@live.unc.edu', 'Fuck you', 'Here are the goods:\n%s' % (goods))
-        # print(goods)
+    	goods = request.data
+    	goodsUTF8 = request.data.decode('utf-8')
+    	goodsJSON = json.loads(goodsUTF8)
+    	print("GOT THE MOTHATFUCKING SENDGRID. HERE IT IS %s" % request.data)
+    	email_driver.send_email("Here are the goods for: request.data—%s\n request.data.decode('utf-8'):%s\n and json.loads(request.data.decode('utf-8')):%s%n" % (goods, goodsUTF8, goodsJSON)) 
     else:
         pass
     return render_template("index.html")
