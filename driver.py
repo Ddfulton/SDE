@@ -79,8 +79,8 @@ def parse_email(envelope):
     print("From: %s" % (from_address))
 
     # Now, onto the body
+    subject = request.form.get('subject')
     text = request.form.get('text')
-    html = request.form.get('html')
     print("Subject is %s" % subject)
     print("Text is %s" % text)
 
