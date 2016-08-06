@@ -2,6 +2,7 @@ import sendgrid
 import os
 import json
 import base64
+import request
 
 
 def send_email(recipient, subject, body):

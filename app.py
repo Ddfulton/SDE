@@ -33,6 +33,7 @@ def parser():
 	Body: %s\n
 	""" % (from_address, to_address, subject, body)
 
+	# DRIVE AND GET RESULTS HERE
     email_driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % right_now, body)
 
 
