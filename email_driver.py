@@ -27,14 +27,6 @@ def send_email(recipient, subject, body):
                 "value": body
             }
         ],
-
-        "attachments": [
-            {
-                "content": base64.b64encode(b'fuckyou.png').decode('utf-8'),
-                "filename": 'fuckyou.png',
-                "type": 'png'
-            }
-        ]
     }
 
     response = sg.client.mail.send.post(request_body=data)
@@ -46,7 +38,20 @@ def send_email(recipient, subject, body):
 
 
 
+def parse_email(envelope):
+    # Get some header information
+    to_address = envelope['to'][0]
+    from_address = envelope['from']
+    print("From: %s" % (from_address))
 
+    # Now, onto the body
+    text = request.form.get('text')
+    html = request.form.get('html')
+    subject = request.form.get('subject')
+    print("Subject is %s" % (subject))
+    print("Text is %s" % (text))
+
+    return from_address, to_address, subject, body
 
 
 
