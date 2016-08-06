@@ -109,4 +109,4 @@ def class_checker(course)
     session.find(:id, "emailInput").send_keys('inbound@registerer69.bymail.in') # INBOUND PARSE
 end
 
-class_checker('CHEM 262-001')
+

@@ -14,8 +14,18 @@ app = Flask(__name__)
 def index():
     if request.method == "POST":
     	print("GOT THE MOTHATFUCKING SENDGRID. HERE IT IS %s" % request.data)
-    	goods = request.data
-    	goodsUTF8 = request.data.decode('utf-8')
+    	
+    	try:
+    		goods = request.data
+    	except:
+    		print("goods = request.data did not work :(")
+    	
+
+    	try:
+    		goods = request.data.decode('utf-8')
+    	except:
+    		print("goods = request.data.decode('utf-8')")
+
     	
     	email_driver.send_email("Here are the goods for: request.data—%s\n request.data.decode('utf-8'):%s\n" % (goods, goodsUTF8)) 
     else:
@@ -23,8 +33,5 @@ def index():
     return render_template("index.html")
 
 
-
-
 if __name__ == '__main__':
     app.run(debug=True)
-
