@@ -22,7 +22,7 @@ def parser():
     # Consume the entire email
     envelope = simplejson.loads(request.form.get('envelope'))
 
-    from_address, to_address, subject, body = email_driver.parse_email(envelope)
+    from_address, to_address, subject, body = driver.parse_email(envelope)
 
     right_now = datetime.now()
 
@@ -35,7 +35,7 @@ def parser():
 
 	# DRIVE AND GET RESULTS HERE
     print("E-mailing the body:\n%s"%body)
-    email_driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % right_now, body)
+    driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % right_now, body)
 
 
 if __name__ == '__main__':
