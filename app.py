@@ -15,19 +15,19 @@ def index():
     if request.method == "POST":
     	print("GOT THE MOTHATFUCKING SENDGRID. HERE IT IS %s" % request.data)
     	
-    	try:
-    		goods = request.data
-    	except:
-    		print("goods = request.data did not work :(")
+    	# try:
+    	# 	goods = request.data
+    	# except:
+    	# 	print("goods = request.data did not work :(")
     	
 
-    	try:
-    		goods = request.data.decode('utf-8')
-    	except:
-    		print("goods = request.data.decode('utf-8')")
+    	# try:
+    	# 	goods = request.data.decode('utf-8')
+    	# except:
+    	# 	print("goods = request.data.decode('utf-8')")
 
     	
-    	email_driver.send_email("Here are the goods for: request.data—%s\n request.data.decode('utf-8'):%s\n" % (goods, goodsUTF8)) 
+    	email_driver.send_email('fulton.derek@gmail.com', 'You got a post', '%s' % request.data.decode('utf-8'))
     else:
         pass
     return render_template("index.html")
