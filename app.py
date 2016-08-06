@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 def index():
     if request.method == "POST":
-    	print("GOT THE MOTHATFUCKING SENDGRID. HERE IT IS %s" % request.data)
+    	print("GOT THE MOTHATFUCKING SENDGRID. HERE IT IS %s" % json.loads(request.data)
     	
     	# try:
     	# 	goods = request.data
