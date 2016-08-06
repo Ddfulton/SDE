@@ -5,7 +5,8 @@ import base64
 from flask import request
 import subprocess
 
-#TODO Database query to remove from classchecker
+
+# TODO Database query to remove from classchecker
 
 def drive(onyen, password, course):
     """
@@ -15,8 +16,6 @@ def drive(onyen, password, course):
 
     args = ['ruby', 'driver.rb', onyen, password, course]
     subprocess.call(args)
-
-
 
 
 def class_checker(course):
@@ -29,10 +28,7 @@ def class_checker(course):
     subprocess.call(args)
 
 
-
-
-
-def send_email(recipient, subject, body): #TODO debug image shit
+def send_email(recipient, subject, body):  # TODO debug image shit
     """
     Sends an e-mail without an attachment using Sendgrid's V3 Web API
     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
@@ -68,9 +64,6 @@ def send_email(recipient, subject, body): #TODO debug image shit
     print(response.body)
     print(response.headers)
     return response.status_code, response.body, response.headers
-
-
-
 
 
 def parse_email(envelope):

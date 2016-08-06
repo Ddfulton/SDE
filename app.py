@@ -17,7 +17,7 @@ def index():
 @app.route('/parse', methods=["POST"])
 def parser():
     # Required response to SendGrid.com’s Parse API
-    print("GOT THE SENDGRID")
+    print("HTTP/1.1 200 OK")
 
     # Consume the entire email
     envelope = simplejson.loads(request.form.get('envelope'))
@@ -34,8 +34,10 @@ def parser():
 	""" % (from_address, to_address, subject, body)
 
 	# DRIVE AND GET RESULTS HERE
+    print("E-mailing the body:\n%s"%body)
     email_driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % right_now, body)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
