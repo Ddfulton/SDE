@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, url_for
 import json
 import subprocess
 import email_driver
+import simplejson
 
 
 app = Flask(__name__)
