@@ -63,6 +63,7 @@ def send_email(recipient, subject, body):  # TODO debug image shit
     print(response.status_code)
     print(response.body)
     print(response.headers)
+
     return response.status_code, response.body, response.headers
 
 
@@ -70,18 +71,17 @@ def parse_email(envelope):
     """
     Parses an email object with:
     envelope = simplejson.loads(request.form.get('envelope'))
-
     Processes that envelope to get to_address, from_address, text and subject.
     """
-    # Get some header information
+
     to_address = envelope['to'][0]
     from_address = envelope['from']
     print("From: %s" % (from_address))
 
-    # Now, onto the body
     subject = request.form.get('subject')
     text = request.form.get('text')
     print("Subject is %s" % subject)
     print("Text is %s" % text)
+    print("Reached end fo parse_email function")
 
     return from_address, to_address, subject, text

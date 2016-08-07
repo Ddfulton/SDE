@@ -16,14 +16,17 @@ def index():
 
 @app.route('/parse', methods=["POST"])
 def parser():
+    """
+    Process POST request from Sendgrid Inbound Parse. Assign variables from_address, to_address, subject and body.
+    If body contains "closed to open", query the database and run driver.drive (register user on ConnectCarolina)
+    """
+
     # Required response to SendGrid.com’s Parse API
     print("HTTP/1.1 200 OK")
 
-    # Consume the entire email
     envelope = simplejson.loads(request.form.get('envelope'))
-
     from_address, to_address, subject, body = driver.parse_email(envelope)
-
+    ### SEND E-MAIL TO FULTON.DEREK@GMAIL.COM REPORTING THE DETAILS OF THE POST REQUEST ###
     right_now = datetime.now()
 
     body = """
