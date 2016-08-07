@@ -7,7 +7,7 @@ puts("SIGNING UPT TO TRACK THE FOLLOWING WITH COURSICLE: %s" %(course))
 session = Capybara::Session.new(:poltergeist)
 
 puts("VISITING COURSICLE...")
-session.visit "https://www.coursicle.com/notify/#unc"
+session.visit "https://www.coursicle.com/notify/#untrack"
 
 puts("CLICKING EMAIL...")
 session.find(:id, "alternateMethodLink").click()

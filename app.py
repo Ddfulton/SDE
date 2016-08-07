@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, Response
 import json
 import subprocess
 import driver
@@ -25,20 +25,26 @@ def parser():
     print("HTTP/1.1 200 OK")
 
     envelope = simplejson.loads(request.form.get('envelope'))
-    from_address, to_address, subject, body = driver.parse_email(envelope)
-    ### SEND E-MAIL TO FULTON.DEREK@GMAIL.COM REPORTING THE DETAILS OF THE POST REQUEST ###
-    right_now = datetime.now()
+    from_address, to_address, subject, body, course, status = driver.parse_email(envelope)
 
-    body = """
-	From: %s\n
-	To: %s\n
-	Subject: %s\n
-	Body: %s\n
-	""" % (from_address, to_address, subject, body)
+    if status == "open":
+        # onyen = query database
+        # password = query database
+        # driver.enroll(onyen, password, course)
+        # user_email
+        # driver.send_email(user_email, "Swap Drop Enroll", body, image)
+        pass
 
-	# DRIVE AND GET RESULTS HERE
-    print("E-mailing the body:\n%s"%body)
-    driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % right_now, body)
+    elif status == "closed":
+        pass
+        # Status is closed
+
+    else: # Probably not sendgrid
+        pass
+
+    response = Response(status=200)
+
+    return response
 
 
 if __name__ == '__main__':

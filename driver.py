@@ -8,7 +8,7 @@ import subprocess
 
 # TODO Database query to remove from classchecker
 
-def drive(onyen, password, course):
+def enroll(onyen, password, course):
     """
     Calls driver.rb to login to course.
     Example: drive('kanye', 'kim', 'RAPP 101-001')
@@ -28,7 +28,7 @@ def class_checker(course):
     subprocess.call(args)
 
 
-def send_email(recipient, subject, body):  # TODO debug image shit
+def send_email(recipient, subject, body):  #TODO debug image shit
     """
     Sends an e-mail without an attachment using Sendgrid's V3 Web API
     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
@@ -58,6 +58,8 @@ def send_email(recipient, subject, body):  # TODO debug image shit
         ],
     }
 
+
+
     response = sg.client.mail.send.post(request_body=data)
 
     print(response.status_code)
@@ -69,9 +71,8 @@ def send_email(recipient, subject, body):  # TODO debug image shit
 
 def parse_email(envelope):
     """
-    Parses an email object with:
-    envelope = simplejson.loads(request.form.get('envelope'))
-    Processes that envelope to get to_address, from_address, text and subject.
+    Takes a sendgrid inbound parse e-mail object. Returns from, to, subject, body and status.
+    Status is a string which is either "open", "closed" or "wait list".
     """
 
     to_address = envelope['to'][0]
@@ -84,4 +85,35 @@ def parse_email(envelope):
     print("Text is %s" % text)
     print("Reached end fo parse_email function")
 
-    return from_address, to_address, subject, text
+    course, status = parse_body(text)
+
+    return from_address, to_address, subject, text, course, status
+
+
+def parse_body(text):
+
+    if "to open" in text.lower():
+        status = "open"
+
+    elif "wait list" in text.lower():
+        status = "wait list"
+
+    elif "to closed" in text.lower():
+        status = "closed"
+
+    else:
+        status = "not sendgrid"
+
+
+    if "has changed from" in text.lower(): # Probably from coursicle
+
+        if text[8] == "H": # Honors class
+            course = text[0:13]
+
+        else:
+            course = text[0:12]
+
+    else:
+        course = None
+
+    return course, status
