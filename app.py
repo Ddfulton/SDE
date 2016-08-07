@@ -13,6 +13,13 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/about', methods=["GET"])
+def about():
+    return render_template("about.html")
+
+def contact():
+    return render_template("contact.html")
+
 
 @app.route('/parse', methods=["POST"])
 def parser():

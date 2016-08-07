@@ -6,22 +6,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" conent="Stop, Drop, Enroll!">
+
   <title>Swap, Drop, Enroll</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-
-    <!-- Latest compiled and minified CSS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-      <script src="static/app.js"></script>
-  
   <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
 
-  
-  <script>
+      <script>
     $(document).ready(function() {
       // Pre selected for increased speed
       var content1 = $('#content1');
@@ -31,7 +23,9 @@
       $('#click').click(function() {
           content1.slideToggle();
           content2.slideToggle();
+
           $('div#main').height(oldHeight);
+
           $('img#MJ')
             .delay(2000)
             .queue( function(next){ 
@@ -39,43 +33,39 @@
                 'border: 3px solid green'); 
                 next(); 
               });
-            
             });
-    });
-
+        })  ;
   </script>
 
-
-
-
-
-  
   </head>
 
-<!doctype html>
-<html>
-<head>
-
-</head>
 
 
 
 <body>
 
-
 <div class="container">
+      <div class="row">
+        <div class="collapse navbar-collapse" style="background: #99BADD">
 
-  <div class="row">
-    <div class="jumbotron">
+            <h2><b>ßwap ∂rop €nroll.</b></h2>
 
-                <h2><b>$wap Drop Enroll.</b></h2>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="/about">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll">
+                        Disclaimer
+                    </a>
+                </li>
+            </ul>
 
 
-
-
-    </div>
-  </div>
-
+        </div>
+      </div>
 
   <div class="row">
 
@@ -84,14 +74,15 @@
   
     
     <div class="col-sm-4" >
-      
+        <br><br><br><br><br><br><br><br><br><br>
+        <span id="testimonials" style="text-align: center"><b>"I'd venture to say settling for that 8AM was the single worst decision I made as an undergrad."</b>-Steve Stephens, fifth year senior</span>
     </div>
 
     <div class="col-sm-4" id="main">
       <div id="signup">
         <div class="box" data-step="1" id="content1">
           <form class="center-box">
-            <h3 class="text-center no-top-margin">Sign Up</h3>
+            <h3 class="text-center no-top-margin">Cop the perfect schedule</h3>
 
               <div class="form-group">
 
@@ -130,7 +121,7 @@
               </div>
 
               <div class="form-group last-form-group text-center">
-                <button id="click" type="button" class="btn btn-primary" data-next="true">Acheive my academic dreams</button>
+                <button id="click" type="button" class="btn btn-primary" data-next="true">Achieve my academic dreams</button>
               </div>
           </form>
         </div>
@@ -138,7 +129,7 @@
     <div class="box" data-step="2" style="display:none" id="content2">
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
-        <img id="MJ" src="static/MJ.jpg">Check your e-mail</img>
+        <img id="MJ" src="static/MJ.jpg">Check your e-mail!</img>
       </h3>
     </form>
   </div>
@@ -147,7 +138,11 @@
   
 
   
-    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <span id="testimonials" style="text-align: center"><b>"If I hadn't ever gotten into that 11AM COMP401 class, I'd be piddling around making some dumb website with a unicorn as the cursor."</b>-Stephen Stevens, fifth year senior</span>
+
+    </div>
   
   </div>
   
@@ -156,10 +151,10 @@
       <h2>How It Works<br>
         <small>
           <ul>
-            <li>Waits patiently for e-mail from classchecker, like a phantom in the night</li>
+            <li>Signs our special e-mail address up for classchecker</li>
             <li>If status changes from "closed" to "open", automatically registers you</li>
-            <li>Screenshots and emails you the result</li>
-            <li><i><b>We store your password with this thing called PyCrypto—</b>It’s passed directly to ConnectCarolina when a spot opens up. To us, it’s always *****.</i></li> <!-- Lie -->
+            <li>Takes a screenshot and emails you the result</li>
+            <li><i><b>We store your password with this thing called PyCrypto </b>So we can't see it</i></li> <!-- Lie -->
           </ul>
         </small>
       </h2>
@@ -168,7 +163,7 @@
       
     <div class="col-sm-4"></div>
     
-    <div class="col-sm-4">
+    <div class="col-sm-4" style=>
       <blockquote class="blockquote-reverse">
         <p style="color:black">“As someone who wants to be a doctor, I’m no stranger to stress. Since I want to someday save cancer-ridden children whose lives are wasting away, well, I just <i><b>have</b></i> to get into Crimmins' 11AM Orgo II Class!” <small>Jeanine, Sophomore Biology Major</small></p>
         
@@ -176,13 +171,18 @@
     </div>
   </div>
 </div>
-<script>
 
 
-
-
-</script>
 <style>
+
+
+html {
+  background: url(https://s3.amazonaws.com/media.dth/30310_1104_ramses_zhenwei_zhang_233f.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 .box {
     border:0px solid black;
@@ -204,6 +204,52 @@ body {
     cursor: url(static/unicorn.gif), auto;
 }
 
+#onyenInput:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+#onyenPassword:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+    #emailInput:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+#desiredCourse:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+
+#onyenInput {
+
+    cursor: url(static/unicorn.gif), auto;
+}
+
+    #onyenPassword {
+        cursor: url(static/unicorn.gif), auto;
+}
+
+    #emailInput {
+        cursor: url(static/unicorn.gif), auto;
+}
+
+    #desiredCourse {
+        cursor: url(static/unicorn.gif), auto;
+}
+
+    .control-label {
+        cursor: url(static/unicorn.gif), auto;
+    }
 </style>
+
 </body>
 <html>
