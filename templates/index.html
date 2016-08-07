@@ -15,8 +15,8 @@
 
     <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      
-    <script src="static/app.js"></script>
+
+      <script src="static/app.js"></script>
   
   <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
 
@@ -42,6 +42,7 @@
             
             });
     });
+
   </script>
 
 
@@ -65,12 +66,11 @@
 <div class="container">
 
   <div class="row">
-    <div class="jumbotron">
+    <div class="navbar navbar-default navbar-fixed-top">
+        
+                <h2><b>$wap Drop Enroll.</b></h2>
 
-    
-    <h2>Swap, Drop, Enroll</h2>
-    <hr>
-      
+
 
 
     </div>
@@ -90,22 +90,48 @@
     <div class="col-sm-4" id="main">
       <div id="signup">
         <div class="box" data-step="1" id="content1">
-          <form class="form-horizontal center-box">
+          <form class="center-box">
+              <hr><hr><hr>
             <h3 class="text-center no-top-margin">Sign Up</h3>
+
               <div class="form-group">
-                  <label for="signup_step_1_email" class="control-label col-xs-2">Email</label>
-                  <div class="col-xs-10">
-                      <input type="email" class="form-control" id="signup_step_1_email" name="email" placeholder="Email">
+
+                  <label for="signup_step_1_email" class="control-label">Onyen</label>
+
+                  <div class="row-xs-10">
+                      <input type="email" class="form-control" id="onyenInput" name="email" placeholder="Michael Jeffrey Jordan">
                   </div>
               </div>
+
               <div class="form-group">
-                  <label for="signup_step_1_password" class="control-label col-xs-2">Password</label>
-                  <div class="col-xs-10">
-                      <input type="password" class="form-control" id="signup_step_1_password" name="password" placeholder="Password">
+
+                  <label for="signup_step_1_password" class="control-label">Password</label>
+
+                  <div class="row-xs-10">
+                      <input type="password" class="form-control" id="onyenPassword" name="password" placeholder="paperClasses1">
                   </div>
               </div>
+
+              <div class="form-group">
+
+                  <label for="signup_step_1_email" class="control-label">Email</label>
+
+                  <div class="row-xs-10">
+                      <input type="email" class="form-control" id="emailInput" name="email" placeholder="kanye.west@live.unc.edu">
+                  </div>
+              </div>
+
+              <div class="form-group">
+
+                  <label for="signup_step_1_email" class="control-label">Course</label>
+
+                  <div class="row-xs-10">
+                      <input type="email" class="form-control" id="desiredCourse" name="email" placeholder="AAAD 101-001">
+                  </div>
+              </div>
+
               <div class="form-group last-form-group text-center">
-                <button id="click" type="button" class="btn btn-primary" data-next="true">Create an account</button>
+                <button id="click" type="button" class="btn btn-primary" data-next="true">Acheive my academic dreams</button>
               </div>
           </form>
         </div>
@@ -113,7 +139,7 @@
     <div class="box" data-step="2" style="display:none" id="content2">
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
-        <img id="MJ" src="static/MJ.jpg"></img>
+        <img id="MJ" src="static/MJ.jpg">Check your e-mail</img>
       </h3>
     </form>
   </div>
@@ -158,12 +184,27 @@
 
 </script>
 <style>
-.box { border:0px solid black; padding:20px; margin: 20px; }
+
+.box {
+    border:0px solid black;
+    padding:20px;
+    margin: 20px;
+}
+
 img#MJ {
     height: 400;
     width: 80%;
     background-color: powderblue;
 }
+
+body {
+    cursor: url(static/unicorn.gif), auto;
+}
+
+#click {
+    cursor: url(static/unicorn.gif), auto;
+}
+
 </style>
 </body>
 <html>
