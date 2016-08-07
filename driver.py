@@ -84,4 +84,4 @@ def parse_email(envelope):
     print("Subject is %s" % subject)
     print("Text is %s" % text)
 
-    return from_address, to_address, subject, body
+    return from_address, to_address, subject, text
