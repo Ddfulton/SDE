@@ -34,6 +34,7 @@ def parser():
     envelope = simplejson.loads(request.form.get('envelope'))
     from_address, to_address, subject, body, course, status = driver.parse_email(envelope)
 
+    print("Got an e-mail from %s and the text is:\n%s" % (from_address, body))
     if status == "open":
         # onyen = query database
         # password = query database
