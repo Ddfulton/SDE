@@ -1,60 +1,49 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, url_for, redirect
 import json
 import subprocess
 import driver
 import simplejson
 from datetime import datetime
+from forms import EmailPasswordForm
+
+
+
 
 app = Flask(__name__)
 
 
+
 @app.route('/', methods=["GET"])
+
 def index():
     return render_template("index.html")
-
-@app.route('/about', methods=["GET"])
-def about():
-    return render_template("about.html")
-
-def contact():
-    return render_template("contact.html")
 
 
 @app.route('/parse', methods=["POST"])
 def parser():
-    """
-    Process POST request from Sendgrid Inbound Parse. Assign variables from_address, to_address, subject and body.
-    If body contains "closed to open", query the database and run driver.drive (register user on ConnectCarolina)
-    """
+	# Required response to SendGrid.com’s Parse API
+	print("GOT THE SENDGRID")
 
-    # Required response to SendGrid.com’s Parse API
-    print("HTTP/1.1 200 OK")
+	# Consume the entire email
+	envelope = simplejson.loads(request.form.get('envelope'))
+	print(envelope)
 
-    envelope = simplejson.loads(request.form.get('envelope'))
-    from_address, to_address, subject, body, course, status = driver.parse_email(envelope)
+	from_address, subject, body = driver.parse_email(envelope)
 
-    print("Got an e-mail from %s and the text is:\n%s" % (from_address, body))
-    if status == "open":
-        # onyen = query database
-        # password = query database
-        # driver.enroll(onyen, password, course)
-        # user_email
-        # driver.send_email(user_email, "Swap Drop Enroll", body, image)
-        pass
+	
 
-    elif status == "closed":
-        pass
-        # Status is closed
+	right_now = datetime.now()
 
-    else: # Probably not sendgrid
-        pass
+	body = """
+	From: %s\n
+	To: %s\n
+	Subject: %s\n
+	Body: %s\n
+	""" % (from_address, to_address, subject, text)
 
-    response = Response(status=200)
 
-    return response
-
+	driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % (right_now),)
 
 if __name__ == '__main__':
     app.run(debug=True)
-

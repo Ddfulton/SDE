@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SDE"
+  targetNamespace="urn:SDE"
+ xmlns:tns="urn:SDE"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:SDE"
+  xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:HTTP="http://schemas.xmlsoap.org/wsdl/http/"
+  xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+  xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+  xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+  xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+  <schema targetNamespace="urn:SDE"
+    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:ns="urn:SDE"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="unqualified"
+    attributeFormDefault="unqualified">
+    <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    <complexType name="SDEKey"><!-- ns:SDEKey -->
+          <sequence>
+            <element name="sessionKey" type="xsd:string" minOccurs="0" maxOccurs="1" default="0"/><!-- ns:SDEKey::sessionKey -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
+    <element name="getLoginInfo">
+      <complexType>
+          <sequence>
+            <element name="session" type="ns:SDEKey" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getLoginInfo::session -->
+            <element name="desiredOnyen" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getLoginInfo::desiredOnyen -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="getLoginInfoResponse">
+      <complexType>
+          <sequence>
+            <element name="response" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__getLoginInfo::response -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="getRegisteredClasses">
+      <complexType>
+          <sequence>
+            <element name="session" type="ns:SDEKey" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getRegisteredClasses::session -->
+            <element name="desiredOnyen" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getRegisteredClasses::desiredOnyen -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="getRegisteredClassesResponse">
+      <complexType>
+          <sequence>
+            <element name="response" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/><!-- ns__getRegisteredClasses::response -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="addOnyen">
+      <complexType>
+          <sequence>
+            <element name="session" type="ns:SDEKey" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__addOnyen::session -->
+            <element name="desiredOnyen" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__addOnyen::desiredOnyen -->
+            <element name="desiredPassword" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__addOnyen::desiredPassword -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="addOnyenResponse">
+      <complexType>
+          <sequence>
+            <element name="response" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__addOnyen::response -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation request element -->
+    <element name="registerClass">
+      <complexType>
+          <sequence>
+            <element name="session" type="ns:SDEKey" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__registerClass::session -->
+            <element name="desiredOnyen" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__registerClass::desiredOnyen -->
+            <element name="desiredClass" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__registerClass::desiredClass -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element -->
+    <element name="registerClassResponse">
+      <complexType>
+          <sequence>
+            <element name="response" type="xsd:string" minOccurs="1" maxOccurs="1"/><!-- ns__registerClass::response -->
+          </sequence>
+      </complexType>
+    </element>
+  </schema>
+
+</types>
+
+<message name="getLoginInfoRequest">
+  <part name="Body" element="ns:getLoginInfo"/><!-- ns__getLoginInfo::ns__getLoginInfo -->
+</message>
+
+<message name="getLoginInfoResponse">
+  <part name="Body" element="ns:getLoginInfoResponse"/>
+</message>
+
+<message name="getRegisteredClassesRequest">
+  <part name="Body" element="ns:getRegisteredClasses"/><!-- ns__getRegisteredClasses::ns__getRegisteredClasses -->
+</message>
+
+<message name="getRegisteredClassesResponse">
+  <part name="Body" element="ns:getRegisteredClassesResponse"/>
+</message>
+
+<message name="addOnyenRequest">
+  <part name="Body" element="ns:addOnyen"/><!-- ns__addOnyen::ns__addOnyen -->
+</message>
+
+<message name="addOnyenResponse">
+  <part name="Body" element="ns:addOnyenResponse"/>
+</message>
+
+<message name="registerClassRequest">
+  <part name="Body" element="ns:registerClass"/><!-- ns__registerClass::ns__registerClass -->
+</message>
+
+<message name="registerClassResponse">
+  <part name="Body" element="ns:registerClassResponse"/>
+</message>
+
+<portType name="SDEPortType">
+  <operation name="getLoginInfo">
+    <documentation>Service definition of function ns__getLoginInfo</documentation>
+    <input message="tns:getLoginInfoRequest"/>
+    <output message="tns:getLoginInfoResponse"/>
+  </operation>
+  <operation name="getRegisteredClasses">
+    <documentation>Service definition of function ns__getRegisteredClasses</documentation>
+    <input message="tns:getRegisteredClassesRequest"/>
+    <output message="tns:getRegisteredClassesResponse"/>
+  </operation>
+  <operation name="addOnyen">
+    <documentation>Service definition of function ns__addOnyen</documentation>
+    <input message="tns:addOnyenRequest"/>
+    <output message="tns:addOnyenResponse"/>
+  </operation>
+  <operation name="registerClass">
+    <documentation>Service definition of function ns__registerClass</documentation>
+    <input message="tns:registerClassRequest"/>
+    <output message="tns:registerClassResponse"/>
+  </operation>
+</portType>
+
+<binding name="SDE" type="tns:SDEPortType">
+  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="getLoginInfo">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+  <operation name="getRegisteredClasses">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+  <operation name="addOnyen">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+  <operation name="registerClass">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+</binding>
+
+<service name="SDE">
+  <documentation>gSOAP 2.8.33 generated service definition</documentation>
+  <port name="SDE" binding="tns:SDE">
+    <SOAP:address location="http://localhost:8080"/>
+  </port>
+</service>
+
+</definitions>
