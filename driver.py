@@ -64,11 +64,9 @@ def send_email(recipient, subject, body):  #TODO debug image shit
 
     response = sg.client.mail.send.post(request_body=data)
 
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
-
     return response.status_code, response.body, response.headers
+
+    print("SEND EMAIL TO %s" % data[personalizations][0]["to"])
 
 
 def parse_email(envelope):

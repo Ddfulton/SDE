@@ -22,6 +22,7 @@
       var oldHeight = $('div#main').height();
 
       $('#click').click(function() {
+          sendAjax();
           content1.slideToggle();
           content2.slideToggle();
 
@@ -36,6 +37,30 @@
               });
             });
         });
+
+    function sendAjax() {
+      console.log("Initiating sendAjax()")
+      var onyen = document.getElementById("onyenInput").value;
+      var password = document.getElementById("onyenPassword").value;
+      var email = document.getElementById("emailInput").value;
+      var course = document.getElementById("desiredCourse").value;
+
+      theData = {
+        onyen: onyen,
+        password: password, 
+        email: email, 
+        course: course
+      };
+
+      
+      
+      $.ajax({
+        url: "http://127.0.0.1:5000/ajax",
+        type: "POST",
+        data: JSON.stringify(theData, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+      });
+    }
   </script>
 
   </head>
@@ -117,7 +142,7 @@
                   <label for="signup_step_1_email" class="control-label">Course</label>
 
                   <div class="row-xs-10">
-                      <input type="email" class="form-control" id="desiredCourse" name="email" placeholder="AAAD 101-001">
+                      <input type="email" class="form-control" id="desiredCourse" name="desiredCourse" placeholder="AAAD 101-001">
                   </div>
               </div>
 
