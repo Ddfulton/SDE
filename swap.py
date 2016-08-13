@@ -34,10 +34,6 @@ def ajax():
 	return "Suh", 200
 
 
-
-
-
-
 @app.route('/parse', methods=["POST"])
 def parser():
 	# Required response to SendGrid.com’s Parse API
@@ -49,18 +45,29 @@ def parser():
 
 	from_address, to_address, subject, text, course, status = driver.parse_email(envelope)
 
-	right_now = datetime.now()
-
-	body = """
-	From: %s\n
-	To: %s\n
-	Subject: %s\n
-	Body: %s\n
-	""" % (from_address, to_address, subject, text)
 
 
-	driver.send_email("fulton.derek@gmail.com", "DEBUGGING SDE at %s" % (right_now),)
+
+			###   TODO   ###
+
+	if status == "open":
+		# Fetch credentials for course 
+		# Enroll
+		# Email result
+		# Take user out of database if success
+
+	if status == "wait list":
+		###TODO PSEUDO-CODE###
+		# Wait list enroll
+		# Same as status == "open"
+	if status == "closed":
+		pass
+	else:
+		# Catch for non-classchecker emails 
 	
+			###   END TODO   ###
+
+
 	return "Success", 200
 
 if __name__ == '__main__':
