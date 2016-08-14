@@ -6,11 +6,9 @@ import driver
 import simplejson
 from datetime import datetime
 from werkzeug.local import Local
-
+import SDEClient
 
 app = Flask(__name__)
-
-
 
 @app.route('/', methods=["GET", "POST"])
 
@@ -25,7 +23,8 @@ def ajax():
 
 		print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 		
-		### ZEEP ADD USER RIGHT HERE ###
+		print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
+		print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
 	else:
 		return "Suh", 200
@@ -55,14 +54,32 @@ def parser():
 		# Enroll
 		# Email result
 		# Take user out of database if success
+		print "INFO: Open"
+
+		nextOnyen = SDEClient.getNextUser(course)
+
+		if nextOnyen != "NONE":
+
+			onyenPassword = SDEClient.getLoginInfo(nextOnyen)
+
+			# Launch driver with args (nextOnyen, onyenPassword)
+
+			"""
+			if success:
+				print SDE.markEnrollPass(nextOnyen, course)
+			"""
 
 	if status == "wait list":
 		###TODO PSEUDO-CODE###
 		# Wait list enroll
 		# Same as status == "open"
+		print "Wait"
+
 	if status == "closed":
 		pass
+
 	else:
+		print "SPAM"
 		# Catch for non-classchecker emails 
 	
 			###   END TODO   ###
@@ -71,4 +88,4 @@ def parser():
 	return "Success", 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
