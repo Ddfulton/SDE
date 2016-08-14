@@ -60,9 +60,10 @@ def parser():
 
 			driver.enroll(nextOnyen, onyenPassword)
 
+			
 
-			image_title = "%s" %(nextOnyen) + "_%s" %(course)".png"
-			driver.send_email('fulton.derek@gmail.com', 'TEST', 'just tried to enroll %s in %s'%(nextOnyen, course), attachment=)
+			image_title = "%s_%s.png"%(nextOnyen, course)
+			driver.send_email('fulton.derek@gmail.com', 'TEST', 'just tried to enroll %s in %s'%(nextOnyen, course), attachment=image_title)
 
 			"""
 			if success:
