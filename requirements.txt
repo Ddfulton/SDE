@@ -10,4 +10,4 @@ requests==2.10.0
 pycrypto==2.6.1
 simplejson==3.8.2
 flask-wtf==0.12
-zeep==0.15
+zeep==0.14.0
