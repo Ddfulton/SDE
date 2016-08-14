@@ -11,12 +11,11 @@ import SDEClient
 app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
-
 def index():
     return render_template("index.html")
 
 
-@app.route('/ajax', methods=["POST"])
+@app.route('/ajax', methods=["GET", "POST"])
 def ajax():
 	if request.method == "POST":
 		goods = request.json
@@ -33,7 +32,7 @@ def ajax():
 	return "Suh", 200
 
 
-@app.route('/parse', methods=["POST"])
+@app.route('/parse', methods=["GET", "POST"])
 def parser():
 	# Consume the entire email
 	envelope = simplejson.loads(request.form.get('envelope'))
@@ -51,7 +50,7 @@ def parser():
 		# Enroll
 		# Email result
 		# Take user out of database if success
-		print("INFO: Open")
+		print("INFO: %s is Open" % course)
 
 		nextOnyen = SDEClient.getNextUser(course)
 
