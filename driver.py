@@ -18,7 +18,7 @@ def enroll(onyen, password, course):
     """
     print("INFO: Calling enroll for %s for %s" % (onyen, course))
     args = ['ruby', 'driver.rb', onyen, password, course]
-    subprocess.call(args)
+    print(subprocess.call(args))
 
 
 def class_checker(course):
