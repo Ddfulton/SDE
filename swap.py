@@ -59,7 +59,7 @@ def parser():
 			onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 
 			print("INFO: Enrolling %s in %s" % (nextOnyen, course))
-			driver.enroll(nextOnyen, onyenPassword)
+			driver.enroll(nextOnyen, onyenPassword, course)
 
 			
 			print("INFO: Sending e-mail to fulton.derek@gmail.com")

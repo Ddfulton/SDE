@@ -1,6 +1,7 @@
 require 'capybara'
 require 'capybara/poltergeist'
 
+puts("driver.rb IS IN BUSINESS")
 
 onyen = ARGV[0]
 password = ARGV[1]
