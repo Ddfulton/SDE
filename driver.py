@@ -16,7 +16,7 @@ def enroll(onyen, password, course):
     Calls driver.rb to login to course.
     Example: drive('kanye', 'kim', 'RAPP 101-001')
     """
-
+    print("INFO: Calling enroll for %s for %s" % (onyen, course))
     args = ['ruby', 'driver.rb', onyen, password, course]
     subprocess.call(args)
 

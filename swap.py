@@ -58,27 +58,26 @@ def parser():
 
 			onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 
+			print("INFO: Enrolling %s in %s" % (nextOnyen, course))
 			driver.enroll(nextOnyen, onyenPassword)
 
 			
-
+			print("INFO: Sending e-mail to fulton.derek@gmail.com")
 			image_title = "%s_%s.png"%(nextOnyen, course)
 			driver.send_email('fulton.derek@gmail.com', 'TEST', 'just tried to enroll %s in %s'%(nextOnyen, course), attachment=image_title)
 
-			"""
-			if success:
-				print SDE.markEnrollPass(nextOnyen, course)
-				send e-mail detailing results
-			"""
-
+			return "Success", 200
 	if status == "wait list":
 		print("Wait")
 
+		return "Success", 200
+
 	if status == "closed":
-		pass
+		return "Success", 200
 
 	else:
 		print("SPAM")
+		return "Success", 200
 		
 
 
