@@ -84,7 +84,6 @@ def parse_email(envelope):
     text = request.form.get('text')
     print("Subject is %s" % subject)
     print("Text is %s" % text)
-    print("Reached end fo parse_email function")
 
     course, status = parse_body(text)
 
