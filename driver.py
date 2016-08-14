@@ -31,7 +31,7 @@ def class_checker(course):
     subprocess.call(args)
 
 
-def send_email(recipient, subject, body):  #TODO debug image shit
+def send_email(recipient, subject, body, attachment=None):  #TODO debug image shit
     """
     Sends an e-mail without an attachment using Sendgrid's V3 Web API
     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
@@ -39,28 +39,66 @@ def send_email(recipient, subject, body):  #TODO debug image shit
     ###TODO STORE API KEY SOMEWHERE MORE SECURE AND FETCH IT WITH ZEEP###
     sg = sendgrid.SendGridAPIClient(apikey='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')
 
-    data = {
-        "personalizations": [
-            {
-                "to": [
-                    {
-                        "email": recipient
-                    }
-                ],
-                "subject": subject
-            }
-        ],
-        "from": {
-            "email": "swap@drop.enroll"
-        },
-        "content": [
-            {
-                "type": "text/plain",
-                "value": body
-            }
-        ],
-    }
 
+
+    if attachment != None: 
+        
+        
+        encoded_image = base64.b64encode(open(attachment, "rb").read()).decode('utf-8')
+
+        data = {
+            "personalizations": [
+                {
+                    "to": [
+                        {
+                            "email": recipient
+                        }
+                    ],
+                    "subject": subject
+                }
+            ],
+            "from": {
+                "email": "swap@drop.enroll"
+            },
+            "content": [
+                {
+                    "type": "text/plain",
+                    "value": body
+                }
+            ],
+            "attachments": [
+            {
+                "content": encoded_image,  
+                "filename": "ddfulton_ECON 400-001_2016-08-14 11:40:50 -0400.png", 
+                "name": "THE_PICTURE", 
+                "type": "png"
+            }
+            ],
+        }
+
+    else:
+        
+        data = {
+            "personalizations": [
+                {
+                    "to": [
+                        {
+                            "email": recipient
+                        }
+                    ],
+                    "subject": subject
+                }
+            ],
+            "from": {
+                "email": "swap@drop.enroll"
+            },
+            "content": [
+                {
+                    "type": "text/plain",
+                    "value": body
+                }
+            ]
+        }
 
 
     response = sg.client.mail.send.post(request_body=data)

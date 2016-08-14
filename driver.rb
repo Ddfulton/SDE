@@ -1,5 +1,3 @@
-
-
 require 'capybara'
 require 'capybara/poltergeist'
 
@@ -102,7 +100,7 @@ def enroll(onyen, password, class1)
 
     puts(finish-start)
 
-    image_title = "%s" %(onyen) + "_%s" %(class1) + "_%s" %(finish) + ".png"
+    image_title = "%s" %(onyen) + "_%s" %(class1)".png"
 
     sleep(2)
     session.save_screenshot(image_title)
