@@ -35,9 +35,6 @@ def ajax():
 
 @app.route('/parse', methods=["POST"])
 def parser():
-	# Required response to SendGrid.com’s Parse API
-	print("GOT THE SENDGRID")
-
 	# Consume the entire email
 	envelope = simplejson.loads(request.form.get('envelope'))
 	print(envelope)
@@ -47,14 +44,14 @@ def parser():
 
 
 
-			###   TODO   ###
+			
 
 	if status == "open":
 		# Fetch credentials for course 
 		# Enroll
 		# Email result
 		# Take user out of database if success
-		print "INFO: Open"
+		print("INFO: Open")
 
 		nextOnyen = SDEClient.getNextUser(course)
 
@@ -62,27 +59,23 @@ def parser():
 
 			onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 
-			# Launch driver with args (nextOnyen, onyenPassword)
+			driver.enroll(nextOnyen, onyenPassword)
 
 			"""
 			if success:
 				print SDE.markEnrollPass(nextOnyen, course)
+				send e-mail detailing results
 			"""
 
 	if status == "wait list":
-		###TODO PSEUDO-CODE###
-		# Wait list enroll
-		# Same as status == "open"
-		print "Wait"
+		print("Wait")
 
 	if status == "closed":
 		pass
 
 	else:
-		print "SPAM"
-		# Catch for non-classchecker emails 
-	
-			###   END TODO   ###
+		print("SPAM")
+		
 
 
 	return "Success", 200

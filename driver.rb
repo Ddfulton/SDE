@@ -2,8 +2,6 @@
 
 require 'capybara'
 require 'capybara/poltergeist'
-require 'sendgrid-ruby'
-include SendGrid
 
 
 onyen = ARGV[0]
@@ -102,16 +100,15 @@ def enroll(onyen, password, class1)
  
     finish = Time.now
 
-    puts("\n\nTime to enroll:")
-
     puts(finish-start)
 
     image_title = "%s" %(onyen) + "_%s" %(class1) + "_%s" %(finish) + ".png"
 
+    sleep(2)
     session.save_screenshot(image_title)
 
+   
 
-    send_email('ddfulton@live.unc.edu', image_title, 'Did you get your class?', 'Here is the report:\n')
 
 end
 
