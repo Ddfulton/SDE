@@ -11,4 +11,4 @@ mysqlclient==1.3.7
 pycrypto==2.6.1
 simplejson==3.8.2
 flask-wtf==0.12
-
+zeep==0.15
