@@ -7,8 +7,10 @@ import simplejson
 from datetime import datetime
 from werkzeug.local import Local
 import SDEClient
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -23,6 +25,7 @@ def disclaimer():
 	return render_template('disclaimer.html')
 
 @app.route('/ajax', methods=["GET", "POST", "OPTIONS"])
+@cross_origin()
 def ajax():
 	if request.method == "POST":
 		print("INFO: /ajax WAS POSTED")
@@ -58,6 +61,7 @@ def ajax():
 
 
 @app.route('/parse', methods=["GET", "POST"])
+@cross_origin()
 def parser():
 	# Consume the entire email
 	envelope = simplejson.loads(request.form.get('envelope'))

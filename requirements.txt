@@ -11,3 +11,4 @@ pycrypto==2.6.1
 simplejson==3.8.2
 flask-wtf==0.12
 zeep==0.14.0
+flask-cors==2.1.2
