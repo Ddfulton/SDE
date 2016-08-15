@@ -103,7 +103,7 @@ def enroll(onyen, password, class1)
 
     image_title = "%s" %(onyen) + "_%s" %(class1) + ".png"
 
-    sleep(2)
+    sleep(5)
     session.save_screenshot(image_title)
 
    

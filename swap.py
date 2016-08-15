@@ -14,6 +14,13 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/about', methods=["GET"])
+def about():
+	return render_template('about.html')
+
+@app.route('/disclaimer', methods=["GET"])
+def disclaimer():
+	return render_template('disclaimer.html')
 
 @app.route('/ajax', methods=["GET", "POST"])
 def ajax():
@@ -25,6 +32,23 @@ def ajax():
 		print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
 		print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
+		msg = """
+		Dear %s, 
+
+		Welcome to Swap Drop Enroll. This service waits for an e-mail from classchecker, reads that email, 
+		and if the status changes from Closed to Open, it fetches your password and enrolls you. 
+
+		We use three layers of security to protect your password. If you are interested, 
+		we use a SOAP client with both a token and cipher, among other security features. 
+
+		Feel free to contact us at swapdropenroll@gmail.com.
+
+		Warm regards, 
+
+		Swap Drop Enroll
+		"""
+
+		driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
 	else:
 		return "Suh", 200
 
@@ -64,7 +88,11 @@ def parser():
 			
 			print("INFO: Sending e-mail to fulton.derek@gmail.com")
 			image_title = "%s_%s.png"%(nextOnyen, course)
-			driver.send_email('fulton.derek@gmail.com', 'TEST', 'just tried to enroll %s in %s'%(nextOnyen, course), attachment=image_title)
+			driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result', 'just tried to enroll %s in %s'%(nextOnyen, course), attachment=image_title)
+
+			#TODO
+			# if enrollment successful
+			# zeep.removeOnyen
 
 			return "Success", 200
 	if status == "wait list":
