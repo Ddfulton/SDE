@@ -35,9 +35,16 @@ def ajax():
 		
 		print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
 		print(SDEClient.registerClass(goods['onyen'], goods['course']))
+		
 
+		print("SIGNING UP TO TRACK %s" % goods['course'])
+		driver.class_checker(goods['course'])
+
+		
 		msg = """
 		Dear %s, 
+
+		You just signed up for %s.
 
 		Welcome to Swap Drop Enroll. This service waits for an e-mail from classchecker, reads that email, 
 		and if the status changes from Closed to Open, it fetches your password and enrolls you. 
@@ -50,7 +57,7 @@ def ajax():
 		Warm regards, 
 
 		Swap Drop Enroll
-		"""
+		""" % (onyen, goods['course'])
 
 		driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
 	else:
