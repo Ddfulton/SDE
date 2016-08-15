@@ -22,9 +22,10 @@ def about():
 def disclaimer():
 	return render_template('disclaimer.html')
 
-@app.route('/ajax', methods=["GET", "POST"])
+@app.route('/ajax', methods=["GET", "POST", "OPTIONS"])
 def ajax():
 	if request.method == "POST":
+		print("INFO: /ajax WAS POSTED")
 		goods = request.json
 
 		print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
@@ -32,25 +33,25 @@ def ajax():
 		print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
 		print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
-		msg = """
-		Dear %s, 
+		# msg = """
+		# Dear %s, 
 
-		Welcome to Swap Drop Enroll. This service waits for an e-mail from classchecker, reads that email, 
-		and if the status changes from Closed to Open, it fetches your password and enrolls you. 
+		# Welcome to Swap Drop Enroll. This service waits for an e-mail from classchecker, reads that email, 
+		# and if the status changes from Closed to Open, it fetches your password and enrolls you. 
 
-		We use three layers of security to protect your password. If you are interested, 
-		we use a SOAP client with both a token and cipher, among other security features. 
+		# We use three layers of security to protect your password. If you are interested, 
+		# we use a SOAP client with both a token and cipher, among other security features. 
 
-		Feel free to contact us at swapdropenroll@gmail.com.
+		# Feel free to contact us at swapdropenroll@gmail.com.
 
-		Warm regards, 
+		# Warm regards, 
 
-		Swap Drop Enroll
-		"""
+		# Swap Drop Enroll
+		# """
 
-		driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
+		# driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
 	else:
-		return "Suh", 200
+		pass
 
 
 	return "Suh", 200
