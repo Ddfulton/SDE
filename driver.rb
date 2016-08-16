@@ -92,7 +92,7 @@ def enroll(onyen, password, class1)
 
 
 
-        until q!=0 # while i > 0
+        for i in 1..cart_elements.size
         	begin
         		counter = "%s" %(i)
         		course = cart.find("a#P_CLASS_NAME\\$" + counter) 
@@ -102,7 +102,16 @@ def enroll(onyen, password, class1)
  
         			cart.find("input#P_SELECT\\$" + counter).click() # Click the fucker
         			puts("Found course:" + " " + cart.find("a#P_CLASS_NAME\\$" + counter).text)
-        			q = 1
+        			
+
+                    session.find("a#DERIVED_REGFRM1_LINK_ADD_ENRL").click()
+                    puts("Clicked 'enroll'")
+
+                    session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
+                    puts("Clicked 'finish enrolling'")
+
+
+                    break
 
         		else
         			puts("Course not in row " + counter)
@@ -113,20 +122,16 @@ def enroll(onyen, password, class1)
         		
         		puts("Skipped due to recitation")
         		z += 1
-        		if z >= 30
+        		if z >= cart_elements.size
         			abort("Error: Class not in Shopping Cart!")
         		end
         	end
 
-        i += 1
+        
         end
 
         
-        session.find("a#DERIVED_REGFRM1_LINK_ADD_ENRL").click()
-        puts("Clicked 'enroll'")
-
-        session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
-        puts("Clicked 'finish enrolling'")
+        
     end
  
     finish = Time.now
