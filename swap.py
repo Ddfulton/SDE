@@ -66,21 +66,40 @@ def ajax():
 
     return "Suh", 200
 
+@app.route('/test', methods=["GET", "POST"])
+def test():
+    if request.method == "POST":
+        print("Got POST")
+    else:
+        pass
 
-@app.route('/parse', methods=["GET", "POST"])
+    return "Suh", 200
+
+
+
+
+@app.route('/parse', methods=["POST"])
 @cross_origin()
 def parser():
-    # Consume the entire email
-    envelope = simplejson.loads(request.form.get('envelope'))
-    print(envelope)
+    print("Parser() going")
+    if request.method == "POST":
+        print("Request is a POST")
+	    
+    try:
+        envelope = simplejson.loads(request.form.get('envelope'))
+        print(envelope)
 
-    from_address, to_address, subject, text, course, status = driver.parse_email(envelope)
+    except:
+        print("INFO: Failed to load envelope")
+
+    status = "closed"
+    try:
+        from_address, to_address, subject, text, course, status = driver.parse_email(envelope)
+
+    except:
+        print("INFO: Failed to parse envelope")
 
     if status == "open":
-        # Fetch credentials for course
-        # Enroll
-        # Email result
-        # Take user out of database if success
         print("INFO: %s is Open" % course)
 
         nextOnyen = SDEClient.getNextUser(course)
@@ -88,47 +107,46 @@ def parser():
         if nextOnyen != "NONE":
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
-
-            print("INFO: Enrolling %s in %s" % (nextOnyen, course))
-            
+	            
             try:
 
                 driver.enroll(nextOnyen, onyenPassword, course)
-                
+	                
                 print("INFO: Sending e-mail to fulton.derek@gmail.com and %s@live.unc.edu" % nextOnyen)
                 image_title = "%s_%s.png" % (nextOnyen, course)
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-	                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+		                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
                 user_email = nextOnyen + "@live.unc.edu"
 
                 driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-	                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
+		                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
 
 
             except:
                 print("Did not make it through the try to enroll block of code.")
-            
+	            
+
+            else:
+                print("INFO: nextOnyen is NONE")
+                fail_message = "There was no nextOnyen for %s" % course
+	            
+
+
+
+        elif status == "wait list":
+            print("Wait")
+
+
+
+        elif status == "closed":
+            print("INFO: ")
 
         else:
-            print("INFO: nextOnyen is NONE")
-            fail_message = "There was no nextOnyen for %s" % course
-            
-
-
-
-    elif status == "wait list":
-        print("Wait")
-
-
-
-    elif status == "closed":
-        print("INFO: ")
-
-    else:
-        print("SPAM")
+            print("SPAM")
 
     return "Suh", 200
+
 
 
 if __name__ == '__main__':

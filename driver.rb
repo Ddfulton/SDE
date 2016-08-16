@@ -84,7 +84,7 @@ def enroll(onyen, password, class1)
         q = 0
         z = 0
 
-        until q!=0 #while i > 0
+        until q!=0 # while i > 0
         	begin
         		counter = "%s" %(i)
         		course = cart.find("a#P_CLASS_NAME\\$" + counter) 
@@ -105,7 +105,7 @@ def enroll(onyen, password, class1)
         		puts $!, $@
         		puts("Skipped due to recitation")
         		z += 1
-        		if z>=30
+        		if z >= 30
         			abort("Error: Class not in Shopping Cart!")
         		end
         	end
