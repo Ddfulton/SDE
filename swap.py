@@ -81,7 +81,7 @@ def test():
 @app.route('/parse', methods=["POST"])
 @cross_origin()
 def parser():
-    print("Parser() going")
+    
     if request.method == "POST":
         print("Request is a POST")
 	    
@@ -98,6 +98,7 @@ def parser():
 
     except:
         print("INFO: Failed to parse envelope")
+        course = None
 
     if status == "open":
         print("INFO: %s is Open" % course)
@@ -134,16 +135,16 @@ def parser():
 
 
 
-        elif status == "wait list":
-            print("Wait")
+    elif status == "wait list":
+        print("INFO: Wait list")
 
 
 
-        elif status == "closed":
-            print("INFO: ")
+    elif status == "closed":
+        print("INFO: Course is Closed")
 
-        else:
-            print("SPAM")
+    else:
+        print("SPAM")
 
     return "Suh", 200
 
