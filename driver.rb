@@ -73,16 +73,24 @@ def enroll(onyen, password, class1)
 
     # LOOP THROUGH TABLE
     session.within_frame(session.find(:id, "ptifrmtgtframe")) do 
-        
+        puts("WANT:" + " " + class1)
         cart = session.find("table.PSLEVEL1GRIDNBO") # Table
         
-        course = cart.find("a#P_CLASS_NAME\\$0")
-        
-        puts("WANT:" + " " + class1)
+        cart_elements = Array.new
+
+        cart_elements = cart.all('tr')
+
+        puts("There are %s in the cart" % cart_elements.size)
 
         i = 0
         q = 0
         z = 0
+
+
+    
+
+
+
 
         until q!=0 # while i > 0
         	begin
@@ -102,7 +110,7 @@ def enroll(onyen, password, class1)
 
         	rescue Capybara::ElementNotFound 
         		puts("Cart position: " + " " + counter)
-        		puts $!, $@
+        		
         		puts("Skipped due to recitation")
         		z += 1
         		if z >= 30
