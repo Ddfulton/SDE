@@ -18,7 +18,7 @@
  */
 """
 
-__author__ = 'Sam Andersen'
+
 __version = '20160813'
 
 import zeep

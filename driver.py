@@ -1,5 +1,3 @@
-__author__ = "Derek Fulton"
-
 import sendgrid
 import os
 import json

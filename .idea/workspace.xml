@@ -1,15 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77d9e857-8974-4683-b2ab-b0326f72cfd6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/disclaimer.html" />
+    <list default="true" id="77d9e857-8974-4683-b2ab-b0326f72cfd6" name="Default" comment="Removed authorship">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forms.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/bin/flask" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/DESCRIPTION.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/INSTALLER" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/METADATA" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/RECORD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/WHEEL" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/entry_points.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/metadata.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Flask-0.11.1.dist-info/top_level.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/DESCRIPTION.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/INSTALLER" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/METADATA" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/RECORD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/WHEEL" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/metadata.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/Werkzeug-0.11.10.dist-info/top_level.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/__main__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/cli.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/DESCRIPTION.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/INSTALLER" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/METADATA" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/RECORD" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/WHEEL" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/metadata.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests-2.11.0.dist-info/top_level.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classchecker.rb" afterPath="$PROJECT_DIR$/classchecker.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SDEClient.py" afterPath="$PROJECT_DIR$/SDEClient.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver.py" afterPath="$PROJECT_DIR$/driver.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/driver.rb" afterPath="$PROJECT_DIR$/driver.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/swap.py" afterPath="$PROJECT_DIR$/swap.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/untrack.rb" afterPath="$PROJECT_DIR$/untrack.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/__init__.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/_compat.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/_compat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/app.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/app.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/blueprints.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/blueprints.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/config.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/config.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/ctx.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/ctx.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/debughelpers.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/debughelpers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/ext/__init__.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/ext/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/exthook.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/exthook.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/globals.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/globals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/helpers.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/helpers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/json.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/json.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/logging.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/logging.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/sessions.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/sessions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/signals.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/signals.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/templating.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/templating.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/testing.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/testing.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/views.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/wrappers.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/flask/wrappers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/__init__.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/adapters.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/adapters.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/api.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/api.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/auth.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/auth.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/certs.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/certs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/compat.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/compat.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/cookies.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/cookies.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/exceptions.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/exceptions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/hooks.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/hooks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/models.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/__init__.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/connectionpool.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/connectionpool.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/contrib/appengine.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/contrib/appengine.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/contrib/socks.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/contrib/socks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/packages/six.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/packages/six.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/poolmanager.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/poolmanager.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/response.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/response.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/util/connection.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/util/connection.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/util/retry.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/util/retry.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/util/ssl_.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/packages/urllib3/util/ssl_.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/sessions.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/sessions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/status_codes.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/status_codes.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/structures.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/structures.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/utils.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/requests/utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/__init__.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/contrib/lint.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/contrib/lint.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/datastructures.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/datastructures.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/debug/__init__.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/debug/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/filesystem.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/filesystem.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/formparser.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/formparser.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/http.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/http.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/local.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/local.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/serving.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/serving.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/urls.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/wsgi.py" afterPath="$PROJECT_DIR$/venv/lib/python3.4/site-packages/werkzeug/wsgi.py" />
     </list>
     <ignored path="SDE.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,6 +100,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SDE$swap.coverage" NAME="swap Coverage Results" MODIFIED="1471359661947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SDE$SDE.coverage" NAME="SDE Coverage Results" MODIFIED="1470428743178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/SDE$email_driver.coverage" NAME="email_driver Coverage Results" MODIFIED="1470428615369" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -34,30 +113,58 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.py">
+      <file leaf-file-name="swap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/swap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-              <folding>
-                <element signature="e#55#114#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+            <state relative-caret-position="165">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="disclaimer.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/disclaimer.html">
+      <file leaf-file-name="driver.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/driver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="driver.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/driver.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SDEClient.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SDEClient.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="untrack.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/untrack.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -85,12 +192,14 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.groovy" />
         <option value="$PROJECT_DIR$/email_driver.py" />
         <option value="$PROJECT_DIR$/templates/about.html" />
-        <option value="$PROJECT_DIR$/driver.py" />
         <option value="$PROJECT_DIR$/classchecker.rb" />
         <option value="$PROJECT_DIR$/driver.rb" />
-        <option value="$PROJECT_DIR$/untrack.rb" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/swap.py" />
+        <option value="$PROJECT_DIR$/driver.py" />
+        <option value="$PROJECT_DIR$/SDEClient.py" />
+        <option value="$PROJECT_DIR$/untrack.rb" />
       </list>
     </option>
   </component>
@@ -131,6 +240,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -192,23 +302,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SDE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SDE" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,7 +318,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.swap">
     <configuration default="false" name="email_driver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -238,6 +333,24 @@
       <module name="SDE" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/email_driver.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="swap" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SDE" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/swap.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -450,12 +563,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.email_driver" />
+      <item index="1" class="java.lang.String" itemvalue="Python.swap" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.email_driver" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.swap" />
+        <item index="1" class="java.lang.String" itemvalue="Python.email_driver" />
       </list>
     </recent_temporary>
   </component>
@@ -495,19 +610,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="13" y="23" width="1427" height="817" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24526979" sideWeight="0.8328877" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24526979" sideWeight="0.82071716" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24526979" sideWeight="0.1671123" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24526979" sideWeight="0.17928287" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -515,6 +629,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="113" y="123" width="1200" height="633" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896462" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -551,11 +666,33 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/disclaimer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="34" column="63" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
-          <folding>
-            <element signature="e#55#114#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -571,7 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="94" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -579,9 +715,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
-          <folding>
-            <element signature="e#55#114#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -606,9 +740,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="e#55#114#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -617,9 +749,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#55#114#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -694,7 +824,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="94" selection-start-line="7" selection-start-column="94" selection-end-line="7" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -702,15 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1125">
           <caret line="83" column="13" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/driver.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -718,23 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/untrack.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -766,21 +869,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="60" column="60" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-          <folding>
-            <element signature="e#55#114#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1740">
+          <caret line="85" column="60" selection-start-line="85" selection-start-column="60" selection-end-line="85" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/swap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/driver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/driver.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SDEClient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/untrack.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
