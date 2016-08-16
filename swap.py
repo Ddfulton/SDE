@@ -28,9 +28,10 @@ def disclaimer():
     return render_template('disclaimer.html')
 
 
-@app.route('/ajax', methods=["GET", "POST", "OPTIONS"])
+@app.route('/ajax', methods=["POST", "OPTIONS"])
 @cross_origin()
 def ajax():
+	### TODO Make sure their password is correct and it's in their shopping cart ### 
     if request.method == "POST":
         print("INFO: /ajax WAS POSTED")
         goods = request.json
