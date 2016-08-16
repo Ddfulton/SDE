@@ -90,31 +90,30 @@ def parser():
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 
             print("INFO: Enrolling %s in %s" % (nextOnyen, course))
-            driver.enroll(nextOnyen, onyenPassword, course)
-            print("INFO: Sending e-mail to fulton.derek@gmail.com")
-            image_title = "%s_%s.png" % (nextOnyen, course)
-            driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+            
+            try:
+	            driver.enroll(nextOnyen, onyenPassword, course)
+	            print("INFO: Sending e-mail to fulton.derek@gmail.com")
+	            image_title = "%s_%s.png" % (nextOnyen, course)
+	            driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
+	                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
-            user_email = nextOnyen + "@live.unc.edu"
+	            user_email = nextOnyen + "@live.unc.edu"
 
-            driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
+	            driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+	                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
 
-            # print("INFO: NextOnyen is None. Did not enroll jack shit.")
+	            return_message = "Enrolled %s in %s" % (nextOnyen, course)
 
-
-
-            # if enrollment successful
-            # zeep.markEnrollPass
-
-            return_message = "Enrolled %s in %s" % (nextOnyen, course)
-
-            return return_message, 200
+	        except:
+	        	print("Did not make it through the try to enroll block of code.")
+            
 
         else:
+        	print("INFO: nextOnyen is NONE")
             fail_message = "There was no nextOnyen for %s" % course
-            return fail_message, 200
+            
+    	return "Suh", 200
 
     if status == "wait list":
         print("Wait")
