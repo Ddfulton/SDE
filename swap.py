@@ -109,7 +109,12 @@ def parser():
             # if enrollment successful
             # zeep.markEnrollPass
 
-        return "Success", 200
+            return_message = "Enrolled %s in %s" % (nextOnyen, course)
+			return return_message, 200
+		
+		else:
+			fail_message = "There was no nextOnyen for %s" % course
+			return fail_message, 200
 
     if status == "wait list":
         print("Wait")
