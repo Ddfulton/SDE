@@ -89,7 +89,6 @@ def parser():
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 
-            
             print("INFO: Enrolling %s in %s" % (nextOnyen, course))
             driver.enroll(nextOnyen, onyenPassword, course)
             print("INFO: Sending e-mail to fulton.derek@gmail.com")
@@ -99,10 +98,10 @@ def parser():
 
             user_email = nextOnyen + "@live.unc.edu"
 
-            driver.send_email(user_email, 'Your Swap Drop Enroll Result', 'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
+            driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
 
-           
-        	print("INFO: NextOnyen is None. Did not enroll jack shit.")
+            # print("INFO: NextOnyen is None. Did not enroll jack shit.")
 
 
 
@@ -110,11 +109,12 @@ def parser():
             # zeep.markEnrollPass
 
             return_message = "Enrolled %s in %s" % (nextOnyen, course)
-			return return_message, 200
-		
-		else:
-			fail_message = "There was no nextOnyen for %s" % course
-			return fail_message, 200
+
+            return return_message, 200
+
+        else:
+            fail_message = "There was no nextOnyen for %s" % course
+            return fail_message, 200
 
     if status == "wait list":
         print("Wait")
@@ -127,8 +127,6 @@ def parser():
     else:
         print("SPAM")
         return "Success", 200
-
-    return "Success", 200
 
 
 if __name__ == '__main__':
