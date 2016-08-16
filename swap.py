@@ -92,40 +92,42 @@ def parser():
             print("INFO: Enrolling %s in %s" % (nextOnyen, course))
             
             try:
-	            driver.enroll(nextOnyen, onyenPassword, course)
-	            print("INFO: Sending e-mail to fulton.derek@gmail.com")
-	            image_title = "%s_%s.png" % (nextOnyen, course)
-	            driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
+
+                driver.enroll(nextOnyen, onyenPassword, course)
+                print("INFO: Sending e-mail to fulton.derek@gmail.com")
+                image_title = "%s_%s.png" % (nextOnyen, course)
+                driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
 	                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
-	            user_email = nextOnyen + "@live.unc.edu"
+                user_email = nextOnyen + "@live.unc.edu"
 
-	            driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+                driver.send_email(user_email, 'Your Swap Drop Enroll Result',
 	                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
 
-	            return_message = "Enrolled %s in %s" % (nextOnyen, course)
 
-	        except:
-	        	print("Did not make it through the try to enroll block of code.")
+            except:
+                print("Did not make it through the try to enroll block of code.")
             
 
         else:
-        	print("INFO: nextOnyen is NONE")
+            print("INFO: nextOnyen is NONE")
             fail_message = "There was no nextOnyen for %s" % course
             
-    	return "Suh", 200
 
-    if status == "wait list":
+
+
+    elif status == "wait list":
         print("Wait")
 
-        return "Success", 200
 
-    if status == "closed":
-        return "Success", 200
+
+    elif status == "closed":
+        print("INFO: ")
 
     else:
         print("SPAM")
-        return "Success", 200
+
+    return "Suh", 200
 
 
 if __name__ == '__main__':
