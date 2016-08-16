@@ -89,27 +89,28 @@ def parser():
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 
-            if nextOnyen != None:
-                print("INFO: Enrolling %s in %s" % (nextOnyen, course))
-                driver.enroll(nextOnyen, onyenPassword, course)
-                print("INFO: Sending e-mail to fulton.derek@gmail.com")
-                image_title = "%s_%s.png" % (nextOnyen, course)
-                driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+            
+            print("INFO: Enrolling %s in %s" % (nextOnyen, course))
+            driver.enroll(nextOnyen, onyenPassword, course)
+            print("INFO: Sending e-mail to fulton.derek@gmail.com")
+            image_title = "%s_%s.png" % (nextOnyen, course)
+            driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
+                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
-                user_email = nextOnyen + "@live.unc.edu"
+            user_email = nextOnyen + "@live.unc.edu"
 
-                driver.send_email(user_email, 'Your Swap Drop Enroll Result', 'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
+            driver.send_email(user_email, 'Your Swap Drop Enroll Result', 'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
 
-            else:
-                print("INFO: NextOnyen is None. Did not enroll jack shit.")
+           
+        	print("INFO: NextOnyen is None. Did not enroll jack shit.")
 
 
 
             # if enrollment successful
             # zeep.markEnrollPass
 
-            return "Success", 200
+        return "Success", 200
+
     if status == "wait list":
         print("Wait")
 
