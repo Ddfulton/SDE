@@ -98,7 +98,7 @@ def parser():
 
     except:
         print("INFO: Failed to parse envelope")
-        course = None
+        course = "INFO: Failed to parse envelope"
 
     if status == "open":
         print("INFO: %s is Open" % course)
