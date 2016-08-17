@@ -9,7 +9,7 @@
  *  |___/ |___/ |___| 
  *
  * Project: Swap Drop Enroll
- * Author: SDE Team (Derek Fulton and Sam Andersen)
+ * Author: We'll never tell
  * Version: 20160816
  * TODO: Continue adding functionality
  *
@@ -123,7 +123,7 @@ def parser():
 
         nextOnyen = SDEClient.getNextUser(course)
 
-        if nextOnyen != "NONE" and nextOnyen not None:
+        if nextOnyen != "NONE" and nextOnyen != None:
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 	            
