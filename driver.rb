@@ -93,6 +93,7 @@ def enroll(onyen, password, class1)
 
 
         for i in 1..cart_elements.size
+            i = i - 1
         	begin
         		counter = "%s" %(i)
         		course = cart.find("a#P_CLASS_NAME\\$" + counter) 
