@@ -12,17 +12,17 @@
  *
  * Project: SOAP Python Connection Sample
  * Author: Sam Andersen
- * Version: 20160812
+ * Version: 20160816
  * TODO: Continue adding functionality
  *
  */
 """
 
-
-__version = '20160813'
+__author__ = 'Sam Andersen'
+__version__ = '20160816'
 
 import zeep
-from zeep.transports import Transport
+from zeep.transports import Transport # Needed to force verification of SSL certificate
 
 SDE_TOKEN = '3e80d405613958ae8db48c3f4f21b1c0606657dc9a5af1b0b7e7ba994d8af682'
 
