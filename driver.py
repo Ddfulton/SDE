@@ -127,6 +127,10 @@ def parse_email(envelope):
 
 
 def parse_body(text):
+    """
+    Reads an e-mail from classchecker and returns the course and status so
+    it's ready to go for the driver.
+    """
 
     if "to open" in text.lower():
         status = "open"
