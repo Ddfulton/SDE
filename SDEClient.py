@@ -85,7 +85,7 @@ def getRegisteredClasses(_onyen):
     return client.service.getRegisteredClasses(session = SDEKey_type(sessionKey = SDE_TOKEN), desiredOnyen = _onyen)
 
 def markEnrollPass(_onyen, _course):
-    print("DEBUG: Marking enrollment pass for %s in class %s" % _onyen, _course)
+    print("DEBUG: Marking enrollment pass for %s in class %s" % (_onyen, _course))
 
     transport = Transport(verify = True)
     wsdl = 'SDE.wsdl'
