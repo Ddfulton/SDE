@@ -1,32 +1,52 @@
-# -*- coding: utf-8 -*-
+"""
+/*  (    (           
+ *  )\ ) )\ )        
+ *  (()/((()/(   (    
+ *  /(_))/(_))  )\   
+ *  (_)) (_))_  ((_)  
+ *  / __| |   \ | __| 
+ *  \__ \ | |) || _|  
+ *  |___/ |___/ |___| 
+ *
+ * Project: Swap Drop Enroll
+ * Author: SDE Team (Derek Fulton and Sam Andersen)
+ * Version: 20160816
+ * TODO: Continue adding functionality
+ *
+ */
+"""
+# -*- encoding: utf-8 -*-
+
+### Flask dependencies ###
 from flask import Flask, render_template, request, url_for, redirect, make_response
+from flask_cors import CORS, cross_origin
 import json
-import subprocess
-import driver
 import simplejson
 from datetime import datetime
 from werkzeug.local import Local
+
+### Driver dependencies ###
+import subprocess
+import driver
+
+### API dependencies ###
 import SDEClient
-from flask_cors import CORS, cross_origin
 
-app = Flask(__name__)
+### General configuration ###
+app = Flask(__name__) # Define the Flask application
 CORS(app)
-
 
 @app.route('/', methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 
-
 @app.route('/about', methods=["GET"])
 def about():
     return render_template('about.html')
 
-
 @app.route('/disclaimer', methods=["GET"])
 def disclaimer():
     return render_template('disclaimer.html')
-
 
 @app.route('/ajax', methods=["POST", "OPTIONS"])
 @cross_origin()
@@ -38,7 +58,7 @@ def ajax():
 
         print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 
-        print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
+        print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email'])) # API connection
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
         print("SIGNING UP TO TRACK %s" % goods['course'])
@@ -76,9 +96,6 @@ def test():
 
     return "Suh", 200
 
-
-
-
 @app.route('/parse', methods=["POST"])
 @cross_origin()
 def parser():
@@ -106,7 +123,7 @@ def parser():
 
         nextOnyen = SDEClient.getNextUser(course)
 
-        if nextOnyen != "NONE":
+        if nextOnyen != "NONE" and nextOnyen not None:
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
 	            
@@ -140,8 +157,6 @@ def parser():
     elif status == "wait list":
         print("INFO: Wait list")
 
-
-
     elif status == "closed":
         print("INFO: Course is Closed")
 
@@ -149,7 +164,6 @@ def parser():
         print("SPAM")
 
     return "Suh", 200
-
 
 
 if __name__ == '__main__':

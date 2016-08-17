@@ -22,4 +22,3 @@ session.find(:id, "classInputField1").send_keys(course)
 
 puts("CLICKING NOTIFY...")
 session.find(:id, "notifyButton").click()
-
