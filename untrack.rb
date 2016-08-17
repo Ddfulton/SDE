@@ -1,3 +1,5 @@
+__author__ = "Derek Fulton"
+
 require 'capybara'
 require 'capybara/poltergeist'
 
@@ -7,7 +9,10 @@ puts("SIGNING UPT TO TRACK THE FOLLOWING WITH COURSICLE: %s" %(course))
 session = Capybara::Session.new(:poltergeist)
 
 puts("VISITING COURSICLE...")
-session.visit "https://www.coursicle.com/notify/#untrack"
+session.visit "https://www.coursicle.com/notify/#unc"
+
+puts("CLICKING UNTRACK...")
+session.find(:xpath, '//*[@id="untrackNavItem"]/a')
 
 puts("CLICKING EMAIL...")
 session.find(:id, "alternateMethodLink").click()

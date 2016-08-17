@@ -129,9 +129,10 @@ def parser():
                 print("Did not make it through the try to enroll block of code.")
 	            
 
-            else:
-                print("INFO: nextOnyen is NONE")
-                fail_message = "There was no nextOnyen for %s" % course
+        else:
+            print("INFO: nextOnyen is NONE")
+            # TODO remove the course from the database if it's none
+            fail_message = "There was no nextOnyen for %s" % course
 	            
 
 
