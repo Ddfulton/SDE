@@ -82,6 +82,7 @@ def ajax():
 		""" % (goods['onyen'], goods['course'])
 
         driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
+        driver.send_email('fulton.derek@gmail.com', 'NEW USER', '%s has signed up for %s' % (goods['onyen'], goods['course']))
     else:
         pass
 
