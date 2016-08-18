@@ -86,6 +86,24 @@
       </complexType>
     </element>
     <!-- operation request element -->
+    <element name="getOnyenInfo">
+      <complexType>
+          <sequence>
+            <element name="session" type="ns:SDEKey" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getOnyenInfo::session -->
+            <element name="desiredOnyen" type="xsd:string" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__getOnyenInfo::desiredOnyen -->
+          </sequence>
+      </complexType>
+    </element>
+    <!-- operation response element and type -->
+    <element name="OnyenInfo" type="ns:OnyenInfo"/>
+    <complexType name="OnyenInfo">
+          <sequence>
+            <element name="onyen" type="xsd:string" minOccurs="0" maxOccurs="1" default="0"/><!-- ns:OnyenInfo::onyen -->
+            <element name="password" type="xsd:string" minOccurs="0" maxOccurs="1" default="0"/><!-- ns:OnyenInfo::password -->
+            <element name="email" type="xsd:string" minOccurs="0" maxOccurs="1" default="0"/><!-- ns:OnyenInfo::email -->
+          </sequence>
+    </complexType>
+    <!-- operation request element -->
     <element name="getRegisteredClasses">
       <complexType>
           <sequence>
@@ -183,6 +201,14 @@
   <part name="Body" element="ns:deleteUserResponse"/>
 </message>
 
+<message name="getOnyenInfo">
+  <part name="Body" element="ns:getOnyenInfo"/><!-- ns__getOnyenInfo::ns__getOnyenInfo -->
+</message>
+
+<message name="OnyenInfo">
+  <part name="Body" element="ns:OnyenInfo"/><!-- ns__getOnyenInfo::response -->
+</message>
+
 <message name="getRegisteredClassesRequest">
   <part name="Body" element="ns:getRegisteredClasses"/><!-- ns__getRegisteredClasses::ns__getRegisteredClasses -->
 </message>
@@ -231,6 +257,11 @@
     <input message="tns:deleteUserRequest"/>
     <output message="tns:deleteUserResponse"/>
   </operation>
+  <operation name="getOnyenInfo">
+    <documentation>Service definition of function ns__getOnyenInfo</documentation>
+    <input message="tns:getOnyenInfo"/>
+    <output message="tns:OnyenInfo"/>
+  </operation>
   <operation name="getRegisteredClasses">
     <documentation>Service definition of function ns__getRegisteredClasses</documentation>
     <input message="tns:getRegisteredClassesRequest"/>
@@ -274,6 +305,15 @@
     </output>
   </operation>
   <operation name="deleteUser">
+    <SOAP:operation soapAction=""/>
+    <input>
+          <SOAP:body parts="Body" use="literal"/>
+    </input>
+    <output>
+          <SOAP:body parts="Body" use="literal"/>
+    </output>
+  </operation>
+  <operation name="getOnyenInfo">
     <SOAP:operation soapAction=""/>
     <input>
           <SOAP:body parts="Body" use="literal"/>

@@ -107,3 +107,22 @@ def deleteUser(_onyen, _password):
 
     return client.service.deleteUser(session = SDEKey_type(sessionKey = SDE_TOKEN),
         desiredOnyen = _onyen, desiredPassword = _password)
+
+def getOnyenInfo(_onyen):
+    print("DEBUG: Attempting to fetch info for onyen %s" % _onyen)
+
+    transport = Transport(verify = True)
+    wsdl = 'SDE.wsdl'
+    client = zeep.Client(wsdl = wsdl, transport = transport)
+
+    SDEKey_type = client.get_type('ns0:SDEKey')
+    OnyenInfo_type = client.get_type('ns0:OnyenInfo')
+
+    response = client.service.getOnyenInfo(session = SDEKey_type(sessionKey = SDE_TOKEN),
+        desiredOnyen = _onyen)
+
+    if response != None:
+        return response
+
+    else:
+        return OnyenInfo_type(onyen = 'NONE', password = 'NONE', email = 'NONE')
