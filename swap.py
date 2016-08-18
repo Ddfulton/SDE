@@ -117,10 +117,6 @@ def parser():
     if request.method == "POST":
         print("Request is a POST")
 
-
-
-        
-
     try:
         envelope = simplejson.loads(request.form.get('envelope'))
         print(envelope)
@@ -157,15 +153,9 @@ def parser():
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
-<<<<<<< HEAD
                 driver.send_email(onyenInfo.email, 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
-=======
-                user_email = nextOnyen + "@live.unc.edu"
-                driver.send_email('user_email', 'Your Swap Drop Enroll Result', 'just tried to enroll %s in %s' % (nextOnyen, course))
->>>>>>> dbc62fd317afdc8cd0a8fbea93f2c2783036e246
-
-
+                
             except:
                 print("Did not make it through the try to enroll block of code.")
 
@@ -198,7 +188,6 @@ def processClassRemoval():
     if request.method == "POST":
         print("INFO: /removeClassReq WAS POSTED")
         goods = request.json
-<<<<<<< HEAD
         
         onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
 
@@ -206,23 +195,15 @@ def processClassRemoval():
             print("INFO: No record found for specified onyen %s, ignoring request" % goods['onyen'])
 
             return "Suh", 200
-
-=======
-        user_email = goods["onyen"] + "@live.unc.edu"
         
->>>>>>> dbc62fd317afdc8cd0a8fbea93f2c2783036e246
         print("INFO: Removing class %s for Onyen %s" % (goods['course'], goods['onyen']))
 
         try: 
             print(SDEClient.markEnrollPass(goods['onyen'], goods['course']))
             
             try:
-<<<<<<< HEAD
                 driver.send_email(onyenInfo.email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
-=======
-                driver.send_email(user_email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
             
->>>>>>> dbc62fd317afdc8cd0a8fbea93f2c2783036e246
             except:
                 print("driver.send_email broke on processClassRemoval()")
         
