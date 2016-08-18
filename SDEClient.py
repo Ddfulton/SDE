@@ -125,4 +125,4 @@ def getOnyenInfo(_onyen):
         return response
 
     else:
-        return OnyenInfo_type(onyen = 'NONE', password = 'NONE', email = 'NONE')
+        return OnyenInfo_type(onyen = '0', password = '0', email = '0')
