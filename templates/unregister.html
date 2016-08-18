@@ -31,14 +31,7 @@
 
       $('#click').click(function() {
 
-        if ($('#desiredCourse').val().length < 12) {
-          result = false;
-        }
-        
-        else {
-          result = true;
-        }
-
+        result = true
 
         if (result) {
           sendAjax();
@@ -57,7 +50,7 @@
         }
         
         else {
-            $('#desiredCourse').trigger('startRumble');
+            
             }
           }); 
     });
@@ -65,7 +58,7 @@
     function sendAjax() {
       console.log("Initiating sendAjax()")
       var onyen = document.getElementById("onyenInput").value;
-      var course = document.getElementById("onyenPassword").value;
+      var password = document.getElementById("onyenPassword").value;
 
       theData = {
         onyen: onyen,
@@ -75,7 +68,7 @@
       
       
       $.ajax({
-        url: "http://secret-eyrie-28661.herokuapp.com/unregisterReq",
+        url: "https://secret-eyrie-28661.herokuapp.com/unregisterReq",
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
@@ -165,7 +158,7 @@
               </div>
 
               <div class="form-group last-form-group text-center">
-                <button id="click" type="button" class="btn btn-primary" data-next="true">Remove Class</button>
+                <button id="click" type="button" class="btn btn-primary" data-next="true">Unregister</button>
               </div>
           </form>
         </div>
@@ -173,7 +166,7 @@
     <div class="box" data-step="2" style="display:none" id="content2">
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
-        <img id="MJ" src="static/MJ.jpg">Check your e-mail!</img>
+        <img id="MJ" src="static/MJ.jpg">Processing request!</img>
       </h3>
     </form>
   </div>
