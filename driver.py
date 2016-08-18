@@ -22,7 +22,7 @@ def verify_onyen(onyen, password):
     """
     Returns YE for a success and NO for a failure
     """
-    p = subprocess.Popen(["ruby", "verifyOnyen.rb", "ddfulton", "bojangles5'"], stdout=subprocess.PIPE)
+    p = subprocess.Popen(["ruby", "verifyOnyen.rb", onyen, password], stdout=subprocess.PIPE)
 
     out, err = p.communicate()
 
