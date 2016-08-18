@@ -35,6 +35,7 @@ def verify_onyen(onyen, password):
         return False
 
 
+
 def class_checker(course):
     """
     Signs special sendgrid account up for ClassChecker

@@ -33,32 +33,36 @@ import driver
 import SDEClient
 
 ### General configuration ###
-app = Flask(__name__) # Define the Flask application
+app = Flask(__name__)  # Define the Flask application
 CORS(app)
+
 
 @app.route('/', methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 
+
 @app.route('/about', methods=["GET"])
 def about():
     return render_template('about.html')
+
 
 @app.route('/disclaimer', methods=["GET"])
 def disclaimer():
     return render_template('disclaimer.html')
 
+
 @app.route('/ajax', methods=["POST", "OPTIONS"])
 @cross_origin()
 def ajax():
-	### TODO Make sure their password is correct and it's in their shopping cart ### 
+    ### TODO Make sure their password is correct and it's in their shopping cart ###
     if request.method == "POST":
         print("INFO: /ajax WAS POSTED")
         goods = request.json
 
         print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 
-        print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email'])) # API connection
+        print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))  # API connection
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
         print("SIGNING UP TO TRACK %s" % goods['course'])
@@ -82,11 +86,13 @@ def ajax():
 		""" % (goods['onyen'], goods['course'])
 
         driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
-        driver.send_email('fulton.derek@gmail.com', 'NEW USER', '%s has signed up for %s' % (goods['onyen'], goods['course']))
+        driver.send_email('fulton.derek@gmail.com', 'NEW USER',
+                          '%s has signed up for %s' % (goods['onyen'], goods['course']))
     else:
         pass
 
     return "Suh", 200
+
 
 @app.route('/test', methods=["GET", "POST"])
 def test():
@@ -97,13 +103,13 @@ def test():
 
     return "Suh", 200
 
+
 @app.route('/parse', methods=["POST"])
 @cross_origin()
 def parser():
-    
     if request.method == "POST":
         print("Request is a POST")
-	    
+
     try:
         envelope = simplejson.loads(request.form.get('envelope'))
         print(envelope)
@@ -127,26 +133,26 @@ def parser():
         if nextOnyen != "NONE" and nextOnyen != None:
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
-	            
+
             try:
 
                 driver.enroll(nextOnyen, onyenPassword, course)
-	                
+
                 print("INFO: Sending e-mail to fulton.derek@gmail.com and %s@live.unc.edu" % nextOnyen)
                 image_title = "%s_%s.png" % (nextOnyen, course)
-                
+
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-		                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
                 user_email = nextOnyen + "@live.unc.edu"
 
                 driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-		                              'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
+                                  'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
 
 
             except:
                 print("Did not make it through the try to enroll block of code.")
-	            
+
 
         elif nextOnyen == None or nextOnyen == "NONE":
             print("INFO: nextOnyen is None so we are untracking this course")
@@ -154,7 +160,7 @@ def parser():
             driver.untrack(course)
 
             fail_message = "There was no nextOnyen for %s" % course
-	            
+
 
 
 
