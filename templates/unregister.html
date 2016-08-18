@@ -10,8 +10,7 @@
   <meta name="description" conent="Stop, Drop, Enroll!">
 
   <title>Swap, Drop, Enroll</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
-  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
@@ -32,14 +31,7 @@
 
       $('#click').click(function() {
 
-        if ($('#desiredCourse').val().length < 12) {
-          result = false;
-        }
-        
-        else {
-          result = true;
-        }
-
+        result = true
 
         if (result) {
           sendAjax();
@@ -58,98 +50,25 @@
         }
         
         else {
-            $('#desiredCourse').trigger('startRumble');
+            
             }
           }); 
-
-
-
-    $('#unsubscribeClick').click(function() {
-
-        if ($('#desiredCourse').val().length < 12) {
-          result = false;
-        }
-
-        else {
-          result = true;
-        }
-
-
-        if (result) {
-            sendUnsubscribeAjax();
-            content1.slideToggle();
-            content2.slideToggle();
-
-          $('div#main').height(oldHeight);
-
-          $('img#MJ')
-            .delay(2000)
-            .queue( function(next){
-              $(this).css(
-                'border: 3px solid green');
-                next();
-              });
-        }
-
-        else {
-            $('#desiredCourse').trigger('startRumble');
-            }
-          });
-      });
-
-
-    function sendUnsubscribeAjax() {
-        //
-        /*
-        * Send ajax request to /ajax with a field called unsubscribe.
-        * Use this value to determine whether to sign the user up or get them out
-        */
-        //
-
-        console.log("Initiating sendUnsubscribeAjax()")
-        var onyen = document.getElementById("onyenInput").value;
-        var password = document.getElementById("onyenPassword").value;
-        var email = document.getElementById("emailInput").value;
-        var course = document.getElementById("desiredCourse").value;
-        var unsubscribe = "TRUE";
-
-        theData = {
-            onyen: onyen,
-            password: password,
-            email: email,
-            course: course,
-            unsubscribe: unsubscribe
-          };
-
-      $.ajax({
-        url: "http://secret-eyrie-28661.herokuapp.com/ajax",
-        type: "POST",
-        data: JSON.stringify(theData, null, '\t'),
-        contentType: 'application/json;charset=UTF-8',
-      });
-    }
+    });
 
     function sendAjax() {
       console.log("Initiating sendAjax()")
       var onyen = document.getElementById("onyenInput").value;
       var password = document.getElementById("onyenPassword").value;
-      var email = document.getElementById("emailInput").value;
-      var course = document.getElementById("desiredCourse").value;
-        var unsubscribe = "FALSE";
 
-
-        theData = {
-            onyen: onyen,
-            password: password,
-            email: email,
-            course: course,
-            unsubscribe: unsubscribe,
-        };
+      theData = {
+        onyen: onyen,
+        password: password
+      };
 
       
       
       $.ajax({
-        url: "https://secret-eyrie-28661.herokuapp.com/ajax",
+        url: "https://secret-eyrie-28661.herokuapp.com/unregisterReq",
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
@@ -218,7 +137,7 @@
       <div id="signup">
         <div class="box" data-step="1" id="content1">
           <form class="center-box">
-            <h3 class="text-center no-top-margin">Cop the perfect schedule</h3>
+            <h3 class="text-center no-top-margin">Remove account and all class requests</h3>
 
               <div class="form-group">
 
@@ -238,39 +157,16 @@
                   </div>
               </div>
 
-              <div class="form-group">
-
-                  <label for="signup_step_1_email" class="control-label">Email</label>
-
-                  <div class="row-xs-10">
-                      <input type="email" class="form-control" id="emailInput" name="email" placeholder="kanye.west@live.unc.edu">
-                  </div>
-              </div>
-
-              <div class="form-group">
-
-                  <label for="signup_step_1_email" class="control-label">Course</label>
-
-                  <div class="row-xs-10">
-                      <input type="email" class="form-control" id="desiredCourse" name="desiredCourse" placeholder="AAAD 101-001">
-                  </div>
-              </div>
-
               <div class="form-group last-form-group text-center">
-                <button id="click" type="button" class="btn btn-primary" data-next="true">Achieve my academic dreams</button>
+                <button id="click" type="button" class="btn btn-primary" data-next="true">Unregister</button>
               </div>
-
-              <div class="form-group last-form-group text-center">
-                <button id="unsubscribeClick" type="button" class="btn btn-primary" data-next="true" style="background: red">Get me the fuck out of here</button>
-              </div>
-
           </form>
         </div>
             
     <div class="box" data-step="2" style="display:none" id="content2">
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
-        <img id="MJ" src="static/MJ.jpg">Check your e-mail!</img>
+        <img id="MJ" src="static/MJ.jpg">Processing request!</img>
       </h3>
     </form>
   </div>
