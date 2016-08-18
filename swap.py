@@ -144,20 +144,21 @@ def parser():
 
         if nextOnyen != "NONE" and nextOnyen != None:
             # TODO Also get next e-mail
-            onyenPassword = SDEClient.getLoginInfo(nextOnyen)
-
+            ##onyenPassword = SDEClient.getLoginInfo(nextOnyen)
+            onyenInfo = SDEClient.getOnyenInfo(nextOnyen)
 
             try:
 
-                driver.enroll(nextOnyen, onyenPassword, course)
+                driver.enroll(nextOnyen, onyenInfo.password, course)
 
-                print("INFO: Sending e-mail to fulton.derek@gmail.com and %s@live.unc.edu" % nextOnyen)
+                print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % onyenInfo.email)
                 image_title = "%s_%s.png" % (nextOnyen, course)
 
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
-                
+                driver.send_email(onyenInfo.email, 'Your Swap Drop Enroll Result',
+                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
 
             except:
@@ -171,11 +172,6 @@ def parser():
             driver.untrack(course)
 
             fail_message = "There was no nextOnyen for %s" % course
-
-
-
-
-
 
     elif status == "wait list":
         print("INFO: Wait list")
@@ -197,13 +193,20 @@ def processClassRemoval():
     if request.method == "POST":
         print("INFO: /removeClassReq WAS POSTED")
         goods = request.json
-        user_emai = goods["onyen"] + "@live.unc.edu"
+        
+        onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
+
+        if onyenInfo.onyen == "0":
+            print("INFO: No record found for specified onyen %s, ignoring request" % goods['onyen'])
+
+            return "Suh", 200
+
         print("INFO: Removing class %s for Onyen %s" % (goods['course'], goods['onyen']))
 
         try: 
             print(SDEClient.markEnrollPass(goods['onyen'], goods['course']))
             try:
-                driver.send_email(user_email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
+                driver.send_email(onyenInfo.email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
             except:
                 print("driver.send_email broke on processClassRemoval()")
         except:
@@ -223,13 +226,19 @@ def proccessUnregister():
     if request.method == "POST":
         print("INFO: /unregisterReq WAS POSTED")
         goods = request.json
-        user_email = goods["onyen"] + "@live.unc.edu"
+
+        onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
+
+        if onyenInfo.onyen == "0":
+            print("INFO: No record found for specified onyen %s, ignoring request" % goods['onyen'])
+
+            return "Suh", 200
 
         try: 
             print(SDEClient.deleteUser(goods['onyen'], goods['password']))
             
             try:
-                driver.send_email(user_email, "Goodbye", "We just removed %s completely. Goodbye." % goods["onyen"])
+                driver.send_email(onyenInfo.email, "Goodbye", "We just removed %s completely. Goodbye." % goods["onyen"])
             except:
                 print("driver.send_email broke on processUnregister()")
 
