@@ -4,25 +4,21 @@ require 'capybara'
 require 'capybara/poltergeist'
 
 course = ARGV[0]
-puts("SIGNING UPT TO TRACK THE FOLLOWING WITH COURSICLE: %s" %(course))
+puts("INFO: Untracking %s" %(course))
 
 session = Capybara::Session.new(:poltergeist)
 
 puts("VISITING COURSICLE...")
 session.visit "https://www.coursicle.com/notify/#unc"
 
-puts("CLICKING UNTRACK...")
-session.find(:xpath, '//*[@id="untrackNavItem"]/a')
+puts("CLICKING UNTRACK")
+session.find(:id, "untrackNavItem").click()
 
-puts("CLICKING EMAIL...")
+puts("FILLING IN E-MAIL")
 session.find(:id, "alternateMethodLink").click()
+session.find(:id, "emailInput").send_keys("inbound@registerer69.bymail.in")
 
-puts("FILLING BOX IN...")
-session.find(:id, "emailInput").send_keys('inbound@registerer69.bymail.in')
-
-puts("ENTERING COURSE")
+puts("FILLING IN CLASS")
 session.find(:id, "classInputField1").send_keys(course)
-
-puts("CLICKING NOTIFY...")
 session.find(:id, "notifyButton").click()
 

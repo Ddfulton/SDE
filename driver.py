@@ -28,6 +28,13 @@ def class_checker(course):
     args = ['ruby', 'classchecker.rb', course]
     subprocess.call(args)
 
+def untrack(course):
+    """
+    Works just like class_checker, but untracks the course instead.
+    """
+
+    args = ['ruby', 'untrack.rb', course]
+    subprocess.call(args)
 
 def send_email(recipient, subject, body, attachment=None):  #TODO debug image shit
     """

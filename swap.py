@@ -147,9 +147,11 @@ def parser():
                 print("Did not make it through the try to enroll block of code.")
 	            
 
-        else:
-            print("INFO: nextOnyen is NONE")
-            # TODO remove the course from the database if it's none
+        elif nextOnyen == None or nextOnyen == "NONE":
+            print("INFO: nextOnyen is None so we are untracking this course")
+
+            driver.untrack(course)
+
             fail_message = "There was no nextOnyen for %s" % course
 	            
 
