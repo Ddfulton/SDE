@@ -64,19 +64,22 @@ def ajax():
         print("INFO: /ajax WAS POSTED")
         goods = request.json
 
-        print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
-
-
-        print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))  # API connection
 
         if not driver.verify_onyen(goods['onyen'], goods['password']):
             print("ERROR: Onyen did not pass verification")
 
             return "Request failed", 200
 
+        else:
+            print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
+
+
+
         print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email'])) # API connection
 
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
+
+
 
         print("SIGNING UP TO TRACK %s" % goods['course'])
         driver.class_checker(goods['course'])
@@ -101,16 +104,6 @@ def ajax():
         driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
         driver.send_email('fulton.derek@gmail.com', 'NEW USER',
                           '%s has signed up for %s' % (goods['onyen'], goods['course']))
-    else:
-        pass
-
-    return "Suh", 200
-
-
-@app.route('/test', methods=["GET", "POST"])
-def test():
-    if request.method == "POST":
-        print("Got POST")
     else:
         pass
 
@@ -238,4 +231,4 @@ def proccessUnregister():
         return "Suh", 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
