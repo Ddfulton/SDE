@@ -95,3 +95,15 @@ def markEnrollPass(_onyen, _course):
 
     return client.service.markEnrollPass(session = SDEKey_type(sessionKey = SDE_TOKEN), desiredOnyen = _onyen,
         desiredClass = _course)
+
+def deleteUser(_onyen, _password):
+    print("DEBUG: Attempting to remove onyen %s" % _onyen)
+
+    transport = Transport(verify = True)
+    wsdl = 'SDE.wsdl'
+    client = zeep.Client(wsdl = wsdl, transport = transport)
+
+    SDEKey_type = client.get_type('ns0:SDEKey')
+
+    return client.service.deleteUser(session = SDEKey_type(sessionKey = SDE_TOKEN),
+        desiredOnyen = _onyen, desiredPassword = _password)
