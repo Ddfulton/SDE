@@ -163,24 +163,6 @@ def parser():
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
                 
-            try:
-
-                driver.enroll(nextOnyen, onyenPassword, course)
-                    
-                print("INFO: Sending e-mail to fulton.derek@gmail.com and %s@live.unc.edu" % nextOnyen)
-                image_title = "%s_%s.png" % (nextOnyen, course)
-                driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-                                      'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
-
-
-                user_email = nextOnyen + "@live.unc.edu"
-
-                driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-
-                                  'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
-
-                                      'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
-
 
 
             except:
