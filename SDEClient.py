@@ -11,7 +11,7 @@
  *  |___/ |___/ |___| 
  *
  * Project: SOAP Python Connection Sample
- * Author: Sam Andersen
+ * Author: We'll Never Tell
  * Version: 20160816
  * TODO: Continue adding functionality
  *

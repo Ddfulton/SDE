@@ -157,7 +157,8 @@ def parser():
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
-                
+                user_email = nextOnyen + "@live.unc.edu"
+                driver.send_email('user_email', 'Your Swap Drop Enroll Result', 'just tried to enroll %s in %s' % (nextOnyen, course))
 
 
             except:
@@ -197,15 +198,19 @@ def processClassRemoval():
     if request.method == "POST":
         print("INFO: /removeClassReq WAS POSTED")
         goods = request.json
-        user_emai = goods["onyen"] + "@live.unc.edu"
+        user_email = goods["onyen"] + "@live.unc.edu"
+        
         print("INFO: Removing class %s for Onyen %s" % (goods['course'], goods['onyen']))
 
         try: 
             print(SDEClient.markEnrollPass(goods['onyen'], goods['course']))
+            
             try:
                 driver.send_email(user_email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
+            
             except:
                 print("driver.send_email broke on processClassRemoval()")
+        
         except:
             print("ERROR: Something happened")
 
