@@ -67,7 +67,8 @@ def ajax():
 
         if not driver.verify_onyen(goods['onyen'], goods['password']):
             print("ERROR: Onyen did not pass verification")
-
+            
+            driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
             return "Request failed", 200
 
         else:
@@ -128,6 +129,7 @@ def parser():
         print("INFO: Failed to load envelope")
 
     status = "closed"
+
     try:
         from_address, to_address, subject, text, course, status = driver.parse_email(envelope)
 
@@ -195,12 +197,12 @@ def processClassRemoval():
     if request.method == "POST":
         print("INFO: /removeClassReq WAS POSTED")
         goods = request.json
-
+        user_emai = goods["onyen"] + "@live.unc.edu"
         print("INFO: Removing class %s for Onyen %s" % (goods['course'], goods['onyen']))
 
         try: 
             print(SDEClient.markEnrollPass(goods['onyen'], goods['course']))
-
+            driver.send_email(user_email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
         except:
             print("ERROR: Something happened")
 
@@ -218,9 +220,11 @@ def proccessUnregister():
     if request.method == "POST":
         print("INFO: /unregisterReq WAS POSTED")
         goods = request.json
+        user_email = goods["onyen"] + "@live.unc.edu"
 
         try: 
             print(SDEClient.deleteUser(goods['onyen'], goods['password']))
+            driver.send_email(user_email, "Goodbye", "We just removed %s completely. Goodbye." % goods["onyen"])
 
         except:
             print("ERROR: Something happened")
@@ -231,4 +235,4 @@ def proccessUnregister():
         return "Suh", 200
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
