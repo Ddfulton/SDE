@@ -134,6 +134,7 @@ def parser():
 	                
                 print("INFO: Sending e-mail to fulton.derek@gmail.com and %s@live.unc.edu" % nextOnyen)
                 image_title = "%s_%s.png" % (nextOnyen, course)
+                
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
 		                              'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 

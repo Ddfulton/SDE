@@ -18,6 +18,22 @@ def enroll(onyen, password, course):
     args = ['ruby', 'driver.rb', onyen, password, course]
     print(subprocess.call(args))
 
+def verify_onyen(onyen, password):
+    """
+    Returns YE for a success and NO for a failure
+    """
+    p = subprocess.Popen(["ruby", "verifyOnyen.rb", "ddfulton", "bojangles5'"], stdout=subprocess.PIPE)
+
+    out, err = p.communicate()
+
+    result = out[-3:].decode('utf-8')[0:2]
+
+    if result == "YE":
+        return True 
+
+    else:
+        return False
+
 
 def class_checker(course):
     """

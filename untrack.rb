@@ -20,5 +20,6 @@ session.find(:id, "emailInput").send_keys("inbound@registerer69.bymail.in")
 
 puts("FILLING IN CLASS")
 session.find(:id, "classInputField1").send_keys(course)
+
 session.find(:id, "notifyButton").click()
 
