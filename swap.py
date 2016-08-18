@@ -55,27 +55,27 @@ def disclaimer():
 @app.route('/ajax', methods=["POST", "OPTIONS"])
 @cross_origin()
 def ajax():
-<<<<<<< HEAD
+
     ### TODO Make sure their password is correct and it's in their shopping cart ###
-=======
+
     ### TODO Make sure their password is correct and it's in their shopping cart ### 
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
     if request.method == "POST":
         print("INFO: /ajax WAS POSTED")
         goods = request.json
 
         print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 
-<<<<<<< HEAD
+
         print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))  # API connection
-=======
+
         if not driver.verify_onyen(goods['onyen'], goods['password']):
             print("ERROR: Onyen did not pass verification")
 
             return "Request failed", 200
 
         print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email'])) # API connection
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
         print("SIGNING UP TO TRACK %s" % goods['course'])
@@ -122,11 +122,11 @@ def test():
 def parser():
     if request.method == "POST":
         print("Request is a POST")
-<<<<<<< HEAD
 
-=======
+
+
         
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
     try:
         envelope = simplejson.loads(request.form.get('envelope'))
         print(envelope)
@@ -150,7 +150,7 @@ def parser():
         if nextOnyen != "NONE" and nextOnyen != None:
             # TODO Also get next e-mail
             onyenPassword = SDEClient.getLoginInfo(nextOnyen)
-<<<<<<< HEAD
+
 
             try:
 
@@ -161,7 +161,7 @@ def parser():
 
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
-=======
+
                 
             try:
 
@@ -171,25 +171,22 @@ def parser():
                 image_title = "%s_%s.png" % (nextOnyen, course)
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                       'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
 
                 user_email = nextOnyen + "@live.unc.edu"
 
                 driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-<<<<<<< HEAD
+
                                   'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
-=======
+
                                       'Just tried to enroll %s in %s' % (nextOnyen, course), attachment=image_title)
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
 
 
             except:
                 print("Did not make it through the try to enroll block of code.")
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
 
         elif nextOnyen == None or nextOnyen == "NONE":
             print("INFO: nextOnyen is None so we are untracking this course")
@@ -197,11 +194,9 @@ def parser():
             driver.untrack(course)
 
             fail_message = "There was no nextOnyen for %s" % course
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 77d76b2a032da56fe1a5aef0fa05ded2e6985342
+
+
 
 
 
