@@ -203,9 +203,9 @@ def processClassRemoval():
         try: 
             print(SDEClient.markEnrollPass(goods['onyen'], goods['course']))
             try:
-            	driver.send_email(user_email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
-        	except:
-        		print("driver.send_email broke on processClassRemoval()")
+                driver.send_email(user_email, "Unregister", "We just removed %s from %s" % (goods["onyen"], goods["course"]))
+            except:
+                print("driver.send_email broke on processClassRemoval()")
         except:
             print("ERROR: Something happened")
 
@@ -229,9 +229,9 @@ def proccessUnregister():
             print(SDEClient.deleteUser(goods['onyen'], goods['password']))
             
             try:
-            	driver.send_email(user_email, "Goodbye", "We just removed %s completely. Goodbye." % goods["onyen"])
+                driver.send_email(user_email, "Goodbye", "We just removed %s completely. Goodbye." % goods["onyen"])
             except:
-            	print("driver.send_email broke on processUnregister()")
+                print("driver.send_email broke on processUnregister()")
 
         except:
             print("ERROR: Something happened")
