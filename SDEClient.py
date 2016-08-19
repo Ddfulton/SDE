@@ -11,7 +11,7 @@
  *  |___/ |___/ |___| 
  *
  * Project: SOAP Python Connection Sample
- * Author: We'll Never Tell
+ * Author: Sam Andersen
  * Version: 20160816
  * TODO: Continue adding functionality
  *
@@ -19,7 +19,7 @@
 """
 
 __author__ = 'Sam Andersen'
-__version__ = '20160816'
+__version__ = '20160818'
 
 import zeep
 from zeep.transports import Transport # Needed to force verification of SSL certificate
@@ -124,5 +124,4 @@ def getOnyenInfo(_onyen):
     if response != None:
         return response
 
-    else:
-        return OnyenInfo_type(onyen = '0', password = '0', email = '0')
+    return OnyenInfo_type(onyen = '0', password = '0', email = '0')

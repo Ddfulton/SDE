@@ -10,7 +10,7 @@
  *
  * Project: Swap Drop Enroll
  * Author: We'll never tell
- * Version: 20160816
+ * Version: 20160818
  * TODO: Continue adding functionality
  *
  */
@@ -163,7 +163,6 @@ def parser():
 
         if nextOnyen != "NONE" and nextOnyen != None:
             # TODO Also get next e-mail
-            ##onyenPassword = SDEClient.getLoginInfo(nextOnyen)
             onyenInfo = SDEClient.getOnyenInfo(nextOnyen)
 
             try:
