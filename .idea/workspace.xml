@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77d9e857-8974-4683-b2ab-b0326f72cfd6" name="Default" comment="Removed authorship">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/swap.py" afterPath="$PROJECT_DIR$/swap.py" />
-    </list>
+    <list default="true" id="77d9e857-8974-4683-b2ab-b0326f72cfd6" name="Default" comment="Removed authorship" />
     <ignored path="SDE.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -32,9 +30,9 @@
         <entry file="file://$PROJECT_DIR$/swap.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3240">
-              <caret line="233" column="16" selection-start-line="233" selection-start-column="16" selection-end-line="233" selection-end-column="16" />
+              <caret line="238" column="16" selection-start-line="238" selection-start-column="16" selection-end-line="238" selection-end-column="16" />
               <folding>
-                <marker date="1471557812000" expanded="false" signature="370:692" ph="import ..." />
+                <marker date="1471559920000" expanded="false" signature="370:692" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -490,7 +488,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1427" height="817" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24526979" sideWeight="0.7713904" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -570,7 +568,7 @@
         <state relative-caret-position="1035">
           <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
           <folding>
-            <marker date="1471557812000" expanded="false" signature="370:692" ph="import ..." />
+            <marker date="1471559920000" expanded="false" signature="370:692" ph="import ..." />
           </folding>
         </state>
       </provider>
@@ -801,9 +799,9 @@
     <entry file="file://$PROJECT_DIR$/swap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3240">
-          <caret line="233" column="16" selection-start-line="233" selection-start-column="16" selection-end-line="233" selection-end-column="16" />
+          <caret line="238" column="16" selection-start-line="238" selection-start-column="16" selection-end-line="238" selection-end-column="16" />
           <folding>
-            <marker date="1471557812000" expanded="false" signature="370:692" ph="import ..." />
+            <marker date="1471559920000" expanded="false" signature="370:692" ph="import ..." />
           </folding>
         </state>
       </provider>
