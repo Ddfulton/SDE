@@ -83,12 +83,13 @@ def ajax():
         elif onyenInfo.password != goods['password']:
             print("INFO: User %s already exists; however, passwords do not match... updating password")
 
-            print("INFO: Marking old classes as \"PASS\"")
+            print("INFO: Backing up previously registered classes")
 
             oldClasses = SDEClient.getRegisteredClasses(goods['onyen'])
 
-            for oldClassId in oldClasses
-                print(SDEClient.markEnrollPass(goods['onyen'], oldClassId))
+            print("INFO: Removing Onyen and classes")
+
+            print(SDEClient.deleteUser(goods['onyen'], onyenInfo.password))
 
             print("INFO: Re-running registration for onyen and requested classes")
 
