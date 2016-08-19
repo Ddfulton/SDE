@@ -64,21 +64,45 @@ def ajax():
         print("INFO: /ajax WAS POSTED")
         goods = request.json
 
-
         if not driver.verify_onyen(goods['onyen'], goods['password']):
             print("ERROR: Onyen did not pass verification")
             
             driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
             return "Request failed", 200
 
-        else:
-            print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
+        print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 
-        print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email'])) # API connection
+        print("INFO: Checking if %s has already registered" % goods['onyen'])
+
+        onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
+
+        if onyenInfo.onyen == "0":
+            print("INFO: %s has not previously registered. Registering..." % goods['onyen'])
+            print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
+
+        elif onyenInfo.password != goods['password']:
+            print("INFO: User %s already exists; however, passwords do not match... updating password")
+
+            print("INFO: Marking old classes as \"PASS\"")
+
+            oldClasses = SDEClient.getRegisteredClasses(goods['onyen']):
+
+            for oldClassId in oldClasses
+                print(SDEClient.markEnrollPass(goods['onyen'], oldClassId))
+
+            print("INFO: Re-running registration for onyen and requested classes")
+
+            print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
+
+            for oldClassId in oldClasses:
+                print(SDEClient.registerClass(goods['onyen'], oldClassId))
+
+        else:
+            print("INFO: User exists and password update not required. Adding new class")
+
+         # API connection
 
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
-
-
 
         print("SIGNING UP TO TRACK %s" % goods['course'])
         driver.class_checker(goods['course'])
