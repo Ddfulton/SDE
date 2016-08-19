@@ -94,8 +94,8 @@ def send_email(recipient, subject, body, attachment=None):  #TODO debug image sh
             "attachments": [
             {
                 "content": encoded_image,  
-                "filename": "ddfulton_ECON 400-001_2016-08-14 11:40:50 -0400.png", 
-                "name": "THE_PICTURE", 
+                "filename": attachment, 
+                "name": "EnrollmentResult", 
                 "type": "png"
             }
             ],
