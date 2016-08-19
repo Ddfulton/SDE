@@ -4,8 +4,9 @@ import json
 import base64
 from flask import request
 import subprocess
-import zeep
 
+### API Dependencies ###
+import SDEClient
 
 # TODO Database query to remove from classchecker
 
@@ -61,13 +62,10 @@ def send_email(recipient, subject, body, attachment=None):  #TODO debug image sh
     Sends an e-mail without an attachment using Sendgrid's V3 Web API
     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
     """
-    ###TODO STORE API KEY SOMEWHERE MORE SECURE AND FETCH IT WITH ZEEP###
-    sg = sendgrid.SendGridAPIClient(apikey='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')
 
-
+    sg = sendgrid.SendGridAPIClient(apikey = SDEClient.getLoginInfo('apikey'))
 
     if attachment != None: 
-        
         
         encoded_image = base64.b64encode(open(attachment, "rb").read()).decode('utf-8')
 
