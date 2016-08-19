@@ -173,13 +173,13 @@ def parser():
                 image_title = "%s_%s.png" % (nextOnyen, course)
 
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+                                  'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
 
                 driver.send_email('samstext@gmail.com', 'Your Swap Drop Enroll Result',
-                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+                                  'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
 
                 driver.send_email(onyenInfo.email, 'Your Swap Drop Enroll Result',
-                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+                                  'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                 
             except:
                 print("Did not make it through the try to enroll block of code.")
