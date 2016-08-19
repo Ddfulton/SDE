@@ -175,6 +175,9 @@ def parser():
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
 
+                driver.send_email('samstext@gmail.com', 'Your Swap Drop Enroll Result',
+                                  'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
+
                 driver.send_email(onyenInfo.email, 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.' % (nextOnyen, course), attachment=image_title)
                 
