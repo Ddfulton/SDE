@@ -74,8 +74,6 @@ def ajax():
         else:
             print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 
-
-
         print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email'])) # API connection
 
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
