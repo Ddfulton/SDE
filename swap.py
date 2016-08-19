@@ -85,7 +85,7 @@ def ajax():
 
             print("INFO: Marking old classes as \"PASS\"")
 
-            oldClasses = SDEClient.getRegisteredClasses(goods['onyen']):
+            oldClasses = SDEClient.getRegisteredClasses(goods['onyen'])
 
             for oldClassId in oldClasses
                 print(SDEClient.markEnrollPass(goods['onyen'], oldClassId))
