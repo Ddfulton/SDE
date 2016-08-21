@@ -64,11 +64,14 @@ def ajax():
         print("INFO: /ajax WAS POSTED")
         goods = request.json
 
+
         if not driver.verify_onyen(goods['onyen'], goods['password']):
             print("ERROR: Onyen did not pass verification")
             
             driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
             return "Request failed", 200
+
+
 
         print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
 

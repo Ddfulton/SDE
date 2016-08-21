@@ -57,7 +57,7 @@ def untrack(course):
     args = ['ruby', 'untrack.rb', course]
     subprocess.call(args)
 
-def send_email(recipient, subject, body, attachment=None):  #TODO debug image shit
+def send_email(recipient, subject, body, attachment=None):
     """
     Sends an e-mail without an attachment using Sendgrid's V3 Web API
     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
