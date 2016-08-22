@@ -1,1 +1,1 @@
-web: gunicorn swap:app --log-file=-
+web: gunicorn swap:app --timeout 60
