@@ -11,7 +11,7 @@ def enroll(onyen, password, class1)
     start = Time.now
 
 
-    # Range for North Carolina IP Addresses: 24.40.128.0 - 24.40.160.0
+    # Range for North Carolina IP Addresses: 24.40.128.0 - 24.40.160.0 
     session = Capybara::Session.new(:poltergeist)
     
 
