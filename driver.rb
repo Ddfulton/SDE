@@ -45,15 +45,13 @@ def enroll(onyen, password, class1)
     session.find('#password').send_keys(password)
     session.find(:class, '.form-element.form-button').click()
 
-    sleep(3)
-    session.visit "https://cs.cc.unc.edu/psc/campus/EMPLOYEE/UNC_CS/c/NC_CUSTOM_MENU.NC_PORTAL_STUDENT.GBL?PortalActualURL=https\%3a\%2f\%2fcs.cc.unc.edu\%2fpsc\%2fcampus\%2fEMPLOYEE\%2fUNC_CS\%2fc\%2fNC_CUSTOM_MENU.NC_PORTAL_STUDENT.GBL&PortalRegistryName=EMPLOYEE&PortalServletURI=https\%3a\%2f\%2fpa.cc.unc.edu\%2fpsp\%2fpaprd\%2f&PortalURI=https\%3a\%2f\%2fpa.cc.unc.edu\%2fpsc\%2fpaprd\%2f&PortalHostNode=EMPL&NoCrumbs=yes"
-    sleep(3)
-    
+    session.within_frame(session.find('#ptifrmtgtframe')) do
+        session.find("#ACE_DERIVED_SSS_SCL_SSS_ENRL_CART").click()
+    end
 
     puts("LOGGED IN")
 
-    sleep(3)
-    session.save_screenshot('debug.png')
+
     # NAVIGATE TO SHOPPING CART
     session.within_frame(session.find('#ptifrmtgtframe')) do 
         begin
@@ -90,6 +88,10 @@ def enroll(onyen, password, class1)
 
 
     
+
+
+
+
         for i in 1..cart_elements.size
             i = i - 1
         	begin

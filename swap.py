@@ -109,6 +109,7 @@ def ajax():
         print(SDEClient.registerClass(goods['onyen'], goods['course']))
 
         print("SIGNING UP TO TRACK %s" % goods['course'])
+        
         driver.class_checker(goods['course'])
 
         msg = """Dear %s,\n
