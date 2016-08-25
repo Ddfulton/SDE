@@ -1,5 +1,3 @@
-# This works
-
 require 'capybara'
 require 'capybara/poltergeist'
 
@@ -57,19 +55,19 @@ def enroll(onyen, password, class1)
     # NAVIGATE TO SHOPPING CART
     session.within_frame(session.find('#ptifrmtgtframe')) do 
         begin
-        	class_table = session.find('table.PSLEVEL2GRIDWBO')
-       		fall_2016 = class_table.find('span', text: '2016 Fall')[:id]
-        	fall_2016_idx = fall_2016[-1]
+            class_table = session.find('table.PSLEVEL2GRIDWBO')
+            fall_2016 = class_table.find('span', text: '2016 Fall')[:id]
+            fall_2016_idx = fall_2016[-1]
         
-        	fall_2016_xpath = "//*[@id=\"trSSR_DUMMY_RECV1$0_row2\"]/td[1]"
+            fall_2016_xpath = "//*[@id=\"trSSR_DUMMY_RECV1$0_row2\"]/td[1]"
 
-        	session.find(:xpath, fall_2016_xpath).click(); #TODO Improve and adapt for no term select page
+            session.find(:xpath, fall_2016_xpath).click(); #TODO Improve and adapt for no term select page
 
 
-        	session.find("a#DERIVED_SSS_SCT_SSR_PB_GO").click()
+            session.find("a#DERIVED_SSS_SCT_SSR_PB_GO").click()
 
         rescue Capybara::ElementNotFound
-        	puts("No Fall 2016/Summer II 2016 Choice Table")
+            puts("No Fall 2016/Summer II 2016 Choice Table")
         end
     end
 
@@ -96,16 +94,16 @@ def enroll(onyen, password, class1)
 
         for i in 1..cart_elements.size
             i = i - 1
-        	begin
-        		counter = "%s" %(i)
-        		course = cart.find("a#P_CLASS_NAME\\$" + counter) 
-        		puts("cart position:" + " " + counter)
-        	
-        		if course.text.include? class1 # If it's the course we want
+            begin
+                counter = "%s" %(i)
+                course = cart.find("a#P_CLASS_NAME\\$" + counter) 
+                puts("cart position:" + " " + counter)
+            
+                if course.text.include? class1 # If it's the course we want
  
-        			cart.find("input#P_SELECT\\$" + counter).click() # Click the fucker
-        			puts("Found course:" + " " + cart.find("a#P_CLASS_NAME\\$" + counter).text)
-        			
+                    cart.find("input#P_SELECT\\$" + counter).click() # Click the fucker
+                    puts("Found course:" + " " + cart.find("a#P_CLASS_NAME\\$" + counter).text)
+                    
 
                     session.find("a#DERIVED_REGFRM1_LINK_ADD_ENRL").click()
                     puts("Clicked 'enroll'")
@@ -116,19 +114,19 @@ def enroll(onyen, password, class1)
 
                     break
 
-        		else
-        			puts("Course not in row " + counter)
-        		end
+                else
+                    puts("Course not in row " + counter)
+                end
 
-        	rescue Capybara::ElementNotFound 
-        		puts("Cart position: " + " " + counter)
-        		
-        		puts("Skipped due to recitation")
-        		z += 1
-        		if z >= cart_elements.size
-        			abort("Error: Class not in Shopping Cart!")
-        		end
-        	end
+            rescue Capybara::ElementNotFound 
+                puts("Cart position: " + " " + counter)
+                
+                puts("Skipped due to recitation")
+                z += 1
+                if z >= cart_elements.size
+                    abort("Error: Class not in Shopping Cart!")
+                end
+            end
 
         
         end
@@ -151,5 +149,8 @@ def enroll(onyen, password, class1)
 
 end
 enroll(onyen, password, class1)
+
+
+rd, class1)
 
 
