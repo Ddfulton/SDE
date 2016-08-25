@@ -1,3 +1,5 @@
+# This works
+
 require 'capybara'
 require 'capybara/poltergeist'
 
