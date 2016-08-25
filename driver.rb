@@ -112,6 +112,8 @@ def enroll(onyen, password, class1)
                     puts("Clicked 'finish enrolling'")
 
 
+
+
                     break
 
                 else
@@ -144,7 +146,6 @@ def enroll(onyen, password, class1)
     sleep(5)
     session.save_screenshot(image_title)
 
-   
 
 
 end

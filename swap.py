@@ -115,7 +115,7 @@ def ajax():
         msg = """Dear %s,\n
 
         Welcome to Swap Drop Enroll. The way this works is it waits for an e-mail
-        from classchecker, and then if it sees "closed to open" it instantly fetches
+        from classchecker, and then if it sees "%s has changed from closed to open" it instantly fetches
         your credentials (securely) and registers you.
 
         You *must* not have any schedule conflicts with the class and it *must* be 
