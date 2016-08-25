@@ -151,6 +151,5 @@ end
 enroll(onyen, password, class1)
 
 
-rd, class1)
 
 
