@@ -114,19 +114,24 @@ def ajax():
 
         msg = """Dear %s,\n
 
-        You just signed up for %s.
+        Welcome to Swap Drop Enroll. The way this works is it waits for an e-mail
+        from classchecker, and then if it sees "closed to open" it instantly fetches
+        your credentials (securely) and registers you.
 
-        Welcome to Swap Drop Enroll. This service waits for an e-mail from classchecker, reads that email, 
-        and if the status changes from Closed to Open, it fetches your password and enrolls you. 
+        You *must* not have any schedule conflicts with the class and it *must* be 
+        in your shopping cart. 
 
-        We use three layers of security to protect your password. If you are interested, 
-        we use a SOAP client with both a token and cipher, among other security features. 
+        We will be adding swap functionality for Spring 2017 registration. 
 
-        Feel free to contact us at swapdropenroll@gmail.com.
+        We use a token, a cipher, and encryption to protect your password. So, while 
+        you are ultimately responsible for your own password, and agree to take responsibility
+        for that when you sign up, we never see your actual password. 
 
-        Warm regards, 
+        Regards,
 
         Swap Drop Enroll
+
+        
         """ % (goods['onyen'], goods['course'])
 
         driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
