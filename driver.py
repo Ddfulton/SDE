@@ -1,3 +1,4 @@
+### General Depdencies ###
 import sendgrid
 import os
 import json
@@ -19,6 +20,7 @@ def enroll(onyen, password, course):
     args = ['ruby', 'driver.rb', onyen, password, course]
     print(subprocess.call(args))
 
+
 def verify_onyen(onyen, password):
     """
     Returns YE for a success and NO for a failure
@@ -39,7 +41,6 @@ def verify_onyen(onyen, password):
         return False
 
 
-
 def class_checker(course):
     """
     Signs special sendgrid account up for ClassChecker
@@ -49,6 +50,7 @@ def class_checker(course):
     args = ['ruby', 'classchecker.rb', course]
     subprocess.call(args)
 
+
 def untrack(course):
     """
     Works just like class_checker, but untracks the course instead.
@@ -56,6 +58,7 @@ def untrack(course):
 
     args = ['ruby', 'untrack.rb', course]
     subprocess.call(args)
+
 
 def send_email(recipient, subject, body, attachment=None):
     """

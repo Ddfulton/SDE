@@ -11,7 +11,7 @@
  * Project: Swap Drop Enroll
  * Author: We'll never tell
  * Version: 20160818
- * TODO: Continue adding functionality
+ * TODO: Add swap functionality and professionalize the frontend for Spring 2017
  *
  */
 """
@@ -40,6 +40,15 @@ CORS(app)
 @app.route('/', methods=["GET", "POST"])
 def index():
     return render_template("index.html")
+
+@app.route('/feedback', methods=["POST", "OPTIONS"])
+@cross_origin()
+def feedback():
+    if request.method == "POST":
+        print("INFO: Someone submitted feedback")
+
+        driver.send_email('fulton.derek@gmail.com', "Swap Drop Enroll Feedback", request.json["feedback"])
+
 
 
 @app.route('/about', methods=["GET"])
@@ -70,7 +79,6 @@ def ajax():
             
             driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
             return "Request failed", 200
-
 
 
         print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
@@ -281,6 +289,7 @@ def proccessUnregister():
 
     else:
         return "Suh", 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)

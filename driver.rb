@@ -10,13 +10,12 @@ class1 = ARGV[2]
 def enroll(onyen, password, class1)
     start = Time.now
 
-
-    # Range for North Carolina IP Addresses: 24.40.128.0 - 24.40.160.0
     session = Capybara::Session.new(:poltergeist)
-    
 
+    ### Range for North Carolina IP Addresses: ###
+    ### 24.40.128.0 - 24.40.160.0 ###
 
-    ### X FORWARDED FOR ### 
+    ### X FORWARDED FOR HEADERS ### 
     headers = ['4.18.172.0', '4.137.72.0', '8.20.241.0', '12.27.251.0', 
         '12.53.254.0', '12.101.144.0', '4.18.168.0', '4.137.32.0',
         '4.138.20.0', '4.152.147.0', '12.1.242.0', '12.76.210.0', 
@@ -26,20 +25,17 @@ def enroll(onyen, password, class1)
         '24.225.71.0', '64.102.200.0', '64.246.202.0', '65.40.172.0', 
         '65.190.184.0', '65.190.193.0', '66.57.36.0', '66.57.226.0', 
         '66.57.250.0', '66.193.208.0', '66.193.216.0', '66.202.135.0',
-        '66.255.33.0', '68.221.114.0', '69.134.10.0', '69.134.26.0']
-    
-
+        '66.255.33.0', '68.221.114.0', '69.134.10.0', '69.134.26.0',
+        '12.52.176.0', '24.211.228.0', '64.102.206.0', '65.167.183.0',
+        '65.190.21.0', '65.190.41.0', '66.0.178.0', '66.192.165.0',
+        '70.144.139.0']
+        
     session.driver.headers = {'X-Forwarded-For' => headers.sample}
-    
-
-
-
-
 
     session.visit "https://connectcarolina.unc.edu/"
     session.find('.loginbutton').click()
 
-    puts("LOGGING IN...\n")
+    puts("INFO: LOGGING IN...\n")
 
     session.find('#username').send_keys(onyen)
     session.find('#password').send_keys(password)
@@ -49,7 +45,7 @@ def enroll(onyen, password, class1)
         session.find("#ACE_DERIVED_SSS_SCL_SSS_ENRL_CART").click()
     end
 
-    puts("LOGGED IN")
+    puts("INFO: LOGGED IN")
 
 
     # NAVIGATE TO SHOPPING CART
@@ -86,12 +82,6 @@ def enroll(onyen, password, class1)
         q = 0
         z = 0
 
-
-    
-
-
-
-
         for i in 1..cart_elements.size
             i = i - 1
             begin
@@ -111,9 +101,6 @@ def enroll(onyen, password, class1)
                     session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
                     puts("Clicked 'finish enrolling'")
 
-
-
-
                     break
 
                 else
@@ -129,12 +116,7 @@ def enroll(onyen, password, class1)
                     abort("Error: Class not in Shopping Cart!")
                 end
             end
-
-        
         end
-
-        
-        
     end
  
     finish = Time.now
@@ -145,10 +127,9 @@ def enroll(onyen, password, class1)
 
     sleep(5)
     session.save_screenshot(image_title)
-
-
-
 end
+
+### Call the function ###
 enroll(onyen, password, class1)
 
 

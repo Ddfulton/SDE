@@ -21,6 +21,28 @@
     $(document).ready(function() {
       // Pre selected for increased speed
       
+
+
+      $('#feedback').click(function() {
+
+        var inputFeedback = document.getElementById("inputFeedback").value;
+
+        feedbackData = {
+          feedback: inputFeedback;
+        }        
+
+
+
+        $.ajax({
+          url: "https://secret-eyrie-28661.herokuapp.com/feedback",
+          type: "POST",
+          data: JSON.stringify(feedbackData, null, '\t'),
+          contentType: 'application/json;charset=UTF-8',
+        });
+
+
+      })
+
       $('#desiredCourse').jrumble();
 
       var content1 = $('#content1');
@@ -214,7 +236,27 @@
     <div class="col-sm-4" id="main">
       <div id="signup">
         <div class="box" data-step="1" id="content1">
-          <form class="center-box">
+          
+          <b>WHAT SHOULD WE DO FOR SPRING 2017 THAT WOULD MAKE YOU MORE INCLINED TO USE AND TRUST SWAPDROPENROLL.COM?</b>
+
+          <div class="radio">
+            <label><input type="radio" name="optradio">Add Swap Functionality</label>
+          </div>
+          
+          <div class="radio">
+            <label><input type="radio" name="optradio">Make this webpage more credible-looking (the backend is already credible)</label>
+          </div>
+          
+          <div class="radio">
+            <label><input type="radio" name="optradio">Remove the unicorn cursor</label>
+          </div>
+
+          <p>Other comments?</p>
+          <input placeholder="No. It's perfect." id="inputFeedback">
+          <button id="feedback">Submit</button>
+
+
+          <!-- <form class="center-box">
             <h3 class="text-center no-top-margin">Make sure it's in your shopping cart!</h3>
 
               <div class="form-group">
@@ -256,7 +298,7 @@
               <div class="form-group last-form-group text-center">
                 <button id="click" type="button" class="btn btn-primary" data-next="true">Achieve  my academic dreams</button>
               </div>
-          </form>
+          </form> -->
         </div>
             
     <div class="box" data-step="2" style="display:none" id="content2">
