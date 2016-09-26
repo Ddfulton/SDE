@@ -13,6 +13,7 @@ Built with Flask, Heroku and PhantomJS.
 Make sure you have Python 3, virtualenv and pip installed on your machine. Then clone the repo and run:
 
 pip install -r requirements.txt
+
 python swap.py 
 
 This will run it on 127.0.0.1:5000 and you can make local changes
