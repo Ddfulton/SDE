@@ -49,8 +49,6 @@ def feedback():
 
         driver.send_email('fulton.derek@gmail.com', "Swap Drop Enroll Feedback", request.json["feedback"])
 
-
-
 @app.route('/about', methods=["GET"])
 def about():
     return render_template('about.html')
