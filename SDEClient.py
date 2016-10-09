@@ -11,14 +11,14 @@
  *  |___/ |___/ |___| 
  *
  * Project: SOAP Python Connection Sample
- * Author: Sam Andersen
+ * Author: We'll never tell
  * Version: 20160816
  * TODO: Continue adding functionality
  *
  */
 """
 
-__author__ = 'Sam Andersen'
+__author__ = 'We\'ll never tell'
 __version__ = '20160818'
 
 import zeep
