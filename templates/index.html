@@ -10,11 +10,19 @@
   <meta name="description" conent="Stop, Drop, Enroll!">
 
   <title>Swap, Drop, Enroll</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
-  </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!--PAPER TIM-->
+  <link rel="stylesheet" href="static/paperkit/assets/css/ct-paper.css">
+  <link rel="static/paperkit/bootstrap3/css/bootstrap.css">
+
   <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
+
   <script type="text/javascript" src="static/jrumble.js"></script>
 
       <script>
@@ -188,34 +196,34 @@
 
 <div class="container">
       <div class="row">
-        <div class="collapse navbar-collapse" style="background: #99BADD">
+        <div class="collapse navbar-collapse" style="background: clear">
 
-            <h2><b style="font-size: 130%; color: white;">Swap Drop Enroll.</b><br><br> Instantly enroll in your class as soon as a spot opens.</h2>
+            <h2><b style="font-size: 130%; color: white;">Swap Drop Enroll.</b></h2>
 
             <ul id="theNavBar" class="nav navbar-nav navbar-right">
                 <li>
                     <a class="page-scroll" href="/">
-                        Home
+                        <p class="navigation">Home</p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/about">
-                        About
+                        <p class="navigation">About</p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/disclaimer">
-                        Disclaimer
+                        <p class="navigation">Disclaimer</p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/removeClass">
-                        Remove Class
+                        <p class="navigation">Remove Class</p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/unregister">
-                        Unregister
+                        <p class="navigation">Unregister</p>
                     </a>
                 </li>
             </ul>
@@ -239,29 +247,10 @@
       <div id="signup">
         <div class="box" data-step="1" id="content1">
           
-          <b>WHAT SHOULD WE DO FOR SPRING 2017 THAT WOULD MAKE YOU MORE INCLINED TO USE AND TRUST SWAPDROPENROLL.COM?</b>
+          <form class="center-box">
+            <!-- <h3 class="text-center no-top-margin">Make sure it's in your shopping cart!</h3> -->
 
-          <div class="radio">
-            <label><input type="radio" name="optradio">Add Swap Functionality</label>
-          </div>
-          
-          <div class="radio">
-            <label><input type="radio" name="optradio">Make this webpage more credible-looking (the backend is already credible)</label>
-          </div>
-          
-          <div class="radio">
-            <label><input type="radio" name="optradio">Remove the unicorn cursor</label>
-          </div>
-
-          <p>Other comments?</p>
-          <input placeholder="No. It's perfect." id="inputFeedback">
-          <button id="feedback">Submit</button>
-
-
-          <!-- <form class="center-box">
-            <h3 class="text-center no-top-margin">Make sure it's in your shopping cart!</h3>
-
-              <div class="form-group">
+              <div class="form-group text-center">
 
                   <label for="signup_step_1_email" class="control-label">Onyen</label>
 
@@ -270,7 +259,7 @@
                   </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group text-center">
 
                   <label for="signup_step_1_password" class="control-label">Password</label>
 
@@ -279,7 +268,7 @@
                   </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group text-center">
 
                   <label for="signup_step_1_email" class="control-label">Email</label>
 
@@ -288,7 +277,7 @@
                   </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group text-center">
 
                   <label for="signup_step_1_email" class="control-label">Course</label>
 
@@ -296,17 +285,17 @@
                       <input type="email" class="form-control" id="desiredCourse" name="desiredCourse" placeholder="AAAD 101-001">
                   </div>
               </div>
-
-              <div class="form-group last-form-group text-center">
-                <button id="click" type="button" class="btn btn-primary" data-next="true">Achieve  my academic dreams</button>
+              <div id="text-center">
+                <br>
+                <button id="click" type="button" class="btn btn-danger btn-block" data-next="true">I'm ready.</button>
               </div>
-          </form> -->
+          </form>
         </div>
             
     <div class="box" data-step="2" style="display:none" id="content2">
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
-        <img id="MJ" src="static/MJ.jpg">Check your email!</img>
+        <img id="MJ" src="static/MJ.jpg"><b>CALL TO ACTION</b></img>
 
 
       </h3>
@@ -325,29 +314,22 @@
   
   </div>
   
-  <div class="row">
-    <div class="col-sm-4">
+  <div class="row text-center">
+
       <h2>How It Works<br>
         <small>
           <ul>
-            <li>Signs our special e-mail address up for classchecker</li>
-            <li>If status changes from "closed" to "open", automatically registers you</li>
-            <li>Takes a screenshot and emails you the result</li>
-            <li><i><b>We store your password with this thing called PyCrypto </b>So we can't see it</i></li>
+            Signs our special e-mail address up for classchecker<br>
+            If status changes from "closed" to "open", automatically registers you<br>
+            Takes a screenshot and emails you the result<br>
+            <i><b>We store your password with this thing called PyCrypto </b>So we can't see it</i><br>
           </ul>
         </small>
       </h2>
       
-    </div>
+
       
     <div class="col-sm-4"></div>
-    
-    <div class="col-sm-4" style=>
-      <blockquote class="blockquote-reverse">
-        <p style="color:black">"I'd venture to say settling for that 8AM during sophomore year was the worst decision I ever made during my time in undergrad."<small>Steve Stevens, fifth-year senior.</small></p>
-        
-      </blockquote>
-    </div>
   </div>
 </div>
 
@@ -356,11 +338,35 @@
 
 
 html {
-  background: url(https://s3.amazonaws.com/media.dth/30310_1104_ramses_zhenwei_zhang_233f.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+body {
+    background: /* top, transparent black, faked with gradient */ 
+      linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      ),
+      /* bottom, image */
+      url(http://ngm.nationalgeographic.com/wallpaper/img/2011/06/june11wallpaper-4_1600.jpg);
+      /* http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png */
+
+}
+
+p.navigation {
+  font-size: 35px;
+}
+
+#signup {
+  border-radius: 8px;
+  color: #fff;
+  max-width: 350px;
+  margin: 20px 0 70px;
+  min-height: 400px;
+  padding: 30px;
 }
 
 .box {
@@ -373,14 +379,6 @@ img#MJ {
     height: 400;
     width: 80%;
     background-color: powderblue;
-}
-
-body {
-    cursor: url(static/unicorn.gif), auto;
-}
-
-#click {
-    cursor: url(static/unicorn.gif), auto;
 }
 
 #onyenInput:focus {
@@ -405,33 +403,6 @@ body {
         border-color: rgba(0, 255, 250, 0.8);
         box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
         outline: 0 none;
-}
-
-
-#onyenInput {
-
-    cursor: url(static/unicorn.gif), auto;
-}
-
-#onyenPassword {
-
-    cursor: url(static/unicorn.gif), auto;
-}
-
-#emailInput {
-    cursor: url(static/unicorn.gif), auto;
-}
-
-#desiredCourse {
-    cursor: url(static/unicorn.gif), auto;
-}
-
-.control-label {
-    cursor: url(static/unicorn.gif), auto;
-}
-
-.page-scroll {
-    cursor: url(static/unicorn.gif), auto;
 }
 
 </style>
