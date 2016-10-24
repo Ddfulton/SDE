@@ -30,10 +30,10 @@ import subprocess
 import driver
 
 ### API dependencies ###
-import SDEClient
+import newClient
 
 ### General configuration ###
-app = Flask(__name__)  # Define the Flask application
+app = Flask(__name__)  
 CORS(app)
 
 
@@ -62,61 +62,32 @@ def disclaimer():
 @app.route('/ajax', methods=["POST", "OPTIONS"])
 @cross_origin()
 def ajax():
-
-    ### TODO Make sure their password is correct and it's in their shopping cart ###
-
-    ### TODO Make sure their password is correct and it's in their shopping cart ### 
+    """
+    This is where users sign up for the serice. 
+    """
+    #TODO: Make sure class is in their shopping cart
 
     if request.method == "POST":
         print("INFO: /ajax WAS POSTED")
         goods = request.json
 
-
-        if not driver.verify_onyen(goods['onyen'], goods['password']):
-            print("ERROR: Onyen did not pass verification")
+        # if not driver.verify_onyen(goods["onyen"], goods["password"]):
             
-            driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
-            return "Request failed", 200
+        #     print("ERROR: Onyen %s did not pass verification" % (goods["onyen"]))
+        #     driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
+        #     failure_message = "%s did not pass verification. Terminating." % (goods["onyen"])
+            
+        #     return failure_message, 200
 
 
-        print("REGISTERING %s IN THE DATABASE FOR %s WITH ZEEP" % (goods['onyen'], goods['course']))
+        print("INFO: REGISTERING %s IN THE DATABASE FOR %s" % (goods['onyen'], goods['course']))
 
-        print("INFO: Checking if %s has already registered" % goods['onyen'])
-
-        onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
-
-        if onyenInfo.onyen == "0":
-            print("INFO: %s has not previously registered. Registering..." % goods['onyen'])
-            print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
-
-        elif onyenInfo.password != goods['password']:
-            print("INFO: User %s already exists; however, passwords do not match... updating password")
-
-            print("INFO: Backing up previously registered classes")
-
-            oldClasses = SDEClient.getRegisteredClasses(goods['onyen'])
-
-            print("INFO: Removing Onyen and classes")
-
-            print(SDEClient.deleteUser(goods['onyen'], onyenInfo.password))
-
-            print("INFO: Re-running registration for onyen and requested classes")
-
-            print(SDEClient.registerOnyen(goods['onyen'], goods['password'], goods['email']))
-
-            for oldClassId in oldClasses:
-                print(SDEClient.registerClass(goods['onyen'], oldClassId))
-
-        else:
-            print("INFO: User exists and password update not required. Adding new class")
-
-         # API connection
-
-        print(SDEClient.registerClass(goods['onyen'], goods['course']))
-
-        print("SIGNING UP TO TRACK %s" % goods['course'])
+        registration = newClient.registerCourse(goods["onyen"], goods["password"], goods["course"], 1, 0, goods["mobile"], _referringOnyen=goods["referringOnyen"])
         
-        driver.class_checker(goods['course'])
+        if registration == False:
+            return "User was already registered", 200
+
+        # driver.class_checker(goods['course'])
 
         msg = """Dear %s,\n
 
@@ -174,24 +145,19 @@ def parser():
     if status == "open":
         print("INFO: %s is Open" % course)
 
-        nextOnyen = SDEClient.getNextUser(course)
+        nextUser = newClient.getNextUser(course)
 
-        if nextOnyen != "NONE" and nextOnyen != None:
-            # TODO Also get next e-mail
-            onyenInfo = SDEClient.getOnyenInfo(nextOnyen)
+        if nextUser != None:
 
             try:
 
-                driver.enroll(nextOnyen, onyenInfo.password, course)
+                driver.enroll(nextUser["onyen"], nextUser["password"], nextUser["course"]) #TODO: Result = driver.enroll and then send the proper e-mail
 
                 print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % onyenInfo.email)
                 image_title = "%s_%s.png" % (nextOnyen, course)
 
                 driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
                                   'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-
-                driver.send_email('samstext@gmail.com', 'Your Swap Drop Enroll Result',
-                                  'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
 
                 driver.send_email(onyenInfo.email, 'Your Swap Drop Enroll Result',
                                   'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
@@ -201,7 +167,7 @@ def parser():
 
 
 
-        elif nextOnyen == None or nextOnyen == "NONE":
+        elif nextUser == None:
             print("INFO: nextOnyen is None so we are untracking this course")
 
             driver.untrack(course)

@@ -28,28 +28,6 @@
       <script>
     $(document).ready(function() {
       // Pre selected for increased speed
-      
-
-
-      $('#feedback').click(function() {
-
-        var inputFeedback = document.getElementById("inputFeedback").value;
-
-        feedbackData = {
-          feedback: inputFeedback
-        };        
-
-        console.log("Sending " + feedbackData + " to POST");
-
-        $.ajax({
-          url: "http://127.0.0.1:5000/feedback",
-          type: "POST",
-          data: JSON.stringify(feedbackData, null, '\t'),
-          contentType: 'application/json;charset=UTF-8',
-        });
-
-        
-      })
 
       $('#desiredCourse').jrumble();
 
@@ -57,8 +35,8 @@
       var content2 = $('#content2');
       var oldHeight = $('div#main').height();
 
-      $('#click').click(function() {
-
+      $('#registerOnyen').click(function() {
+        console.log("Clicked i'm ready")
         if ($('#desiredCourse').val().length < 12) {
           result = false;
         }
@@ -69,7 +47,7 @@
 
 
         if (result) {
-          sendAjax();
+          registerOnyen();
           content1.slideToggle();
           content2.slideToggle();
 
@@ -90,79 +68,18 @@
           }); 
 
 
-
-    $('#unsubscribeClick').click(function() {
-
-        if ($('#desiredCourse').val().length < 12) {
-          result = false;
-        }
-
-        else {
-          result = true;
-        }
-
-
-        if (result) {
-            sendUnsubscribeAjax();
-            content1.slideToggle();
-            content2.slideToggle();
-
-          $('div#main').height(oldHeight);
-
-          $('img#MJ')
-            .delay(2000)
-            .queue( function(next){
-              $(this).css(
-                'border: 3px solid green');
-                next();
-              });
-        }
-
-        else {
-            $('#desiredCourse').trigger('startRumble');
-            }
-          });
       });
 
 
-    function sendUnsubscribeAjax() {
-        //
-        /*
-        * Send ajax request to /ajax with a field called unsubscribe.
-        * Use this value to determine whether to sign the user up or get them out
-        */
-        //
 
-        console.log("Initiating sendUnsubscribeAjax()")
-        var onyen = document.getElementById("onyenInput").value;
-        var password = document.getElementById("onyenPassword").value;
-        var email = document.getElementById("emailInput").value;
-        var course = document.getElementById("desiredCourse").value;
-        var unsubscribe = "TRUE";
-
-        theData = {
-            onyen: onyen,
-            password: password,
-            email: email,
-            course: course,
-            unsubscribe: unsubscribe
-          };
-
-      $.ajax({
-        url: "http://secret-eyrie-28661.herokuapp.com/ajax",
-        type: "POST",
-        data: JSON.stringify(theData, null, '\t'),
-        contentType: 'application/json;charset=UTF-8',
-      });
-    }
-
-    function sendAjax() {
-      console.log("Initiating sendAjax()")
+    function registerOnyen() {
+      console.log("Initiating registerOnyen()")
       var onyen = document.getElementById("onyenInput").value;
       var password = document.getElementById("onyenPassword").value;
-      var email = document.getElementById("emailInput").value;
+      var email = "onyen" + "@live.unc.edu";
       var course = document.getElementById("desiredCourse").value;
-        var unsubscribe = "FALSE";
+      var mobile = document.getElementById("mobile").value;
+      var unsubscribe = "FALSE";
 
 
         theData = {
@@ -171,12 +88,15 @@
             email: email,
             course: course,
             unsubscribe: unsubscribe,
+            mobile: mobile,
+            referringOnyen: false,
         };
 
       
       
       $.ajax({
         url: "https://secret-eyrie-28661.herokuapp.com/ajax",
+        // url: "http://127.0.0.1:5000/ajax", // for testing locally 
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
@@ -270,10 +190,10 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_email" class="control-label">Email</label>
+                  <label for="signup_step_1_email" class="control-label">Mobile</label>
 
                   <div class="row-xs-10">
-                      <input type="email" class="form-control" id="emailInput" name="email" placeholder="kanye.west@live.unc.edu">
+                      <input type="email" class="form-control" id="mobile" name="email" placeholder="kanye.west@live.unc.edu">
                   </div>
               </div>
 
@@ -287,7 +207,7 @@
               </div>
               <div id="text-center">
                 <br>
-                <button id="click" type="button" class="btn btn-danger btn-block" data-next="true">I'm ready.</button>
+                <button id="registerOnyen" type="button" class="btn btn-danger btn-block" data-next="true">I'm ready.</button>
               </div>
           </form>
         </div>

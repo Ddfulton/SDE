@@ -66,7 +66,7 @@ def send_email(recipient, subject, body, attachment=None):
     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
     """
 
-    sg = sendgrid.SendGridAPIClient(apikey = SDEClient.getLoginInfo('apikey'))
+    sg = sendgrid.SendGridAPIClient(apikey = "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")
 
     if attachment != None: 
         
