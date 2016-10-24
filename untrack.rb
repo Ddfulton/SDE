@@ -1,5 +1,3 @@
-__author__ = "Derek Fulton"
-
 require 'capybara'
 require 'capybara/poltergeist'
 
