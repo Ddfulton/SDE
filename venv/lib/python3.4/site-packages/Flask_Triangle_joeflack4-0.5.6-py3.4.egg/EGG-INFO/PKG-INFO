@@ -1,0 +1,48 @@
+Metadata-Version: 1.1
+Name: Flask-Triangle-joeflack4
+Version: 0.5.6
+Summary: Integration of AngularJS and Flask, originally created by Morgan Delahaye-Prat (mdp@m-del.fr).
+Home-page: http://flask-triangle.readthedocs.org/
+Author: Joe Flack
+Author-email: joeflack4@gmail.com
+License: BSD
+Download-URL: https://github.com/joeflack4/flask-triangle/tarball/v0.5.6
+Description: 
+        Flask-Triangle
+        ==============
+        
+        **With great UX comes great security needs.** *Uncle Ben*
+        
+        Flask-Triangle is utterly influenced by Flask-WTF_. It aims to provide you with
+        similar features : form input handling and validation. The main difference is
+        that Flask-Triangle is designed with AngularJS_ and XHR in mind.
+        
+        Flask-Triangle comes preloaded with various features :
+        
+            * End-to-end data validation based on JSONschema_.
+            * A collection of ready to use *Widgets* for both standard HTML inputs and
+              toolkits (i.e. UI-Bootstrap_).
+            * A set of *Modifiers* to adapt the default behaviour to your needs.
+            * Various tools to integrate AngularJS in your Flask_ application.
+        
+        For detailed informations, have a look at the documentation_.
+        
+        .. _Flask: http://flask.pocoo.org/
+        .. _Flask-WTF: https://flask-wtf.readthedocs.org/en/latest/
+        .. _AngularJS: http://angularjs.org/
+        .. _UI-Bootstrap: http://angular-ui.github.io/bootstrap/
+        .. _JSONschema: http://json-schema.org/
+        .. _documentation: http://flask-triangle.readthedocs.org/
+        
+Keywords: flask,angular,jinja2,angular js,flask triangle
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Flask

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+  <!--TODO Validate Input-->
+  <!--Paper Trail Heroku-->
+  <!--Verify user information-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" conent="Stop, Drop, Enroll!">
+
+  <title>Paper Classes</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!--PAPER TIM-->
+  <link rel="stylesheet" href="static/paperkit/assets/css/ct-paper.css">
+  <link rel="static/paperkit/bootstrap3/css/bootstrap.css">
+
+  <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
+
+  <script type="text/javascript" src="static/jrumble.js"></script>
+
+      <script>
+    $(document).ready(function() {
+      // Pre selected for increased speed
+
+      $('#desiredCourse').jrumble();
+
+      var content1 = $('#content1');
+      var content2 = $('#content2');
+      var oldHeight = $('div#main').height();
+
+      $('#registerOnyen').click(function() {
+        console.log("Clicked i'm ready")
+        if ($('#desiredCourse').val().length < 12) {
+          result = false;
+        }
+        
+        else {
+          result = true;
+        }
+
+
+        if (result) {
+          registerOnyen();
+          content1.slideToggle();
+          content2.slideToggle();
+
+          $('div#main').height(oldHeight);
+
+          $('img#MJ')
+            .delay(2000)
+            .queue( function(next){ 
+              $(this).css(
+                'border: 3px solid green'); 
+                next(); 
+              });
+        }
+        
+        else {
+            $('#desiredCourse').trigger('startRumble');
+            }
+          }); 
+
+
+      });
+
+
+
+    function registerOnyen() {
+      console.log("Initiating registerOnyen()")
+      var onyen = document.getElementById("onyenInput").value;
+      var password = document.getElementById("onyenPassword").value;
+      var email = "onyen" + "@live.unc.edu";
+      var course = document.getElementById("desiredCourse").value;
+      var mobile = document.getElementById("mobile").value;
+      var unsubscribe = "FALSE";
+
+
+        theData = {
+            onyen: onyen,
+            password: password,
+            email: email,
+            course: course,
+            unsubscribe: unsubscribe,
+            mobile: mobile,
+            referringOnyen: false,
+        };
+
+      
+      
+      $.ajax({
+        url: "https://secret-eyrie-28661.herokuapp.com/ajax",
+        // url: "http://127.0.0.1:5000/ajax", // for testing locally 
+        type: "POST",
+        data: JSON.stringify(theData, null, '\t'),
+        contentType: 'application/json;charset=UTF-8',
+      });
+    } 
+
+
+  
+  </script>
+
+  </head>
+
+
+
+
+<body>
+
+<div class="container">
+      <div class="row">
+        <div class="collapse navbar-collapse" style="background: clear">
+
+            <h2><b style="font-size: 130%; color: white;"><img id="logo" src="static/sde_banner.png"></b></h2>
+
+            <ul id="theNavBar" class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="page-scroll" href="/">
+                        <p class="navigation">Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/about">
+                        <p class="navigation">About</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/disclaimer">
+                        <p class="navigation">Disclaimer</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/removeClass">
+                        <p class="navigation">Remove Class</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="/unregister">
+                        <p class="navigation">Unregister</p>
+                    </a>
+                </li>
+            </ul>
+
+
+        </div>
+      </div>
+
+  <div class="row text-center">
+
+
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+ <h5 style="color: white">About<br>
+        <small style="color: white">
+          <b>BY USING THIS SERVICE, YOU ARE VOLUNTARILY SUBMITTING YOUR CREDENTIALS TO OUR DATABASE. WE USE GREAT SECURITY TO PROTECT YOUR PASSWORD. WE, THE CREATORS OF SWAP/DROP/ENROLL, CAN NEVER INDIVIDUALLY SEE YOUR PASSWORDS. 
+          THAT BEING SAID, YOU ARE STILL ULTIMATELY RESPONSIBLE FOR WHAT YOU CHOOSE TO DO WITH YOUR UNIVERSITY CREDENTIALS. 
+          WE ARE ALSO NOT AFFILIATED WITH OR SPONSORED BY UNC IN ANY WAY, SHAPE OR FORM</b>
+        </small>
+      </h5>
+  </div>
+      <div class="col-sm-4"></div>
+  
+
+  
+  </div>
+  
+  <div class="row text-center">
+
+      
+      
+
+      
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+
+
+<style>
+
+
+html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+    background: /* top, transparent black, faked with gradient */ 
+      linear-gradient(
+        rgba(0, 0, 0, 0.75), 
+        rgba(0, 0, 0, 0.75)
+      ),
+      /* bottom, image */
+      url(https://cdn0.vox-cdn.com/thumbor/diOAZcGIqCbiOl0U4HfAkYhT2RQ=/3x0:501x280/1600x900/cdn0.vox-cdn.com/uploads/chorus_image/image/42810012/Screen_Shot_2014-10-27_at_6.50.17_AM.0.0.png);
+      /* http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png */
+
+}
+
+p.navigation {
+  font-size: 35px;
+}
+
+#signup {
+  border-radius: 8px;
+  color: #fff;
+  max-width: 350px;
+  margin: 20px 0 70px;
+  min-height: 400px;
+  padding: 30px;
+}
+
+.box {
+    border:0px solid black;
+    padding:20px;
+    margin: 20px;
+}
+
+img#MJ {
+    height: 400;
+    width: 80%;
+    background-color: powderblue;
+}
+
+#onyenInput:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+#onyenPassword:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+    #emailInput:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+#desiredCourse:focus {
+        border-color: rgba(0, 255, 250, 0.8);
+        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
+        outline: 0 none;
+}
+
+</style>
+
+</body>
+<html>
+
