@@ -25,6 +25,10 @@
 
   <script type="text/javascript" src="static/jrumble.js"></script>
 
+  <!--FONTS-->
+  <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto">
+
       <script>
     $(document).ready(function() {
       // Pre selected for increased speed
@@ -123,27 +127,27 @@
             <ul id="theNavBar" class="nav navbar-nav navbar-right">
                 <li>
                     <a class="page-scroll" href="/">
-                        <p class="navigation">Home</p>
+                        <p class="navigation"><b>Home</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/about">
-                        <p class="navigation">About</p>
+                        <p class="navigation"><b>About</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/disclaimer">
-                        <p class="navigation">Disclaimer</p>
+                        <p class="navigation"><b>Disclaimer</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/removeClass">
-                        <p class="navigation">Remove Class</p>
+                        <p class="navigation"><b>Remove Class</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/unregister">
-                        <p class="navigation">Unregister</p>
+                        <p class="navigation"><b>Unregister</b></p>
                     </a>
                 </li>
             </ul>
@@ -172,7 +176,7 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_email" class="control-label">Onyen</label>
+                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">Onyen</p></label>
 
                   <div class="row-xs-10">
                       <input type="email" class="form-control" id="onyenInput" name="email" placeholder="Michael Jeffrey Jordan">
@@ -181,7 +185,7 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_password" class="control-label">Password</label>
+                  <label for="signup_step_1_password" class="control-label"><p style="font-family: 'Roboto'">Password</p></label>
 
                   <div class="row-xs-10">
                       <input type="password" class="form-control" id="onyenPassword" name="password" placeholder="paperClasses1">
@@ -190,7 +194,7 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_email" class="control-label">Mobile</label>
+                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">MObile</p></label>
 
                   <div class="row-xs-10">
                       <input type="email" class="form-control" id="mobile" name="email" placeholder="+69 80085 (.Y.)">
@@ -199,7 +203,7 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_email" class="control-label">Course</label>
+                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">Course</p></label>
 
                   <div class="row-xs-10">
                       <input type="email" class="form-control" id="desiredCourse" name="desiredCourse" placeholder="AAAD 101-001">
@@ -265,25 +269,32 @@
 }*/
 
 body { 
-  background: url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed; 
+  background: url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed,
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ); 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+
+
 }
 
 /*body {
 
     background: /* top, transparent black, faked with gradient */ 
       linear-gradient(
-        rgba(0, 0, 0, 0.1), 
-        rgba(0, 0, 0, 0.1)
+        rgba(0, 0, 0, 0.9), 
+        rgba(0, 0, 0, 0.9)
       ),
       /* bottom, image */
       url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg);
       /* http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png */
 */
-}
+
 
 p.navigation {
   font-size: 35px;
@@ -335,10 +346,15 @@ img#MJ {
 }
 
 #logo {
-  height: 66%;
-  width: 66%;
+  height: 45%;
+  width: 45%;
 }
 
+p.navigation {
+  font-family: "Roboto";
+  font-size: 22px;
+
+}
 </style>
 
 </body>
