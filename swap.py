@@ -68,6 +68,10 @@ def ajax():
     #TODO: Make sure class is in their shopping cart
 
     if request.method == "POST":
+<<<<<<< HEAD
+=======
+        print("INFO: /ajax WAS POSTED")
+>>>>>>> 94c3db47f427938da0b82be0aef4fca39668884a
         goods = request.json
 
         # if not driver.verify_onyen(goods["onyen"], goods["password"]):
@@ -111,7 +115,12 @@ def ajax():
         """ % (goods['onyen'], goods['course'])
 
         driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
+<<<<<<< HEAD
         driver.send_email('fulton.derek@gmail.com', 'NEW USER', '%s has signed up for %s' % (goods['onyen'], goods['course']))
+=======
+        driver.send_email('fulton.derek@gmail.com', 'NEW USER',
+                          '%s has signed up for %s' % (goods['onyen'], goods['course']))
+>>>>>>> 94c3db47f427938da0b82be0aef4fca39668884a
     else:
         pass
 
