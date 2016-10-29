@@ -25,6 +25,11 @@
 
   <script type="text/javascript" src="static/jrumble.js"></script>
 
+
+  <!--FONTS-->
+  <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto">
+
       <script>
     $(document).ready(function() {
       // Pre selected for increased speed
@@ -76,27 +81,18 @@
       console.log("Initiating registerOnyen()")
       var onyen = document.getElementById("onyenInput").value;
       var password = document.getElementById("onyenPassword").value;
-      var email = "onyen" + "@live.unc.edu";
-      var course = document.getElementById("desiredCourse").value;
-      var mobile = document.getElementById("mobile").value;
-      var unsubscribe = "FALSE";
 
 
         theData = {
             onyen: onyen,
             password: password,
-            email: email,
-            course: course,
-            unsubscribe: unsubscribe,
-            mobile: mobile,
-            referringOnyen: false,
         };
 
       
       
       $.ajax({
-        url: "https://secret-eyrie-28661.herokuapp.com/ajax",
-        // url: "http://127.0.0.1:5000/ajax", // for testing locally 
+        url: "https://secret-eyrie-28661.herokuapp.com/unregisterRequest",
+        // url: "http://127.0.0.1:5000/unregisterRequest", // for testing locally
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
@@ -117,33 +113,33 @@
 <div class="container">
       <div class="row">
         <div class="collapse navbar-collapse" style="background: clear">
-
-            <h2><b style="font-size: 130%; color: white;"><img id="logo" src="static/sde_banner.png"></b></h2>
-
+          <div id="banner">
+            <h2><b style="font-size: 130%; color: white;"><img id="logo" src="static/white_sde_banner.png"></b></h2>
+          </div>
             <ul id="theNavBar" class="nav navbar-nav navbar-right">
                 <li>
                     <a class="page-scroll" href="/">
-                        <p class="navigation">Home</p>
+                        <p class="navigation"><b>Home</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/about">
-                        <p class="navigation">About</p>
+                        <p class="navigation"><b>About</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/disclaimer">
-                        <p class="navigation">Disclaimer</p>
+                        <p class="navigation"><b>Disclaimer</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/removeClass">
-                        <p class="navigation">Remove Class</p>
+                        <p class="navigation"><b>Remove Class</b></p>
                     </a>
                 </li>
                 <li>
                     <a class="page-scroll" href="/unregister">
-                        <p class="navigation">Unregister</p>
+                        <p class="navigation"><b>Unregister</b></p>
                     </a>
                 </li>
             </ul>
@@ -151,8 +147,18 @@
 
         </div>
       </div>
+      <div class="row text-center">
+          <br>
+          <br>
+            <h2 style="color: white; font-family: 'Roboto';">Have fun without this competitive advantage!<br></h2>
+            <div style="color: white; margin-left: 2em; font-family: 'Roboto';">
+            <h3 style="font-family: 'Roboto';">
+            Completely unregister your onyen from Swap Drop Enroll</h3>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
 
-  <div class="row">
+        <div class="row">
 
 
 
@@ -172,7 +178,7 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_email" class="control-label">Onyen</label>
+                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">Onyen</p></label>
 
                   <div class="row-xs-10">
                       <input type="email" class="form-control" id="onyenInput" name="email" placeholder="Michael Jeffrey Jordan">
@@ -181,15 +187,20 @@
 
               <div class="form-group text-center">
 
-                  <label for="signup_step_1_password" class="control-label">Password</label>
+                  <label for="signup_step_1_password" class="control-label"><p style="font-family: 'Roboto'">Password</p></label>
 
                   <div class="row-xs-10">
                       <input type="password" class="form-control" id="onyenPassword" name="password" placeholder="paperClasses1">
                   </div>
               </div>
+
+              
+
+            
+
               <div id="text-center">
                 <br>
-                <button id="registerOnyen" type="button" class="btn btn-danger btn-block" data-next="true">Don't get expelled</button>
+                <button id="registerOnyen" type="button" class="btn btn-success btn-block" data-next="true">Get me out of here</button>
               </div>
           </form>
         </div>
@@ -198,6 +209,9 @@
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
         <img id="MJ" src="static/MJ.jpg"><b>CALL TO ACTION</b></img>
+      </h3>
+    </form>
+        
 
 
       </h3>
@@ -216,18 +230,7 @@
   
   </div>
   
-  <div class="row text-center">
-
-      <h2>How It Works<br>
-        <small>
-          <ul>
-            Signs our special e-mail address up for classchecker<br>
-            If status changes from "closed" to "open", automatically registers you<br>
-            Takes a screenshot and emails you the result<br>
-            <i><b>We store your password with this thing called PyCrypto </b>So we can't see it</i><br>
-          </ul>
-        </small>
-      </h2>
+  
       
 
       
@@ -237,26 +240,38 @@
 
 
 <style>
+/*html {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: 100%;
+}*/
 
+body {
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+    ),
+  url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed;
 
-html {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
-body {
+/*body {
+
     background: /* top, transparent black, faked with gradient */ 
       linear-gradient(
-        rgba(0, 0, 0, 0.75), 
-        rgba(0, 0, 0, 0.75)
+        rgba(0, 0, 0, 0.9), 
+        rgba(0, 0, 0, 0.9)
       ),
       /* bottom, image */
-      url(https://cdn0.vox-cdn.com/thumbor/diOAZcGIqCbiOl0U4HfAkYhT2RQ=/3x0:501x280/1600x900/cdn0.vox-cdn.com/uploads/chorus_image/image/42810012/Screen_Shot_2014-10-27_at_6.50.17_AM.0.0.png);
+      url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg);
       /* http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png */
 
-}
+
 
 p.navigation {
   font-size: 35px;
@@ -283,30 +298,40 @@ img#MJ {
     background-color: powderblue;
 }
 
-#onyenInput:focus {
-        border-color: rgba(0, 255, 250, 0.8);
-        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-        outline: 0 none;
+/*#onyenInput:focus {
+  border-color: rgba(123, 175, 212, 0.075);
+  box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+  outline: 0 none;
 }
 
 #onyenPassword:focus {
-        border-color: rgba(0, 255, 250, 0.8);
-        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-        outline: 0 none;
+  border-color: rgba(123, 175, 212, 0.075);
+  box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+  outline: 0 none;
 }
 
-    #emailInput:focus {
-        border-color: rgba(0, 255, 250, 0.8);
-        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-        outline: 0 none;
+#mobile:focus {
+  border-color: rgba(123, 175, 212, 0.075);
+  box-shadow: 0 1px 1px rgba(123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+  outline: 0 none;
 }
 
 #desiredCourse:focus {
-        border-color: rgba(0, 255, 250, 0.8);
-        box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-        outline: 0 none;
+  border-color: rgba(123, 175, 212, 0.075);
+  box-shadow: 0 1px 1px rgba(123, 175, 212, 0.5) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+  outline: 0 none;
+}*/
+
+#logo {
+  height: 45%;
+  width: 45%;
 }
 
+p.navigation {
+  font-family: "Roboto";
+  font-size: 22px;
+
+}
 </style>
 
 </body>

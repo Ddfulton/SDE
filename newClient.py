@@ -11,16 +11,24 @@ def DATABASE():
 
     return connection
 
+def boostScore(_onyen):
+    connection = DATABASE()
+    cursor = connection.cursor()
+    sql = "update sde.USERS set score = score + 1 where onyen = \"%s\";" % (_onyen)
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+    return None
 
 
-def registerCourse(_onyen, _password, _course, _score, _success, _mobile, _referringOnyen=None):
+def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen=None):
     """
     Check if the user has already registered for this course. If so, 
     reject them. Get their score from this query to use later.
     If not, check their current score and add them with a new score.
     Finally, give more points to the referring onyen.
     """
-
+    # TODO: See if they have a higher score
     # Connect to the database with 'connection'
     connection = DATABASE()
     cursor = connection.cursor()
@@ -30,7 +38,6 @@ def registerCourse(_onyen, _password, _course, _score, _success, _mobile, _refer
 
     if len(cursor.fetchall()) != 0:
         print("INFO: %s is already registered for %s. Not adding shit." % (_onyen, _course))
-
         return False
     
     else:
@@ -39,6 +46,12 @@ def registerCourse(_onyen, _password, _course, _score, _success, _mobile, _refer
         cursor.execute(sql)
         connection.commit()
 
+        if _referringOnyen == None: 
+            pass  
+        else: # write new method
+            boostScore(_referringOnyen)
+
+    connection.commit()
     connection.close()
 
     return True
@@ -88,7 +101,6 @@ def getNextUser(_course):
 
     connection.close()
 
-    print(credentials)
     return credentials
 
 def markSuccess(_onyen, _course):
@@ -109,5 +121,47 @@ def markSuccess(_onyen, _course):
     connection.close()
 
     return None
+
+def removeClass(_onyen, _password, _course):
+    """
+    Removes the row with the provided _onyen 
+    and _course.
+    #TODO: If they're not tracking the course, do nothing
+    """
+    print("INFO: Marking success on %s for onyen %s" % (_course, _onyen))
+
+    connection = DATABASE()
+
+    cursor = connection.cursor()
+
+    sql = "update sde.USERS set success = 1 where onyen = \"%s\" and password = \"%s\"and course = \"%s\";" % (_onyen, _password, _course)
+
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+
+    return None
+
+def unregister(_onyen, _password):
+    """
+    Completely removes the given
+    onyen from Swap Drop Enroll.
+    # TODO: If they aren't in the database, do nothing
+    """
+    print("INFO: Removing %s from the database" % _onyen)
+
+    connection = DATABASE()
+
+    cursor = connection.cursor()
+
+    sql = "update sde.USERS set success = 1 where onyen = \"%s\" and pasword = \"%s\"" % (_onyen, _password)
+
+    cursor.execute(sql)
+    connection.commit()
+    connection.close()
+
+    return None
+
+
 
 

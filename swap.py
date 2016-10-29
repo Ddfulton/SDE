@@ -11,7 +11,6 @@
  * Project: Swap Drop Enroll
  * Author: We'll never tell
  * Version: 20160818
- * TODO: Add swap functionality and professionalize the frontend for Spring 2017
  *
  */
 """
@@ -59,7 +58,7 @@ def disclaimer():
     return render_template('disclaimer.html')
 
 
-@app.route('/ajax', methods=["POST", "OPTIONS"])
+@app.route('/registerCourse', methods=["POST", "OPTIONS"])
 @cross_origin()
 def ajax():
     """
@@ -79,9 +78,16 @@ def ajax():
         #     return failure_message, 200
 
 
-        print("INFO: REGISTERING %s IN THE DATABASE FOR %s" % (goods['onyen'], goods['course']))
 
-        registration = newClient.registerCourse(goods["onyen"], goods["password"], goods["course"], 1, 0, goods["mobile"], _referringOnyen=goods["referringOnyen"])
+        print("INFO: REGISTERING %s IN THE DATABASE FOR %s" % (goods['onyen'], goods['course']))
+        print("INFO: They were referred by %s" % goods['referringOnyen'])
+
+        if goods['referringOnyen'] == "None":
+            referringOnyen = None
+        else:
+            referringOnyen = goods['referringOnyen']
+
+        registration = newClient.registerCourse(goods["onyen"], goods["password"], goods["course"], 1, 0, _referringOnyen=referringOnyen)
         
         if registration == False:
             return "User was already registered", 200
@@ -187,12 +193,12 @@ def parser():
 def removeClass():
     return render_template("removeClass.html")
 
-@app.route('/removeClassReq', methods = ['POST'])
+@app.route('/removeClassRequest', methods = ['POST'])
 def processClassRemoval():
     if request.method == "POST":
-        print("INFO: /removeClassReq WAS POSTED")
         goods = request.json
         
+        newClient.markSuccess()
         onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
 
         if onyenInfo.onyen == "0":
@@ -223,13 +229,10 @@ def processClassRemoval():
 def unregister():
     return render_template("unregister.html")
 
-@app.route('/unregisterReq', methods = ['POST'])
+@app.route('/unregisterRequest', methods = ['POST'])
 def proccessUnregister():
     if request.method == "POST":
-        print("INFO: /unregisterReq WAS POSTED")
         goods = request.json
-
-        onyenInfo = SDEClient.getOnyenInfo(goods['onyen'])
 
         if onyenInfo.onyen == "0":
             print("INFO: No record found for specified onyen %s, ignoring request" % goods['onyen'])

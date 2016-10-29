@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  
-  <!--TODO Validate Input-->
-  <!--Paper Trail Heroku-->
-  <!--Verify user information-->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" conent="Stop, Drop, Enroll!">
-
-  <title>Paper Classes</title>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-  <!--PAPER TIM-->
-  <link rel="stylesheet" href="static/paperkit/assets/css/ct-paper.css">
-  <link rel="static/paperkit/bootstrap3/css/bootstrap.css">
-
-  <link rel="shortcut icon" href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico">
-
-  <script type="text/javascript" src="static/jrumble.js"></script>
-
-
-  <!--FONTS-->
-  <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto">
-
-      <script>
+<head>
+    <!--TODO Validate Input-->
+    <!--Paper Trail Heroku-->
+    <!--Verify user information-->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta name="description">
+    <title>Paper Classes</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script>
+    <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <link crossorigin="anonymous" href=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity=
+    "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    rel="stylesheet"><!--PAPER TIM-->
+    <link href="static/paperkit/assets/css/ct-paper.css" rel="stylesheet">
+    <link rel="static/paperkit/bootstrap3/css/bootstrap.css">
+    <link href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico" rel=
+    "shortcut icon">
+    <script src="static/jrumble.js" type="text/javascript">
+    </script><!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel=
+    "stylesheet" type="text/css">
+    <script>
     $(document).ready(function() {
       // Pre selected for increased speed
 
@@ -83,9 +78,12 @@
       var password = document.getElementById("onyenPassword").value;
       var email = "onyen" + "@live.unc.edu";
       var course = document.getElementById("desiredCourse").value;
-      var mobile = document.getElementById("mobile").value;
       var unsubscribe = "FALSE";
+      var referringOnyen = document.getElementById("referringOnyen").value;
 
+      if (referringOnyen.length == 0) {
+          referringOnyen = "NONE";
+      }
 
         theData = {
             onyen: onyen,
@@ -93,15 +91,14 @@
             email: email,
             course: course,
             unsubscribe: unsubscribe,
-            mobile: mobile,
-            referringOnyen: false,
+            referringOnyen: referringOnyen,
         };
 
       
       
       $.ajax({
-        url: "https://secret-eyrie-28661.herokuapp.com/ajax",
-        // url: "http://127.0.0.1:5000/ajax", // for testing locally 
+        // url: "https://secret-eyrie-28661.herokuapp.com/registerCourse", // the real fucking deal
+        url: "http://127.0.0.1:5000/registerCourse", // for testing locally
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
@@ -109,181 +106,165 @@
     } 
 
 
-  
-  </script>
 
-  </head>
-
-
-
-
+    </script>
+</head>
 <body>
-
-<div class="container">
-      <div class="row">
-        <div class="collapse navbar-collapse" style="background: clear">
-          <div id="banner">
-            <h2><b style="font-size: 130%; color: white;"><img id="logo" src="static/white_sde_banner.png"></b></h2>
-          </div>
-            <ul id="theNavBar" class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="/">
-                        <p class="navigation"><b>Home</b></p>
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/about">
-                        <p class="navigation"><b>About</b></p>
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/disclaimer">
-                        <p class="navigation"><b>Disclaimer</b></p>
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/removeClass">
-                        <p class="navigation"><b>Remove Class</b></p>
-                    </a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="/unregister">
-                        <p class="navigation"><b>Unregister</b></p>
-                    </a>
-                </li>
-            </ul>
-
-
+    <div class="container">
+        <div class="row">
+            <div class="collapse navbar-collapse" style="background: clear">
+                <div id="banner">
+                    <h2><b style="font-size: 130%; color: white;"><img id=
+                    "logo" src="static/white_sde_banner.png"></b></h2>
+                </div>
+                <ul class="nav navbar-nav navbar-right" id="theNavBar">
+                    <li>
+                        <a class="page-scroll" href="/">
+                        <p class="navigation"><b>Home</b></p></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/about">
+                        <p class="navigation"><b>About</b></p></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/disclaimer">
+                        <p class="navigation"><b>Disclaimer</b></p></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/removeClass">
+                        <p class="navigation"><b>Remove Class</b></p></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/unregister">
+                        <p class="navigation"><b>Unregister</b></p></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-  <div class="row">
-
-
-
-  
-    
-    <div class="col-sm-4" >
-        <br><br><br><br><br><br><br><br><br><br>
-        
-    </div>
-
-    <div class="col-sm-4" id="main">
-      <div id="signup">
-        <div class="box" data-step="1" id="content1">
-          
-          <form class="center-box">
-            <!-- <h3 class="text-center no-top-margin">Make sure it's in your shopping cart!</h3> -->
-
-              <div class="form-group text-center">
-
-                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">Onyen</p></label>
-
-                  <div class="row-xs-10">
-                      <input type="email" class="form-control" id="onyenInput" name="email" placeholder="Michael Jeffrey Jordan">
-                  </div>
-              </div>
-
-              <div class="form-group text-center">
-
-                  <label for="signup_step_1_password" class="control-label"><p style="font-family: 'Roboto'">Password</p></label>
-
-                  <div class="row-xs-10">
-                      <input type="password" class="form-control" id="onyenPassword" name="password" placeholder="paperClasses1">
-                  </div>
-              </div>
-
-              <div class="form-group text-center">
-
-                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">MObile</p></label>
-
-
-                  <div class="row-xs-10">
-                      <input type="email" class="form-control" id="mobile" name="email" placeholder="+69 80085 (.Y.)">
-                  </div>
-              </div>
-
-              <div class="form-group text-center">
-
-                  <label for="signup_step_1_email" class="control-label"><p style="font-family: 'Roboto'">Course</p></label>
-
-                  <div class="row-xs-10">
-                      <input type="email" class="form-control" id="desiredCourse" name="desiredCourse" placeholder="AAAD 101-001">
-                  </div>
-              </div>
-              <div id="text-center">
+        <div class="row text-center">
+          <br>
+          <br>
+            <h2 style="color: white; font-family: 'Roboto';">Never settle for an 8am. Optimize your schedule.<br></h2>
+            <div style="color: white; margin-left: 2em; font-family: 'Roboto';">
+            <h3 style="font-family: 'Roboto';">
+            Make sure it's in your shopping cart and you have no conflicts.<br>Scroll down to sign up.</h3>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4" id="main">
+                <div id="signup">
+                    <div class="box" data-step="1" id="content1">
+                        <form class="center-box">
+                            <div class="form-group text-center">
+                                <label class="control-label" for=
+                                "signup_step_1_email"></label>
+                                <p style="font-family: 'Roboto'"><label class=
+                                "control-label" for=
+                                "signup_step_1_email">Onyen</label></p>
+                                <div class="row-xs-10">
+                                    <input class="form-control" id="onyenInput"
+                                    name="email" placeholder=
+                                    "Michael Jeffrey Jordan" type="email">
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <label class="control-label" for=
+                                "signup_step_1_password"></label>
+                                <p style="font-family: 'Roboto'"><label class=
+                                "control-label" for=
+                                "signup_step_1_password">Password</label></p>
+                                <div class="row-xs-10">
+                                    <input class="form-control" id=
+                                    "onyenPassword" name="password"
+                                    placeholder="paperClasses1" type=
+                                    "password">
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <label class="control-label" for=
+                                "signup_step_1_email"></label>
+                                <p style="font-family: 'Roboto'"><label class=
+                                "control-label" for=
+                                "signup_step_1_email">Course</label></p>
+                                <div class="row-xs-10">
+                                    <input class="form-control" id="desiredCourse"
+                                    name="desiredCourse" placeholder="AAAD 101-001"
+                                    type="email">
+                                </div>
+                            </div>
+                            <div class="form-group text-center">
+                                <label class="control-label" for=
+                                "signup_step_1_email"></label>
+                                <p style="font-family: 'Roboto'"><label class=
+                                "control-label" for=
+                                "signup_step_1_email">Referring onyen</label></p>
+                                <div class="row-xs-10">
+                                    <input class="form-control" id=
+                                    "referringOnyen" name="referringOnyen"
+                                    placeholder="wainstein" type="email">
+                                </div>
+                            </div>
+                            <div id="text-center">
+                                <br>
+                                <button class="btn btn-success btn-block"
+                                data-next="true" id="registerOnyen" type=
+                                "button">I read the disclaimer</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="box" data-step="2" id="content2" style=
+                    "display:none">
+                        <form class="form-horizontal center-box">
+                            <h3 class="text-center no-top-margin"><img id="MJ"
+                            src="static/MJ.jpg"><b>Refer your friends!</b></h3>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
                 <br>
-                <button id="registerOnyen" type="button" class="btn btn-success btn-block" data-next="true">I read the disclaimer</button>
-              </div>
-          </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
         </div>
-            
-    <div class="box" data-step="2" style="display:none" id="content2">
-    <form class="form-horizontal center-box">
-      <h3 class="text-center no-top-margin">
-        <img id="MJ" src="static/MJ.jpg"><b>CALL TO ACTION</b></img>
-
-
-      </h3>
-    </form>
-  </div>
-</div>
     </div>
-  
+    <style>
+    /*html {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100%;
+    }*/
 
-  
-    <div class="col-sm-4">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        
-
-    </div>
-  
-  </div>
-  
-  <div class="row text-center">
-      <h2 style="color: white;">How It Works<br>
-        <small>
-          <ul style="color: white;">
-
-            Signs our special e-mail address up for classchecker<br>
-            If status changes from "closed" to "open", automatically registers you<br>
-            Takes a screenshot and emails you the result<br>
-            <i><b>We store your password with this thing called PyCrypto </b>So we can't see it</i><br>
-          </ul>
-        </small>
-      </h2>
-      
-
-      
-    <div class="col-sm-4"></div>
-  </div>
-</div>
-
-
-<style>
-/*html {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: 100%;
-}*/
-
-body { 
-  background: url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed,
-  linear-gradient(
+body {
+  background: linear-gradient(
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
-    ); 
+    ),
+  url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed;
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
-
-
 }
 
-/*body {
+    /*body {
 
     background: /* top, transparent black, faked with gradient */ 
       linear-gradient(
@@ -296,67 +277,65 @@ body {
 
 
 
-p.navigation {
-  font-size: 35px;
-}
+    p.navigation {
+    font-size: 35px;
+    }
 
-#signup {
-  border-radius: 8px;
-  color: #fff;
-  max-width: 350px;
-  margin: 20px 0 70px;
-  min-height: 400px;
-  padding: 30px;
-}
+    #signup {
+    border-radius: 8px;
+    color: #fff;
+    max-width: 350px;
+    margin: 20px 0 70px;
+    min-height: 400px;
+    padding: 30px;
+    }
 
-.box {
+    .box {
     border:0px solid black;
     padding:20px;
     margin: 20px;
-}
+    }
 
-img#MJ {
+    img#MJ {
     height: 400;
     width: 80%;
     background-color: powderblue;
-}
+    }
 
-#onyenInput:focus {
-  border-color: rgba(0, 255, 250, 0.8);
-  box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-  outline: 0 none;
-}
+    /*#onyenInput:focus {
+    border-color: rgba(123, 175, 212, 0.075);
+    box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+    outline: 0 none;
+    }
 
-#onyenPassword:focus {
-  border-color: rgba(0, 255, 250, 0.8);
-  box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-  outline: 0 none;
-}
+    #onyenPassword:focus {
+    border-color: rgba(123, 175, 212, 0.075);
+    box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+    outline: 0 none;
+    }
 
-#emailInput:focus {
-  border-color: rgba(0, 255, 250, 0.8);
-  box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-  outline: 0 none;
-}
+    #mobile:focus {
+    border-color: rgba(123, 175, 212, 0.075);
+    box-shadow: 0 1px 1px rgba(123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+    outline: 0 none;
+    }
 
-#desiredCourse:focus {
-  border-color: rgba(0, 255, 250, 0.8);
-  box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(4, 255, 44, 0.6);
-  outline: 0 none;
-}
+    #desiredCourse:focus {
+    border-color: rgba(123, 175, 212, 0.075);
+    box-shadow: 0 1px 1px rgba(123, 175, 212, 0.5) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+    outline: 0 none;
+    }*/
 
-#logo {
-  height: 45%;
-  width: 45%;
-}
+    #logo {
+    height: 45%;
+    width: 45%;
+    }
 
-p.navigation {
-  font-family: "Roboto";
-  font-size: 22px;
+    p.navigation {
+    font-family: "Roboto";
+    font-size: 22px;
 
-}
-</style>
-
+    }
+    </style>
 </body>
-<html>
-
+</html>
