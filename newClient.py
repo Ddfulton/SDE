@@ -1,5 +1,11 @@
 import pymysql.cursors
 import random
+import bojangles
+
+
+chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
+
+
 
 def DATABASE():
     connection = pymysql.connect(host='gs-db-cluster1.cluster-clcutdgbykfx.us-east-1.rds.amazonaws.com',
@@ -28,10 +34,15 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     If not, check their current score and add them with a new score.
     Finally, give more points to the referring onyen.
     """
-    # TODO: See if they have a higher score
+    # TODO: See if they have a higher score than 0
     # Connect to the database with 'connection'
+    # TODO: Encrypt onyen and password
     connection = DATABASE()
     cursor = connection.cursor()
+
+    # Encrypts the onyen. It looks like this b'\x23 etc'
+    #TODO _score = getScore(_onyen)
+    _password = bojangles.encrypt_password(_password, chickfila)
 
     cursor.execute("select * from sde.USERS where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course))
 
@@ -42,7 +53,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     
     else:
         cursor = connection.cursor()
-        sql = "insert into sde.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"%s\");" % (_onyen, _password, _course, _score, _success, _mobile)
+        sql = "insert into sde.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
         cursor.execute(sql)
         connection.commit()
 
@@ -55,6 +66,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.close()
 
     return True
+registerCourse("varun", "bojangles6'", "AAAD 101-001", 1, 0)
 
 
 def getNextUser(_course):
@@ -68,18 +80,21 @@ def getNextUser(_course):
 
     cursor = connection.cursor()
 
-    sql = "select * from sde.USERS where course = \"%s\" and success = \"0\"" % (_course)
+    sql = "select * from sde.USERS where course = \"%s\" and success = 0" % (_course)
 
     cursor.execute(sql)
     connection.commit()
 
     candidates = cursor.fetchall()
 
+
+
     hat = []
 
     if len(candidates) == 0:
         print("INFO: Zero candidates currently want %s" % _course)
         return None
+    
     else:
         for candidate in candidates:
             score = candidate["score"]
@@ -101,7 +116,10 @@ def getNextUser(_course):
 
     connection.close()
 
+    print(len((str.encode(credentials["password"][2:-1].decode('utf-8')))))
     return credentials
+getNextUser("AAAD 101-001")
+
 
 def markSuccess(_onyen, _course):
     """
