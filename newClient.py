@@ -66,7 +66,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.close()
 
     return True
-registerCourse("varun", "bojangles6'", "AAAD 101-001", 1, 0)
+# registerCourse("varun", "bojangles6'", "AAAD 101-001", 1, 0)
 
 
 def getNextUser(_course):
@@ -116,9 +116,9 @@ def getNextUser(_course):
 
     connection.close()
 
-    print(len((str.encode(credentials["password"][2:-1].decode('utf-8')))))
+    print(credentials)
     return credentials
-getNextUser("AAAD 101-001")
+# getNextUser("AAAD 101-001")
 
 
 def markSuccess(_onyen, _course):
