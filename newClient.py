@@ -42,7 +42,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
 
     # Encrypts the onyen. It looks like this b'\x23 etc'
     #TODO _score = getScore(_onyen)
-    _password = bojangles.encrypt_password(_password, chickfila)
+    # _password = bojangles.encrypt_password(_password, chickfila)
 
     cursor.execute("select * from sde.USERS where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course))
 
@@ -66,7 +66,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.close()
 
     return True
-# registerCourse("varun", "bojangles6'", "AAAD 101-001", 1, 0)
+registerCourse("titties", "bojangles6'", "AAAD 101-002", 1, 0)
 
 
 def getNextUser(_course):

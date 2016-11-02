@@ -38,9 +38,9 @@ def decrypt_password(encrypted_password, key):
 password = "bojangles6'"
 key = "101010101010101010101010"
 
-E = encrypt_password(password, key)
-print(len(E))
-print(E)
-z = decrypt_password(E, key)
+# E = encrypt_password(password, key)
+# print(len(E))
+# print(E)
+# z = decrypt_password(E, key)
 
-print(z)
+# print(z)
