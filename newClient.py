@@ -59,7 +59,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
 
         if _referringOnyen == None: 
             pass  
-        else: # write new method
+        else: 
             boostScore(_referringOnyen)
 
     connection.commit()
@@ -101,7 +101,6 @@ def getNextUser(_course):
             for i in range(0, candidate["score"]):
                 hat.append(candidate["onyen"])
 
-        print("INFO: Hat is %s" % hat)
 
         winner = random.choice(hat)
         print("INFO: Selecting %s for attempt of enrollment in %s!" % (winner, _course))

@@ -114,10 +114,11 @@ def enroll(onyen, password, class1)
                     puts("Clicked 'enroll'")
 
                     # If no enrollment appointment, this returns you to shopping cart with no message.
-
-                    session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
-                    puts("Clicked 'finish enrolling'")
-
+                    begin
+                        session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
+                        puts("Clicked 'finish enrolling'")
+                    rescue Capybara::ElementNotFound
+                        puts("Did not find the 'finish enrolling' button")
                     break
 
                 else

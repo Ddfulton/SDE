@@ -92,7 +92,7 @@ def ajax():
         if registration == False:
             return "User was already registered", 200
 
-        # driver.class_checker(goods['course'])
+        driver.class_checker(goods['course'])
 
         msg = """Dear %s,\n
 
