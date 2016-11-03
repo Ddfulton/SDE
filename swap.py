@@ -96,9 +96,9 @@ def ajax():
 
         msg = """Dear %s,\n
 
-        Welcome to Swap Drop Enroll. The way this works is it waits for an e-mail
-        from classchecker, and then if it sees "%s has changed from closed to open" it instantly fetches
-        your credentials (securely) and registers you.
+        Welcome to Swap Drop Enroll. We wait for an e-mail
+        from classchecker, and then if we see "%s has changed from closed to open" we instantly fetch
+        your credentials (securely) and register you.
 
         You *must* not have any schedule conflicts with the class and it *must* be 
         in your shopping cart. 
@@ -128,66 +128,70 @@ def ajax():
 @cross_origin()
 def parser():
     if request.method == "POST":
-        print("Request is a POST")
 
-    try:
-        envelope = simplejson.loads(request.form.get('envelope'))
-        print(envelope)
+        try:
+            envelope = simplejson.loads(request.form.get('envelope'))
+        except:
+            print("INFO: Failed to load envelope")
 
-    except:
-        print("INFO: Failed to load envelope")
-
-    status = "closed"
-
-    try:
-        from_address, to_address, subject, text, course, status = driver.parse_email(envelope)
-
-    except:
-        print("INFO: Failed to parse envelope")
-        course = "INFO: Failed to parse envelope"
-
-    if status == "open":
-        print("INFO: %s is Open" % course)
-
-        nextUser = newClient.getNextUser(course)
-
-        if nextUser != None:
-
-            try:
-
-                driver.enroll(nextUser["onyen"], nextUser["password"], nextUser["course"]) #TODO: Result = driver.enroll and then send the proper e-mail
-
-                print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % onyenInfo.email)
-                image_title = "%s_%s.png" % (nextOnyen, course)
-
-                driver.send_email('fulton.derek@gmail.com', 'Your Swap Drop Enroll Result',
-                                  'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-
-                driver.send_email(onyenInfo.email, 'Your Swap Drop Enroll Result',
-                                  'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-                
-            except:
-                print("Did not make it through the try to enroll block of code. This could be because the class is not in the shopping cart.")
+        status = "closed"
 
 
+        try:
+            from_address, to_address, subject, text, course, status = driver.parse_email(envelope)
+        except:
+            print("INFO: Failed to parse envelope")
 
-        elif nextUser == None:
-            print("INFO: nextOnyen is None so we are untracking this course")
 
-            driver.untrack(course)
+        if status == "open":
+            print("INFO: %s is Open" % course)
 
-            fail_message = "There was no nextOnyen for %s" % course
+            nextUser = newClient.getNextUser(course)
 
-    elif status == "wait list":
-        print("INFO: Wait list")
+            if nextUser != None:
 
-    elif status == "closed":
-        print("INFO: Course is Closed")
+                try:
 
-    else:
-        print("SPAM")
+                    onyen = nextUser["onyen"]
+                    password = nextUser["password"]
+                    course = nextUser["course"]
+                    user_email = onyen + "@live.unc.edu"
 
-    return "Suh", 200
+                    driver.enroll(onyen, password, course) #TODO: Result = driver.enroll and then send the proper e-mail
+
+                    print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % onyenInfo.email)
+
+                    image_title = "%s_%s.png" % (nextOnyen, course)
+
+                    driver.send_email('fulton.derek@gmail.com', 'Just tried to enroll user',
+                                      'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+
+                    driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+                                      'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+                    
+                except:
+
+                    print("Did not make it through the try to enroll block of code. This could be because the class is not in the shopping cart.")
+
+
+
+            elif nextUser == None:
+                print("INFO: nextOnyen is None so we are untracking this course")
+
+                driver.untrack(course)
+
+                fail_message = "There was no nextOnyen for %s" % course
+
+        elif status == "wait list":
+            print("INFO: Wait list")
+
+        elif status == "closed":
+            print("INFO: Course is Closed")
+
+        else:
+            print("SPAM")
+
+        return "Suh", 200
 
 @app.route('/removeClass', methods = ['GET'])
 def removeClass():

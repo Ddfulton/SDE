@@ -39,12 +39,12 @@ def decrypt_password(encrypted_password, key):
 
 	return decrypted_password
 
-password = "bojangles6'"
-key = "Tq8eGl70L0MFTSB0ywWFtits"
+# password = "bojangles6'"
+# key = "Tq8eGl70L0MFTSB0ywWFtits"
 
-E = encrypt_password(password, key)
-print(len(E))
-print(E)
-z = decrypt_password(E, key)
+# E = encrypt_password(password, key)
+# print(len(E))
+# print(E)
+# z = decrypt_password(E, key)
 
-print(z)
+# print(z)
