@@ -196,26 +196,26 @@ def send_email_plain(recipient, subject, text):
     import smtplib
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
-     
-     
-    fromaddr = "registerer69@gmail.com"
-    toaddr = recipient
+    
+    gmailUser = 'registerer69@gmail.com'
+    gmailPassword = 'bojangles1'
+    recipient = recipient
+
     msg = MIMEMultipart()
-    msg['From'] = fromaddr
-    msg['To'] = toaddr
+    msg['From'] = gmailUser
+    msg['To'] = recipient
     msg['Subject'] = subject
-     
-    body = text
-    msg.attach(MIMEText(body, 'plain'))
-     
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(fromaddr, "bojangles1")
-    text = msg.as_string()
-    server.sendmail(fromaddr, toaddr, text)
-    server.quit()
+    msg.attach(MIMEText(text))
 
+    mailServer = smtplib.SMTP('smtp.gmail.com', 587)
+    mailServer.ehlo()
+    mailServer.starttls()
+    mailServer.ehlo()
+    mailServer.login(gmailUser, gmailPassword)
+    mailServer.sendmail(gmailUser, recipient, msg.as_string())
+    mailServer.close()
 
+send_email_plain("fulton.derek@gmail.com", "TEST", "TEST")
 
 def parse_body(text):
     """
