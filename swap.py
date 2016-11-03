@@ -149,9 +149,9 @@ def parser():
             nextUser = newClient.getNextUser(course)
 
             if nextUser != None:
-
+                print("nextUser is not none")
                 try:
-
+                    print("trying to enroll %s" % nextUser["onyen"])
                     onyen = nextUser["onyen"]
                     password = nextUser["password"]
                     course = nextUser["course"]
