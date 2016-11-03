@@ -36,6 +36,7 @@ import newClient
 ### General configuration ###
 app = Flask(__name__)  
 CORS(app)
+app.config['CORS_HEADERS'] = 'application/json'
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -44,7 +45,6 @@ def index():
 
 @app.route('/feedback', methods=["POST", "OPTIONS"])
 @cross_origin()
-@crossdomain(origin="*")
 def feedback():
     if request.method == "POST":
         print("INFO: Someone submitted feedback")
@@ -63,7 +63,6 @@ def disclaimer():
 
 @app.route('/registerCourse', methods=["POST", "OPTIONS"])
 @cross_origin()
-@crossdomain(origin="*")
 def ajax():
     """
     This is where users sign up for the serice. 
@@ -132,7 +131,6 @@ def ajax():
 
 @app.route('/parse', methods=["POST"])
 @cross_origin()
-@crossdomain(origin="*")
 def parser():
     if request.method == "POST":
 
@@ -195,14 +193,12 @@ def parser():
         return "Suh", 200
 
 @app.route('/removeClass', methods = ['GET'])
-@cross_origin
-@crossdomain(origin="*")
+@cross_origin()
 def removeClass():
     return render_template("removeClass.html")
 
 @app.route('/removeClassRequest', methods = ['POST'])
-@cross_origin
-@crossdomain(origin="*")
+@cross_origin()
 def processClassRemoval():
     if request.method == "POST":
         goods = request.json
@@ -235,14 +231,12 @@ def processClassRemoval():
         return "Suh", 200
 
 @app.route('/unregister', methods = ['GET'])
-@cross_origin
-@crossdomain(origin="*")
+@cross_origin()
 def unregister():
     return render_template("unregister.html")
 
 @app.route('/unregisterRequest', methods = ['POST'])
-@cross_origin
-@crossdomain(origin="*")
+@cross_origin()
 def proccessUnregister():
     if request.method == "POST":
         goods = request.json
@@ -270,4 +264,4 @@ def proccessUnregister():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
