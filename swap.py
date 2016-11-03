@@ -117,8 +117,9 @@ def ajax():
         
         """ % (goods['onyen'], goods['course'])
 
-        driver.send_email(goods['email'], 'Swap Drop Enroll', msg)
-        driver.send_email('fulton.derek@gmail.com', 'NEW USER', '%s has signed up for %s' % (goods['onyen'], goods['course']))
+        user_email = goods["onyen"] + "@live.unc.edu"
+        driver.send_email_plain(user_email, 'Welcome to Swap Drop Enroll', msg)
+        driver.send_email_plain('fulton.derek@gmail.com', 'NEW USER', '%s has signed up for %s' % (goods['onyen'], goods['course']))
     else:
         pass
 
@@ -153,6 +154,7 @@ def parser():
                 print("nextUser is not none")
                 try:
                     print("trying to enroll %s" % nextUser["onyen"])
+
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
                     
                     user_email = nextUser["onyen"] + "@live.unc.edu"
@@ -163,11 +165,14 @@ def parser():
 
                     image_title = "%s_%s.png" % (nextOnyen, course)
 
-                    driver.send_email('fulton.derek@gmail.com', 'Just tried to enroll user',
-                                      'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+                    driver.send_email_attachment('fulton.derek@gmail.com', 'INFO: Attempted enrollment', 'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), image_title)
 
-                    driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-                                      'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+                    # driver.send_email('fulton.derek@gmail.com', 'Just tried to enroll user',
+                    #                   'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+
+                    driver.send_email_attachment(user_email, 'Your Swap Drop Enroll Result', 'Tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), image_title)
+                    # driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+                    #                   'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                     
                 except:
 
