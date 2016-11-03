@@ -8,10 +8,10 @@ chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
 
 
 def DATABASE():
-    connection = pymysql.connect(host='gs-db-cluster1.cluster-clcutdgbykfx.us-east-1.rds.amazonaws.com',
+    connection = pymysql.connect(host='sdecheap.clcutdgbykfx.us-east-1.rds.amazonaws.com',
                                  user='derek', # TODO: Make this better
                                  password='bojangles1', # TODO: Make this better
-                                 db='sde',
+                                 db='SDECheap',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
 
@@ -20,7 +20,7 @@ def DATABASE():
 def boostScore(_onyen):
     connection = DATABASE()
     cursor = connection.cursor()
-    sql = "update sde.USERS set score = score + 1 where onyen = \"%s\";" % (_onyen)
+    sql = "update SDECheap.USERS set score = score + 1 where onyen = \"%s\";" % (_onyen)
     cursor.execute(sql)
     connection.commit()
     connection.close()
@@ -44,7 +44,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     #TODO _score = getScore(_onyen)
     # _password = bojangles.encrypt_password(_password, chickfila)
 
-    cursor.execute("select * from sde.USERS where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course))
+    cursor.execute("select * from SDECheap.USERS where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course))
 
 
     if len(cursor.fetchall()) != 0:
@@ -53,7 +53,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     
     else:
         cursor = connection.cursor()
-        sql = "insert into sde.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
+        sql = "insert into SDECheap.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
         cursor.execute(sql)
         connection.commit()
 
@@ -80,7 +80,7 @@ def getNextUser(_course):
 
     cursor = connection.cursor()
 
-    sql = "select * from sde.USERS where course = \"%s\" and success = 0" % (_course)
+    sql = "select * from SDECheap.USERS where course = \"%s\" and success = 0" % (_course)
 
     cursor.execute(sql)
     connection.commit()
@@ -131,7 +131,7 @@ def markSuccess(_onyen, _course):
 
     cursor = connection.cursor()
 
-    sql = "update sde.USERS set success = 1 where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course)
+    sql = "update SDECheap.USERS set success = 1 where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course)
 
     cursor.execute(sql)
     connection.commit()
@@ -152,7 +152,7 @@ def removeClass(_onyen, _password, _course):
 
     cursor = connection.cursor()
 
-    sql = "update sde.USERS set success = 1 where onyen = \"%s\" and password = \"%s\"and course = \"%s\";" % (_onyen, _password, _course)
+    sql = "update SDECheap.USERS set success = 1 where onyen = \"%s\" and password = \"%s\"and course = \"%s\";" % (_onyen, _password, _course)
 
     cursor.execute(sql)
     connection.commit()
@@ -173,7 +173,7 @@ def unregister(_onyen, _password):
 
     cursor = connection.cursor()
 
-    sql = "update sde.USERS set success = 1 where onyen = \"%s\" and pasword = \"%s\"" % (_onyen, _password)
+    sql = "update SDECheap.USERS set success = 1 where onyen = \"%s\" and pasword = \"%s\"" % (_onyen, _password)
 
     cursor.execute(sql)
     connection.commit()
