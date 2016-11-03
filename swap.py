@@ -155,6 +155,13 @@ def parser():
             if nextUser != None:
                 try:
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
+                    
+                    user_email = nextUser["onyen"] + "@live.unc.edu"
+                    image_title = "%s_%s" % (nextUser["onyen"], nextUser["course"])
+
+                    driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]))
+                    driver.send_email(user_email, "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), )         
+                
                 except:
                     print("DIDN'T WORK IN TRY")
 

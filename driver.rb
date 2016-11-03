@@ -156,7 +156,3 @@ end
 
 ### Call the function ###
 enroll(onyen, password, class1)
-
-
-
-
