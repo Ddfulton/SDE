@@ -23,6 +23,7 @@ import json
 import simplejson
 from datetime import datetime
 from werkzeug.local import Local
+import subprocess
 
 ### Driver dependencies ###
 import subprocess
@@ -152,12 +153,11 @@ def parser():
                 print("nextUser is not none")
                 try:
                     print("trying to enroll %s" % nextUser["onyen"])
-                    onyen = nextUser["onyen"]
-                    password = nextUser["password"]
-                    course = nextUser["course"]
-                    user_email = onyen + "@live.unc.edu"
+                    subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
+                    
+                    user_email = nextUser["onyen"] + "@live.unc.edu"
 
-                    driver.enroll(onyen, password, course) #TODO: Result = driver.enroll and then send the proper e-mail
+                    # driver.enroll(onyen, password, course) #TODO: Result = driver.enroll and then send the proper e-mail
 
                     print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % onyenInfo.email)
 
