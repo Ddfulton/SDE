@@ -1,4 +1,4 @@
-#!/Users/ddfulton/Desktop/SDE/venv/bin/python3.4
+#!python
 #
 # The Python Imaging Library.
 # $Id$

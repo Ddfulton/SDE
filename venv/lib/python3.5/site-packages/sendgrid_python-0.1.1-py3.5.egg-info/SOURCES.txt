@@ -1,0 +1,8 @@
+MANIFEST.in
+setup.cfg
+setup.py
+sendgrid_python.egg-info/PKG-INFO
+sendgrid_python.egg-info/SOURCES.txt
+sendgrid_python.egg-info/dependency_links.txt
+sendgrid_python.egg-info/requires.txt
+sendgrid_python.egg-info/top_level.txt
