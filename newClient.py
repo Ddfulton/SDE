@@ -17,6 +17,7 @@ def DATABASE():
 
     return connection
 
+
 def boostScore(_onyen):
     connection = DATABASE()
     cursor = connection.cursor()
@@ -65,8 +66,9 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.commit()
     connection.close()
 
-    return True
-# registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
+    return None
+
+registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
 
 
 def getNextUser(_course):
