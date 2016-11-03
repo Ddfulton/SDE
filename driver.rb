@@ -1,16 +1,26 @@
-require 'capybara'
-require 'capybara/poltergeist'
-
-puts("driver.rb IS IN BUSINESS")
 
 onyen = ARGV[0]
 password = ARGV[1]
 class1 = ARGV[2]
 
 def enroll(onyen, password, class1)
+
+    require 'capybara'
+    require 'capybara/poltergeist'
+
+    Capybara.javascript_driver = :poltergeist
+
+    options = {js_errors: false}
+    Capybara.register_driver :poltergeist do |app|
+        Capybara::Poltergeist::Driver.new(app, options)
+    end
+
     start = Time.now
 
+    
     session = Capybara::Session.new(:poltergeist)
+
+
 
     ### Range for North Carolina IP Addresses: ###
     ### 24.40.128.0 - 24.40.160.0 ###
@@ -49,6 +59,7 @@ def enroll(onyen, password, class1)
 
 
     # NAVIGATE TO SHOPPING CART
+    session.save_screenshot("debug.png")
     session.within_frame(session.find('#ptifrmtgtframe')) do 
         begin
             class_table = session.find('table.PSLEVEL2GRIDWBO')
@@ -70,6 +81,7 @@ def enroll(onyen, password, class1)
     # LOOP THROUGH TABLE
     session.within_frame(session.find(:id, "ptifrmtgtframe")) do 
         puts("WANT:" + " " + class1)
+
         cart = session.find("table.PSLEVEL1GRIDNBO") # Table
         
         cart_elements = Array.new
@@ -83,11 +95,13 @@ def enroll(onyen, password, class1)
         z = 0
 
         for i in 1..cart_elements.size
+            
             i = i - 1
+            
             begin
                 counter = "%s" %(i)
                 course = cart.find("a#P_CLASS_NAME\\$" + counter) 
-                puts("cart position:" + " " + counter)
+                puts("Cart position: " + counter)
             
                 if course.text.include? class1 # If it's the course we want
  
@@ -96,7 +110,10 @@ def enroll(onyen, password, class1)
                     
 
                     session.find("a#DERIVED_REGFRM1_LINK_ADD_ENRL").click()
+                    session.save_screenshot("clicked enroll.png")
                     puts("Clicked 'enroll'")
+
+                    # If no enrollment appointment, this returns you to shopping cart with no message.
 
                     session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
                     puts("Clicked 'finish enrolling'")
@@ -113,6 +130,7 @@ def enroll(onyen, password, class1)
                 puts("Skipped due to recitation")
                 z += 1
                 if z >= cart_elements.size
+                    session.save_screenshot("class not in cart.png")
                     abort("Error: Class not in Shopping Cart!")
                 end
             end

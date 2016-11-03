@@ -36,7 +36,7 @@
       var oldHeight = $('div#main').height();
 
       $('#registerOnyen').click(function() {
-        console.log("Clicked i'm ready")
+
         if ($('#desiredCourse').val().length < 12) {
           result = false;
         }
@@ -73,13 +73,15 @@
 
 
     function registerOnyen() {
-      console.log("Initiating registerOnyen()")
+
       var onyen = document.getElementById("onyenInput").value;
       var password = document.getElementById("onyenPassword").value;
       var email = "onyen" + "@live.unc.edu";
       var course = document.getElementById("desiredCourse").value;
       var unsubscribe = "FALSE";
       var referringOnyen = document.getElementById("referringOnyen").value;
+
+      console.log("INFO: Registering " + onyen + " for " + course + " in the DB.")
 
       if (referringOnyen.length == 0) {
           referringOnyen = "NONE";

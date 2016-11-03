@@ -9,8 +9,8 @@ chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
 
 def DATABASE():
     connection = pymysql.connect(host='gs-db-cluster1.cluster-clcutdgbykfx.us-east-1.rds.amazonaws.com',
-                                 user='derek',
-                                 password='bojangles1',
+                                 user='derek', # TODO: Make this better
+                                 password='bojangles1', # TODO: Make this better
                                  db='sde',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
@@ -66,7 +66,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.close()
 
     return True
-registerCourse("titties", "bojangles6'", "AAAD 101-002", 1, 0)
+# registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
 
 
 def getNextUser(_course):
@@ -97,9 +97,8 @@ def getNextUser(_course):
     
     else:
         for candidate in candidates:
-            score = candidate["score"]
-            print("Adding %s %s times to the random hat" % (candidate["onyen"], candidate["score"]))    
-            for i in range(0, score):
+
+            for i in range(0, candidate["score"]):
                 hat.append(candidate["onyen"])
 
         print("INFO: Hat is %s" % hat)
@@ -109,15 +108,16 @@ def getNextUser(_course):
 
     for candidate in candidates:
         if candidate["onyen"] == winner:
-            credentials = candidate
+            nextUser = candidate
             break
         else:
             continue
 
     connection.close()
 
-    print(credentials)
-    return credentials
+    print(nextUser)
+
+    return nextUser
 # getNextUser("AAAD 101-001")
 
 
@@ -140,6 +140,7 @@ def markSuccess(_onyen, _course):
 
     return None
 
+
 def removeClass(_onyen, _password, _course):
     """
     Removes the row with the provided _onyen 
@@ -159,6 +160,7 @@ def removeClass(_onyen, _password, _course):
     connection.close()
 
     return None
+
 
 def unregister(_onyen, _password):
     """
