@@ -51,6 +51,8 @@ def enroll(onyen, password, class1)
     session.find('#password').send_keys(password)
     session.find(:class, '.form-element.form-button').click()
 
+    sleep(1)
+    # Sometimes can't find this frame
     session.within_frame(session.find('#ptifrmtgtframe')) do
         session.find("#ACE_DERIVED_SSS_SCL_SSS_ENRL_CART").click()
     end
@@ -117,9 +119,16 @@ def enroll(onyen, password, class1)
                     begin
                         session.find("a#DERIVED_REGFRM1_SSR_PB_SUBMIT").click()
                         puts("Clicked 'finish enrolling'")
+                        elapsed = Time.now - start
+                        puts("%s seconds elapsed."%(elapsed))
+                        break
                     rescue Capybara::ElementNotFound
                         puts("Did not find the 'finish enrolling' button")
-                    break
+                        elapsed = Time.now - start
+                        puts("%s seconds elapsed."%(elapsed))
+                        break
+                    end
+
 
                 else
                     puts("Course not in row " + counter)
@@ -137,10 +146,7 @@ def enroll(onyen, password, class1)
             end
         end
     end
- 
-    finish = Time.now
 
-    puts(finish-start)
 
     image_title = "%s" %(onyen) + "_%s" %(class1) + ".png"
 
