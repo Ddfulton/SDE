@@ -158,36 +158,7 @@ def parser():
 
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
                     
-                    try:
-                        print("Trying to declare user_email from nextUser")
-                        user_email = nextUser["onyen"] + "@live.unc.edu"
-                    except:
-                        print("Didn't delcare user_email")
-
-                    try:
-                        print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % user_email)
-                    except:
-                        print("Failed on line 168")
-                    
-                    try:
-                        print("Assigning image_title")
-                        image_title = "%s_%s.png" % (nextUser["onyen"], nextUser["course"])
-                    except:
-                        print("Didn't assign image_title")
-
-                    try:
-                        print("Sending email to fulton.derek@gmail.com")    
-                        driver.send_email_attachment('fulton.derek@gmail.com', 'INFO: Attempted enrollment', 'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), image_title)
-                    except:
-                        print("Failed sending email to fulton.derek@gmail.com at line 180")
-                    # driver.send_email('fulton.derek@gmail.com', 'Just tried to enroll user',
-                    #                   'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-
-                    try:
-                        print("sending email to the user_email")
-                        driver.send_email_attachment(user_email, 'Your Swap Drop Enroll Result', 'Tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextUser["onyen"], nextUser["course"]), image_title)
-                    except:
-                        print("Failed to send email to the user_email")
+                    driver.send_email_plain("fulton.derek@gmail.com", "TEST", "Tried to enroll %s in %s" % (nextUser["onyen"], nextUser["course"]))
                     # driver.send_email(user_email, 'Your Swap Drop Enroll Result',
                     #                   'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                     
