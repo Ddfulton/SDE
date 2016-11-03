@@ -67,7 +67,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
 
     return None
 
-registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
+# registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
 
 
 def getNextUser(_course):

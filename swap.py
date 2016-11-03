@@ -39,7 +39,7 @@ CORS(app)
 app.config['CORS_HEADERS'] = 'application/json'
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/', methods=["GET", "POST", "OPTIONS"])
 def index():
     return render_template("index.html")
 
