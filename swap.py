@@ -162,9 +162,9 @@ def parser():
 
                     # driver.enroll(onyen, password, course) #TODO: Result = driver.enroll and then send the proper e-mail
 
-                    print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % onyenInfo.email)
+                    print("INFO: Sending e-mail to fulton.derek@gmail.com and %s" % user_email)
 
-                    image_title = "%s_%s.png" % (nextOnyen, course)
+                    image_title = "%s_%s.png" % (nextUser["onyen"], nextUser["course"])
 
                     driver.send_email_attachment('fulton.derek@gmail.com', 'INFO: Attempted enrollment', 'just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), image_title)
 
