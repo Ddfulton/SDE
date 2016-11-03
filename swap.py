@@ -70,13 +70,13 @@ def ajax():
     if request.method == "POST":
         goods = request.json
 
-        # if not driver.verify_onyen(goods["onyen"], goods["password"]):
+        if not driver.verify_onyen(goods["onyen"], goods["password"]):
             
-        #     print("ERROR: Onyen %s did not pass verification" % (goods["onyen"]))
-        #     driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
-        #     failure_message = "%s did not pass verification. Terminating." % (goods["onyen"])
+            print("ERROR: Onyen %s did not pass verification" % (goods["onyen"]))
+            driver.send_email(goods["email"], "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up for shit. So try again with the right password!" % goods["onyen"])
+            failure_message = "%s did not pass verification. Terminating." % (goods["onyen"])
             
-        #     return failure_message, 200
+            return failure_message, 200
 
 
 
