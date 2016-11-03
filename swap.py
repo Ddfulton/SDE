@@ -151,8 +151,10 @@ def parser():
 
             nextUser = newClient.getNextUser(course)
             print("DEBUG: Just fetched %s" % nextUser)
+            
             if nextUser != None:
                 print("DEBUG: Next user is not None")
+                
                 try:
                     print("INFO: Trying to enroll %s in %s" % nextUser["onyen"], nextUser["course"])
 
@@ -162,18 +164,20 @@ def parser():
                 #                       'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                     
                 #     driver.send_email('fulton.derek@gmail.com', 'DEBUG: Attempted Enrollment', 'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-                # except:
+                except:
 
                     print("Did not make it through the try to enroll block of code. This could be because the class is not in the shopping cart.")
 
 
 
-            elif nextUser == None:
+            else:
                 print("INFO: nextOnyen is None so we are untracking this course")
 
                 driver.untrack(course)
 
                 fail_message = "There was no nextOnyen for %s" % course
+
+                return fail_message, 200
 
         elif status == "wait list":
             print("INFO: Wait list")
