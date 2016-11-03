@@ -158,11 +158,11 @@ def parser():
 
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
                     
-                    driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-                                      'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+                #     driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+                #                       'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                     
-                    driver.send_email('fulton.derek@gmail.com', 'DEBUG: Attempted Enrollment', 'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-                except:
+                #     driver.send_email('fulton.derek@gmail.com', 'DEBUG: Attempted Enrollment', 'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+                # except:
 
                     print("Did not make it through the try to enroll block of code. This could be because the class is not in the shopping cart.")
 
