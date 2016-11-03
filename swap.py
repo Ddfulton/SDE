@@ -44,6 +44,7 @@ def index():
 
 @app.route('/feedback', methods=["POST", "OPTIONS"])
 @cross_origin()
+@crossdomain(origin="*")
 def feedback():
     if request.method == "POST":
         print("INFO: Someone submitted feedback")
@@ -62,6 +63,7 @@ def disclaimer():
 
 @app.route('/registerCourse', methods=["POST", "OPTIONS"])
 @cross_origin()
+@crossdomain(origin="*")
 def ajax():
     """
     This is where users sign up for the serice. 
@@ -75,7 +77,7 @@ def ajax():
             
             user_email = goods["onyen"] + "@live.unc.edu"
             print("ERROR: Onyen %s did not pass verification" % (goods["onyen"]))
-            driver.send_email_plain(user_email, "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up. So try again with the right password!" % goods["onyen"])
+            driver.send_email(user_email, "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up. So try again with the right password!" % goods["onyen"])
             failure_message = "%s did not pass verification. Terminating." % (goods["onyen"])
             
             return failure_message, 200
@@ -130,6 +132,7 @@ def ajax():
 
 @app.route('/parse', methods=["POST"])
 @cross_origin()
+@crossdomain(origin="*")
 def parser():
     if request.method == "POST":
 
@@ -192,10 +195,14 @@ def parser():
         return "Suh", 200
 
 @app.route('/removeClass', methods = ['GET'])
+@cross_origin
+@crossdomain(origin="*")
 def removeClass():
     return render_template("removeClass.html")
 
 @app.route('/removeClassRequest', methods = ['POST'])
+@cross_origin
+@crossdomain(origin="*")
 def processClassRemoval():
     if request.method == "POST":
         goods = request.json
@@ -228,10 +235,14 @@ def processClassRemoval():
         return "Suh", 200
 
 @app.route('/unregister', methods = ['GET'])
+@cross_origin
+@crossdomain(origin="*")
 def unregister():
     return render_template("unregister.html")
 
 @app.route('/unregisterRequest', methods = ['POST'])
+@cross_origin
+@crossdomain(origin="*")
 def proccessUnregister():
     if request.method == "POST":
         goods = request.json
@@ -259,4 +270,4 @@ def proccessUnregister():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
