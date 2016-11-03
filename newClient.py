@@ -1,6 +1,5 @@
 import pymysql.cursors
 import random
-import bojangles
 
 
 chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
