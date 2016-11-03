@@ -153,9 +153,10 @@ def parser():
             print("DEBUG: Just fetched %s" % nextUser)
             
             if nextUser != None:
-                print("DEBUG: Next user is not None")
-                subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
-                print("INFO: Trying to enroll %s in %s" % nextUser["onyen"], nextUser["course"])
+                try:
+                    subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
+                except:
+                    print("DIDN'T WORK IN TRY")
 
             else:
                 print("INFO: nextOnyen is None so we are untracking this course")
