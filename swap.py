@@ -154,21 +154,8 @@ def parser():
             
             if nextUser != None:
                 print("DEBUG: Next user is not None")
-                
-                try:
-                    print("INFO: Trying to enroll %s in %s" % nextUser["onyen"], nextUser["course"])
-
-                    subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
-                    
-                #     driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-                #                       'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-                    
-                #     driver.send_email('fulton.derek@gmail.com', 'DEBUG: Attempted Enrollment', 'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
-                except:
-
-                    print("Did not make it through the try to enroll block of code. This could be because the class is not in the shopping cart.")
-
-
+                subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
+                print("INFO: Trying to enroll %s in %s" % nextUser["onyen"], nextUser["course"])
 
             else:
                 print("INFO: nextOnyen is None so we are untracking this course")
