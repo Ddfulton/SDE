@@ -185,7 +185,7 @@ def parser():
 
                     try:
                         print("sending email to the user_email")
-                        driver.send_email_attachment(user_email, 'Your Swap Drop Enroll Result', 'Tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), image_title)
+                        driver.send_email_attachment(user_email, 'Your Swap Drop Enroll Result', 'Tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextUser["onyen"], nextUser["course"]), image_title)
                     except:
                         print("Failed to send email to the user_email")
                     # driver.send_email(user_email, 'Your Swap Drop Enroll Result',
