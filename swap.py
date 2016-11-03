@@ -40,18 +40,12 @@ app.config['CORS_HEADERS'] = 'application/json'
 
 
 @app.route('/', methods=["GET", "POST", "OPTIONS"])
+@cross_origin(origin="*")
 def index():
     return render_template("index.html")
 
-@app.route('/feedback', methods=["POST", "OPTIONS"])
-@cross_origin()
-def feedback():
-    if request.method == "POST":
-        print("INFO: Someone submitted feedback")
-
-        driver.send_email('fulton.derek@gmail.com', "Swap Drop Enroll Feedback", request.json["feedback"])
-
 @app.route('/about', methods=["GET"])
+
 def about():
     return render_template('about.html')
 
@@ -62,7 +56,7 @@ def disclaimer():
 
 
 @app.route('/registerCourse', methods=["POST", "OPTIONS"])
-@cross_origin()
+@cross_origin(origin="*")
 def ajax():
     """
     This is where users sign up for the serice. 
