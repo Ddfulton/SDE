@@ -97,8 +97,8 @@
       
       
       $.ajax({
-        url: "https://secret-eyrie-28661.herokuapp.com/registerCourse", // the real fucking deal
-        // url: "http://127.0.0.1:5000/registerCourse", // for testing locally
+        url: "/registerCourse", // the real fucking deal
+        // url: "/registerCourse", // for testing locally
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
