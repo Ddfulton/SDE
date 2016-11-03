@@ -61,78 +61,78 @@ def untrack(course):
     subprocess.call(args)
 
 
-# def send_email(recipient, subject, body, attachment=None):
-#     """
-#     Sends an e-mail without an attachment using Sendgrid's V3 Web API
-#     Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
-#     """
+def send_email(recipient, subject, body, attachment=None):
+    """
+    Sends an e-mail without an attachment using Sendgrid's V3 Web API
+    Example: send_email('kanye.west@live.unc.edu, 'Eighteen years', 'She got yo ass for eighteen years'
+    """
 
-#     sg = sendgrid.SendGridAPIClient(apikey = "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")
+    sg = sendgrid.SendGridAPIClient(apikey = "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")
 
-#     if attachment != None: 
+    if attachment != None: 
         
-#         encoded_image = base64.b64encode(open(attachment, "rb").read()).decode('utf-8')
+        encoded_image = base64.b64encode(open(attachment, "rb").read()).decode('utf-8')
 
-#         data = {
-#             "personalizations": [
-#                 {
-#                     "to": [
-#                         {
-#                             "email": recipient
-#                         }
-#                     ],
-#                     "subject": subject
-#                 }
-#             ],
-#             "from": {
-#                 "email": "swap@drop.enroll"
-#             },
-#             "content": [
-#                 {
-#                     "type": "text/plain",
-#                     "value": body
-#                 }
-#             ],
-#             "attachments": [
-#             {
-#                 "content": encoded_image,  
-#                 "filename": attachment, 
-#                 "name": "EnrollmentResult", 
-#                 "type": "png"
-#             }
-#             ],
-#         }
+        data = {
+            "personalizations": [
+                {
+                    "to": [
+                        {
+                            "email": recipient
+                        }
+                    ],
+                    "subject": subject
+                }
+            ],
+            "from": {
+                "email": "swap@drop.enroll"
+            },
+            "content": [
+                {
+                    "type": "text/plain",
+                    "value": body
+                }
+            ],
+            "attachments": [
+            {
+                "content": encoded_image,  
+                "filename": attachment, 
+                "name": "EnrollmentResult", 
+                "type": "png"
+            }
+            ],
+        }
 
-#     else:
+    else:
         
-#         data = {
-#             "personalizations": [
-#                 {
-#                     "to": [
-#                         {
-#                             "email": recipient
-#                         }
-#                     ],
-#                     "subject": subject
-#                 }
-#             ],
-#             "from": {
-#                 "email": "swap@drop.enroll"
-#             },
-#             "content": [
-#                 {
-#                     "type": "text/plain",
-#                     "value": body
-#                 }
-#             ]
-#         }
+        data = {
+            "personalizations": [
+                {
+                    "to": [
+                        {
+                            "email": recipient
+                        }
+                    ],
+                    "subject": subject
+                }
+            ],
+            "from": {
+                "email": "swap@drop.enroll"
+            },
+            "content": [
+                {
+                    "type": "text/plain",
+                    "value": body
+                }
+            ]
+        }
 
 
-#     response = sg.client.mail.send.post(request_body=data)
+    response = sg.client.mail.send.post(request_body=data)
 
-#     return response.status_code, response.body, response.headers
+    return response.status_code, response.body, response.headers
 
-#     print("SEND EMAIL TO %s" % data[personalizations][0]["to"])
+    print("SEND EMAIL TO %s" % data[personalizations][0]["to"])
 
 
 def parse_email(envelope):
@@ -154,68 +154,6 @@ def parse_email(envelope):
 
     return from_address, to_address, subject, text, course, status
 
-
-def send_email_attachment(to, text, subject, attachment):
-    import smtplib
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
-    from email.mime.base import MIMEBase
-    from email import encoders
-     
-    fromaddr = "registerer69@gmail.com"
-    toaddr = to
-     
-    msg = MIMEMultipart()
-     
-    msg['From'] = fromaddr
-    msg['To'] = toaddr
-    msg['Subject'] = subject
-     
-    body = text
-     
-    msg.attach(MIMEText(body, 'plain'))
-     
-    filename = attachment
-    attachment = open(attachment, "rb")
-     
-    part = MIMEBase('application', 'octet-stream')
-    part.set_payload((attachment).read())
-    encoders.encode_base64(part)
-    part.add_header('Content-Disposition', "attachment; filename= %s" % filename)
-     
-    msg.attach(part)
-     
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(fromaddr, "bojangles1")
-    text = msg.as_string()
-    server.sendmail(fromaddr, toaddr, text)
-    server.quit()
-
-def send_email_plain(recipient, subject, text):
-    import smtplib
-    from email.mime.multipart import MIMEMultipart
-    from email.mime.text import MIMEText
-    
-    gmailUser = 'registerer69@gmail.com'
-    gmailPassword = 'bojangles1'
-    recipient = recipient
-
-    msg = MIMEMultipart()
-    msg['From'] = gmailUser
-    msg['To'] = recipient
-    msg['Subject'] = subject
-    msg.attach(MIMEText(text))
-
-    mailServer = smtplib.SMTP('smtp.gmail.com', 587)
-    mailServer.ehlo()
-    mailServer.starttls()
-    mailServer.ehlo()
-    mailServer.login(gmailUser, gmailPassword)
-    mailServer.sendmail(gmailUser, recipient, msg.as_string())
-    mailServer.close()
-
-# send_email_plain("fulton.derek@gmail.com", "TEST", "TEST")
 
 def parse_body(text):
     """

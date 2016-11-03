@@ -119,8 +119,8 @@ def ajax():
         """ % (goods['onyen'], goods['course'])
 
         user_email = goods["onyen"] + "@live.unc.edu"
-        driver.send_email_plain(user_email, 'Welcome to Swap Drop Enroll', msg)
-        driver.send_email_plain('fulton.derek@gmail.com', 'NEW USER', '%s has signed up for %s' % (goods['onyen'], goods['course']))
+        driver.send_email(user_email, "Welcome to Swap Drop Enroll", msg)
+        driver.send_email('fulton.derek@gmail.com', 'INFO: New User', '%s has signed up for %s' % (goods['onyen'], goods['course']))
     else:
         pass
 
@@ -154,14 +154,14 @@ def parser():
             if nextUser != None:
 
                 try:
-                    print("trying to enroll %s" % nextUser["onyen"])
+                    print("INFO: Trying to enroll %s in %s" % nextUser["onyen"], nextUser["course"])
 
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
                     
-                    driver.send_email_plain("fulton.derek@gmail.com", "TEST", "Tried to enroll %s in %s" % (nextUser["onyen"], nextUser["course"]))
-                    # driver.send_email(user_email, 'Your Swap Drop Enroll Result',
-                    #                   'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
+                    driver.send_email(user_email, 'Your Swap Drop Enroll Result',
+                                      'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                     
+                    driver.send_email('fulton.derek@gmail.com', 'DEBUG: Attempted Enrollment', 'Just tried to enroll %s in %s.\nIf you would like to stop tracking this course, visit https://www.swapdropenroll.com/removeClass.' % (nextOnyen, course), attachment=image_title)
                 except:
 
                     print("Did not make it through the try to enroll block of code. This could be because the class is not in the shopping cart.")
