@@ -215,7 +215,7 @@ def send_email_plain(recipient, subject, text):
     mailServer.sendmail(gmailUser, recipient, msg.as_string())
     mailServer.close()
 
-send_email_plain("fulton.derek@gmail.com", "TEST", "TEST")
+# send_email_plain("fulton.derek@gmail.com", "TEST", "TEST")
 
 def parse_body(text):
     """
