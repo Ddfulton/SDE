@@ -160,8 +160,13 @@ def parser():
                     user_email = nextUser["onyen"] + "@live.unc.edu"
                     image_title = "%s_%s.png" % (nextUser["onyen"], nextUser["course"])
 
-                    driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]))
-                    driver.send_email(user_email, "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)         
+                    if driver.check_color(image_title) == True: # If green circle
+                        newClient.markSuccess(nextUser["onyen"], nextUser["course"])
+
+                    else:
+                        pass
+                    driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)
+                    driver.send_email(user_email, "Your Swap Drop Enroll Result", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)         
                 
                 except:
                     print("DIDN'T WORK IN TRY")

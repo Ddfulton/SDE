@@ -6,6 +6,7 @@ import base64
 from flask import request
 import subprocess
 import smtplib
+from PIL import Image
 
 ### API Dependencies ###
 import SDEClient
@@ -187,3 +188,13 @@ def parse_body(text):
 
     return course, status
 
+def check_color(image):
+    im = Image.open(image)
+    pix = im.load()
+
+    if pix[551, 487] == (223, 72, 37, 255):
+        return False
+    elif pix[551, 487] == (88, 158, 19, 255):
+        return True
+    else:
+        return None

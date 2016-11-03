@@ -150,8 +150,12 @@ def enroll(onyen, password, class1)
 
     image_title = "%s" %(onyen) + "_%s" %(class1) + ".png"
 
-    sleep(5)
+
+
+    sleep(3)
     session.save_screenshot(image_title)
+    redX = session.find(:xpath, "//*[@id=\"win0divDERIVED_REGFRM1_SSR_STATUS_LONG$0\"]/div/img")
+    puts(redX)
 end
 
 ### Call the function ###
