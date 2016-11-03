@@ -3,9 +3,9 @@ __author__ = "We'll never tell"
 require 'capybara'
 require 'capybara/poltergeist'
 
-puts("INFO: SIGNING UP TO TRACK THE FOLLOWING WITH COURSICLE: %s" %(course))
-
 course = ARGV[0]
+
+puts("INFO: SIGNING UP TO TRACK THE FOLLOWING WITH COURSICLE: %s" %(course))
 
 session = Capybara::Session.new(:poltergeist)
 
