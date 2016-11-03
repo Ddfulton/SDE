@@ -24,6 +24,7 @@ import simplejson
 from datetime import datetime
 from werkzeug.local import Local
 import subprocess
+from time import sleep
 
 ### Driver dependencies ###
 import subprocess
@@ -157,7 +158,7 @@ def parser():
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
                     
                     user_email = nextUser["onyen"] + "@live.unc.edu"
-                    image_title = "%s_%s" % (nextUser["onyen"], nextUser["course"])
+                    image_title = "%s_%s.png" % (nextUser["onyen"], nextUser["course"])
 
                     driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]))
                     driver.send_email(user_email, "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)         
