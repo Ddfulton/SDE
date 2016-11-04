@@ -94,15 +94,7 @@ def ajax():
         driver.class_checker(goods['course'])
 
 
-        msg = """Welcome to Swap Drop Enroll! Assuming that we have the correct credentials for your ConnectCarolina login, our program will automatically enroll you in %s when a spot opens up. 
-                You must not have any schedule conflicts with the class and it must be
-                in your shopping cart.
-                We will be adding swap functionality for Spring 2017 registration.
-                We use a token, a cipher, and encryption to protect your password. So, while
-                you are ultimately responsible for your own password, and agree to take responsibility
-                for that when you sign up, we never see your actual password.
-                Regards,
-                Swap Drop Enroll""" % (goods['course'])
+        msg = "Welcome to Swap Drop Enroll! \n\nAssuming that we have the correct credentials for your ConnectCarolina login, our program will automatically enroll you in %s when a spot opens up. You must not have any schedule conflicts with the class and it must be in your shopping cart. We use a secure database and a cipher to protect your password. So, while you are ultimately responsible for your own password, and agree to take responsibility for that when you sign up, we never see your actual password. \n\nRegards, \n\nSwap Drop Enroll" % (goods['course'])
 
         user_email = goods["onyen"] + "@live.unc.edu"
         driver.send_email(user_email, "Welcome to Swap Drop Enroll", msg)
