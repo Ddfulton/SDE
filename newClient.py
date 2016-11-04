@@ -9,14 +9,13 @@ chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
 def DATABASE():
     connection = pymysql.connect(host='sdecheap.clcutdgbykfx.us-east-1.rds.amazonaws.com',
                                  port=3306,
-                                 user='derek', # TODO: Make this better
-                                 password='bojangles1', # TODO: Make this better
+                                 user='swapdropenroll', # TODO: Make this better
+                                 password='d3!!29d@dapDeA@45gii24!*d', # TODO: Make this better
                                  db='SDECheap',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
 
     return connection
-
 
 def boostScore(_onyen):
     connection = DATABASE()
