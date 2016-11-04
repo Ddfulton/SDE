@@ -161,7 +161,7 @@ def parser():
 
                     else:
                         pass
-                    driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)
+                    driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["course"]), attachment=image_title)
                     driver.send_email(user_email, "Your Swap Drop Enroll Result", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)         
                 
                 except:
