@@ -158,11 +158,12 @@ def parser():
 
                     if driver.check_color(image_title) == True: # If green circle
                         newClient.markSuccess(nextUser["onyen"], nextUser["course"])
-
+                        print("INFO: There was green circle. Marking success.")
                     else:
+                        print("INFO: There was no green circle. Failure.")
                         pass
                     driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["course"]), attachment=image_title)
-                    driver.send_email(user_email, "Your Swap Drop Enroll Result", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["password"]), attachment=image_title)         
+                    driver.send_email(user_email, "Your Swap Drop Enroll Result", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["course"]), attachment=image_title)         
                 
                 except:
                     print("DIDN'T WORK IN TRY")
