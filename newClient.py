@@ -9,8 +9,8 @@ chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
 def DATABASE():
     connection = pymysql.connect(host='sdecheap.clcutdgbykfx.us-east-1.rds.amazonaws.com',
                                  port=3306,
-                                 user='swapdropenroll', # TODO: Make this better
-                                 password='d3!!29d@dapDeA@45gii24!*d', # TODO: Make this better
+                                 user='swapdropenroll',
+                                 password='ca7c799ef523f8552f4bbb308938bbea', 
                                  db='SDECheap',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
