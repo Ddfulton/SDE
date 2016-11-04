@@ -9,6 +9,7 @@
     <script src=
     "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
     </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
     <link crossorigin="anonymous" href=
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,10 +24,12 @@
     </script><!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel=
     "stylesheet" type="text/css">
+
     <script>
     $(document).ready(function() {
       // Pre selected for increased speed
 
+      // Rumble to validate input
       $('#desiredCourse').jrumble();
 
       var content1 = $('#content1');
@@ -124,7 +127,7 @@
                     </li>
                     <li>
                         <a class="page-scroll" href="/about">
-                        <p class="navigation"><b>About</b></p></a>
+                        <p class="navigation"><b>FAQ</b></p></a>
                     </li>
                     <li>
                         <a class="page-scroll" href="/disclaimer">
@@ -200,7 +203,7 @@
                                 "signup_step_1_email"></label>
                                 <p style="font-family: 'Roboto'"><label class=
                                 "control-label" for=
-                                "signup_step_1_email">Referring Onyen<br><a href="/about" style="color: #7BAFD4;">How does this work?</a></label></p>
+                                "signup_step_1_email">Referring Onyen<br><a href="/about" style="color: #7BAFD4;">Why is this important?</a></label></p>
                                 <div class="row-xs-10">
                                     <input class="form-control" id=
                                     "referringOnyen" name="referringOnyen"
@@ -253,8 +256,8 @@
 
 body {
   background: linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
+    rgba(0, 0, 0, 0.68),
+    rgba(0, 0, 0, 0.68)
     ),
   url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed;
 
@@ -336,6 +339,9 @@ body {
     font-size: 22px;
     color: #7BAFD4;
     }
+
+
+}
     </style>
 </body>
 </html>

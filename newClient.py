@@ -8,6 +8,7 @@ chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
 
 def DATABASE():
     connection = pymysql.connect(host='sdecheap.clcutdgbykfx.us-east-1.rds.amazonaws.com',
+                                 port=3306,
                                  user='derek', # TODO: Make this better
                                  password='bojangles1', # TODO: Make this better
                                  db='SDECheap',
@@ -65,7 +66,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.commit()
     connection.close()
 
-    return None
+    return True
 
 # registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
 
