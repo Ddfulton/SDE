@@ -41,17 +41,9 @@
       var oldHeight = $('div#main').height();
 
       $('#unregisterOnyen').click(function() {
-        console.log("Clicked i'm ready")
-        if ($('#desiredCourse').val().length < 12) {
-          result = false;
-        }
-        
-        else {
-          result = true;
-        }
 
 
-        if (result) {
+        if (true) {
           unregisterOnyen();
           content1.slideToggle();
           content2.slideToggle();
@@ -90,7 +82,7 @@
       
       
       $.ajax({
-        url: "https://secret-eyrie-28661.herokuapp.com/unregisterRequest",
+        url: "/unregisterRequest",
         // url: "http://127.0.0.1:5000/unregisterRequest", // for testing locally
         type: "POST",
         data: JSON.stringify(theData, null, '\t'),

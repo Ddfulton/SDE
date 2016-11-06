@@ -214,17 +214,23 @@ def unregister(_onyen, _password):
 
     cursor.execute(sql)
     
-    fetched_password = cursor.fetchall()[0]["password"]
+    results = cursor.fetchall()    
 
-    if fetched_password.decode('utf-8') != _password:
-        return False
-
+    if len(results) == 0:
+        return "NO USER"
     else:
-        sql = "delete from SDECheap.USERS where onyen = \"%s\" and pasword = \"%s\"" % (_onyen, _password)
-        cursor.execute(sql)
-        connection.commit()
-        
-        return True
+
+        fetched_password = results[0]["password"]
+
+        if fetched_password.decode('utf-8') != _password:
+            return False
+
+        else:
+            sql = "delete from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
+            cursor.execute(sql)
+            connection.commit()
+            
+            return True
     
     connection.close()
 

@@ -208,23 +208,30 @@ def removeClassRequest():
 @cross_origin()
 def unregisterRequest():
     if request.method == "POST":
-        goods = reques.json
-        print("Declared goods...")
-        if newClient.unregister(goods["onyen"], goods["password"]):
-            print("Passwords matched. Unregistered")
+        goods = request.json
+
+
+        result = newClient.unregister(goods["onyen"], goods["password"])
+
+        if result == True:
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Goodbye from Swap Drop Enroll", "Dear %s,\n\nWe have removed you completely from our database. We hope you had a positive experience.\n\nIf you ever have any questions or concerns, feel free to shoot us an e-mail at blowjangles@protonmail.com.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"]))
-            print("Trying to return 200")
+
             return "Success", 200
+        elif result == "NO USER":
+            user_email = goods["onyen"] + "@live.unc.edu"
+            driver.send_email(user_email, "User does not exist","Hello,\n\nYou tried to unregister from Swap Drop Enroll but we didn't find you in the database. So you're already out. If you miss us, feel free to sign up again.\n\nRegards,\n\nSwap Drop Enroll")
+
+            return "Suh dood", 200
         else:
             print("Passwords didn't match")
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Incorrect password", "Dear %s,\n\nWe tried to unregister you from our database, but your passwords didn't match. If you believe this is a mistake, please don't hesitate to e-mail us at blowjangles@protonmail.com so that we can manually unregister you.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"]))
-            print("Trying to return 200")
+
             return "Suh dood", 200
-        print("Trying to return 200")
+
         return "Suh dood", 200
-    print("Trying to return 200")
+
     return "Suh dood", 200
 
 
