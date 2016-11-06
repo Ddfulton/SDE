@@ -184,7 +184,7 @@ def removeClass(_onyen, _password, _course):
     
     fetched_password = cursor.fetchall()[0]["password"]
 
-    if fetched_password != _password:
+    if fetched_password.decode('utf-8') != _password:
         return False
 
     else:
@@ -216,7 +216,7 @@ def unregister(_onyen, _password):
     
     fetched_password = cursor.fetchall()[0]["password"]
 
-    if fetched_password != _password:
+    if fetched_password.decode('utf-8') != _password:
         return False
 
     else:
