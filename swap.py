@@ -187,7 +187,17 @@ def removeClass():
 def removeClassRequest():
     if request.method == "POST":
         goods = request.json
-        
+
+        if newClient.unregister(goods["onyen"], goods["password"]):
+            user_email = goods["onyen"] + "@live.unc.edu"
+            driver.send_email(user_email, "Removed Class", "Dear %s,\n\nWe have removed %s from our database. We hope you had a positive experience.\n\nIf you ever have any questions or concerns, feel free to shoot us an e-mail at blowjangles@protonmail.com.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"], goods["course"]))
+        else:
+            user_email = goods["onyen"] + "@live.unc.edu"
+            driver.send_email(user_email, "Incorrect password", "Dear %s,\n\nWe tried to unregister %s you from our database, but your passwords didn't match. If you believe this is a mistake, please don't hesitate to e-mail us at blowjangles@protonmail.com so that we can manually unregister you.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"], goods["course"]))
+    
+    return "INFO: Removed %s from %s" % (goods["course"], goods["onyen"]), 200
+
+return 200
 
 
 
@@ -204,8 +214,9 @@ def unregisterRequest():
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Incorrect password", "Dear %s,\n\nWe tried to unregister you from our database, but your passwords didn't match. If you believe this is a mistake, please don't hesitate to e-mail us at blowjangles@protonmail.com so that we can manually unregister you.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"]))
     
-    return render_template("unregister.html")
+    return "INFO: Unregistered %s" % goods["onyen"], 200
 
+return 200
 
 
 
