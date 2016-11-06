@@ -197,7 +197,7 @@ def removeClassRequest():
     
     return "INFO: Removed %s from %s" % (goods["course"], goods["onyen"]), 200
 
-return 200
+
 
 
 
@@ -216,7 +216,7 @@ def unregisterRequest():
     
     return "INFO: Unregistered %s" % goods["onyen"], 200
 
-return 200
+
 
 
 
