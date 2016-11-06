@@ -8,100 +8,92 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta name="description">
     <title>Paper Classes</title>
-    <script src=
-    "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
-    </script>
-    <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-    <link crossorigin="anonymous" href=
-    "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity=
-    "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    rel="stylesheet"><!--PAPER TIM-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script><!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"><!--PAPER TIM-->
     <link href="static/paperkit/assets/css/ct-paper.css" rel="stylesheet">
     <link rel="static/paperkit/bootstrap3/css/bootstrap.css">
-    <link href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico" rel=
-    "shortcut icon">
+    <link href="https://s3-us-west-2.amazonaws.com/uncregister/fire.ico" rel="shortcut icon">
     <script src="static/jrumble.js" type="text/javascript">
     </script><!--FONTS-->
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel=
-    "stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <script>
-    $(document).ready(function() {
-      // Pre selected for increased speed
+       $(document).ready(function() {
+         // Pre selected for increased speed
 
-      $('#desiredCourse').jrumble();
+         $('#desiredCourse').jrumble();
 
-      var content1 = $('#content1');
-      var content2 = $('#content2');
-      var oldHeight = $('div#main').height();
+         var content1 = $('#content1');
+         var content2 = $('#content2');
+         var oldHeight = $('div#main').height();
 
-      $('#registerOnyen').click(function() {
-        console.log("Clicked i'm ready")
-        if ($('#desiredCourse').val().length < 12) {
-          result = false;
-        }
-        
-        else {
-          result = true;
-        }
-
-
-        if (result) {
-          registerOnyen();
-          content1.slideToggle();
-          content2.slideToggle();
-
-          $('div#main').height(oldHeight);
-
-          $('img#MJ')
-            .delay(2000)
-            .queue( function(next){ 
-              $(this).css(
-                'border: 3px solid green'); 
-                next(); 
-              });
-        }
-        
-        else {
-            $('#desiredCourse').trigger('startRumble');
-            }
-          }); 
+         $('#registerOnyen').click(function() {
+           console.log("Clicked i'm ready")
+           if ($('#desiredCourse').val().length < 12) {
+             result = false;
+           }
+           
+           else {
+             result = true;
+           }
 
 
-      });
+           if (result) {
+             registerOnyen();
+             content1.slideToggle();
+             content2.slideToggle();
+
+             $('div#main').height(oldHeight);
+
+             $('img#MJ')
+               .delay(2000)
+               .queue( function(next){ 
+                 $(this).css(
+                   'border: 3px solid green'); 
+                   next(); 
+                 });
+           }
+           
+           else {
+               $('#desiredCourse').trigger('startRumble');
+               }
+             }); 
+
+
+         });
 
 
 
-    function registerOnyen() {
-      console.log("Initiating registerOnyen()")
-      var onyen = document.getElementById("onyenInput").value;
-      var password = document.getElementById("onyenPassword").value;
-      var email = "onyen" + "@live.unc.edu";
-      var course = document.getElementById("desiredCourse").value;
-      var mobile = document.getElementById("mobile").value;
-      var unsubscribe = "FALSE";
+       function registerOnyen() {
+         console.log("Initiating registerOnyen()")
+         var onyen = document.getElementById("onyenInput").value;
+         var password = document.getElementById("onyenPassword").value;
+         var email = "onyen" + "@live.unc.edu";
+         var course = document.getElementById("desiredCourse").value;
+         var mobile = document.getElementById("mobile").value;
+         var unsubscribe = "FALSE";
 
 
-        theData = {
-            onyen: onyen,
-            password: password,
-            email: email,
-            course: course,
-            unsubscribe: unsubscribe,
-            mobile: mobile,
-            referringOnyen: false,
-        };
+           theData = {
+               onyen: onyen,
+               password: password,
+               email: email,
+               course: course,
+               unsubscribe: unsubscribe,
+               mobile: mobile,
+               referringOnyen: false,
+           };
 
-      
-      
-      $.ajax({
-        url: "https://secret-eyrie-28661.herokuapp.com/ajax",
-        // url: "http://127.0.0.1:5000/ajax", // for testing locally 
-        type: "POST",
-        data: JSON.stringify(theData, null, '\t'),
-        contentType: 'application/json;charset=UTF-8',
-      });
-    } 
+         
+         
+         $.ajax({
+           url: "https://secret-eyrie-28661.herokuapp.com/ajax",
+           // url: "http://127.0.0.1:5000/ajax", // for testing locally 
+           type: "POST",
+           data: JSON.stringify(theData, null, '\t'),
+           contentType: 'application/json;charset=UTF-8',
+         });
+       } 
 
 
 
@@ -112,8 +104,7 @@
         <div class="row">
             <div class="collapse navbar-collapse" style="background: clear">
                 <div id="banner">
-                    <h2><b style="font-size: 130%; color: white;"><img id=
-                    "logo" src="static/white_sde_banner.png"></b></h2>
+                    <h2><b style="font-size: 130%; color: white;"><img id="logo" src="static/white_sde_banner.png"></b></h2>
                 </div>
                 <ul class="nav navbar-nav navbar-right" id="theNavBar">
                     <li>
@@ -153,24 +144,18 @@
             <br>
         </div>
         <div class="col-sm-6 text-center" id="main" style="color: white; font-family: 'Roboto';">
-            <h1 class="FAQ"></h1><br>
-<h4 class="FAQ"><b><i>How does this work?</b></i></h4>
-
-<p>When you sign up for Swap Drop Enroll, our program holds on to your login information and waits for a spot to open up in your desired course. The moment this happens, our program automatically logs you in and registers you faster than greased lightning.</p>
-<br><br>
-<h4 class="FAQ"><b><i>Why should I trust you with my onyen?</b></i></h4>
-
-<p>Your ONYEN information is stored in a secure, encrypted database that no one is able to view (not even us). Basically, we use the power of math to make sure that no one can access our database. You can find out more here: https://en.wikipedia.org/wiki/Encryption </p>
-
-<br><br>
-<h4 class="FAQ"><b><i>Me and three friends are all trying to get into COMP 110. When a spot opens up in the class, who do you register first?</b></i></h4>
-
-<p>Excellent question! If more than one ONYEN is signed up to register for the same class, we put all of the ONYENs into an electronic hat, and we pick one of these ONYENs at random. This is how we keep Swap Drop Enroll equitable for our users.</p>
-<br><br>
-<h4 class="FAQ"><b><i>Is there any way that I can increase my chances of getting picked for a popular class?</b></i></h4>
-
-<p>Wow, another amazing question! In fact, this is possible. You can increase your chances of being picked if you refer your friends. By referring your friend, your ONYEN is entered again in the electronic hat. If a friend refers you, your name is also entered an additional time in the hat.</p>
-<br><br>
+            <h4 class="FAQ" style="color: white; font-family: 'Roboto';"><b><i>How does this work?</i></b><i></i></h4>
+            <p style="color: white; font-family: 'Roboto';">When you sign up for Swap Drop Enroll, our program holds on to your login information and waits for a spot to open up in your desired course. The moment this happens, our program automatically logs you in and registers you faster than greased lightning.</p><br>
+            <br>
+            <h4 class="FAQ"style="color: white; font-family: 'Roboto';"><b><i>Why should I trust you with my onyen?</i></b><i></i></h4>
+            <p style="color: white; font-family: 'Roboto';">Your ONYEN information is stored in a secure, encrypted database that no one is able to view (not even us). Basically, we use the power of math to make sure that no one can access our database. You can find out more here: https://en.wikipedia.org/wiki/Encryption</p><br>
+            <br>
+            <h4 class="FAQ" style="color: white; font-family: 'Roboto';"><b><i>Me and three friends are all trying to get into COMP 110. When a spot opens up in the class, who do you register first?</i></b><i></i></h4>
+            <p style="color: white; font-family: 'Roboto';">Excellent question! If more than one ONYEN is signed up to register for the same class, we put all of the ONYENs into an electronic hat, and we pick one of these ONYENs at random. This is how we keep Swap Drop Enroll equitable for our users.</p><br>
+            <br>
+            <h4 class="FAQ" style="color: white; font-family: 'Roboto';"><b><i>Is there any way that I can increase my chances of getting picked for a popular class?</i></b><i></i></h4>
+            <p style="color: white; font-family: 'Roboto';">Wow, another amazing question! In fact, this is possible. You can increase your chances of being picked if you refer your friends. By referring your friend, your ONYEN is entered again in the electronic hat. If a friend refers you, your name is also entered an additional time in the hat.</p><br>
+            <br>
         </div>
     </div>
     <div class="col-sm-3">
@@ -191,98 +176,98 @@
         <br>
     </div>
     <style>
-    /*html {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: 100%;
-    }*/
+       /*html {
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: 100%;
+       }*/
 
-body {
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.68),
-    rgba(0, 0, 0, 0.68)
-    ),
-  url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed;
+    body {
+     background: linear-gradient(
+       rgba(0, 0, 0, 0.68),
+       rgba(0, 0, 0, 0.68)
+       ),
+     url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg) no-repeat center center fixed;
 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-    /*body {
-
-    background: /* top, transparent black, faked with gradient */ 
-      linear-gradient(
-        rgba(0, 0, 0, 0.9), 
-        rgba(0, 0, 0, 0.9)
-      ),
-      /* bottom, image */
-      url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg);
-      /* http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png */
-
-
-
-    p.navigation {
-    font-size: 35px;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
     }
 
-    #signup {
-    border-radius: 8px;
-    color: #fff;
-    max-width: 350px;
-    margin: 20px 0 70px;
-    min-height: 400px;
-    padding: 30px;
-    }
+       /*body {
 
-    .box {
-    border:0px solid black;
-    padding:20px;
-    margin: 20px;
-    }
+       background: /* top, transparent black, faked with gradient */ 
+         linear-gradient(
+           rgba(0, 0, 0, 0.9), 
+           rgba(0, 0, 0, 0.9)
+         ),
+         /* bottom, image */
+         url(https://s-media-cache-ak0.pinimg.com/originals/e6/e4/77/e6e477108fa2d58954b102e708dcd373.jpg);
+         /* http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png */
 
-    img#MJ {
-    height: 400;
-    width: 80%;
-    background-color: powderblue;
-    }
 
-    /*#onyenInput:focus {
-    border-color: rgba(123, 175, 212, 0.075);
-    box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
-    outline: 0 none;
-    }
 
-    #onyenPassword:focus {
-    border-color: rgba(123, 175, 212, 0.075);
-    box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
-    outline: 0 none;
-    }
+       p.navigation {
+       font-size: 35px;
+       }
 
-    #mobile:focus {
-    border-color: rgba(123, 175, 212, 0.075);
-    box-shadow: 0 1px 1px rgba(123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
-    outline: 0 none;
-    }
+       #signup {
+       border-radius: 8px;
+       color: #fff;
+       max-width: 350px;
+       margin: 20px 0 70px;
+       min-height: 400px;
+       padding: 30px;
+       }
 
-    #desiredCourse:focus {
-    border-color: rgba(123, 175, 212, 0.075);
-    box-shadow: 0 1px 1px rgba(123, 175, 212, 0.5) inset, 0 0 8px rgba(123, 175, 212, 0.075);
-    outline: 0 none;
-    }*/
+       .box {
+       border:0px solid black;
+       padding:20px;
+       margin: 20px;
+       }
 
-    #logo {
-    height: 45%;
-    width: 45%;
-    }
+       img#MJ {
+       height: 400;
+       width: 80%;
+       background-color: powderblue;
+       }
 
-    p.navigation {
-    font-family: "Roboto";
-    font-size: 22px;
+       /*#onyenInput:focus {
+       border-color: rgba(123, 175, 212, 0.075);
+       box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+       outline: 0 none;
+       }
 
-    }
+       #onyenPassword:focus {
+       border-color: rgba(123, 175, 212, 0.075);
+       box-shadow: 0 1px 1px (123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+       outline: 0 none;
+       }
+
+       #mobile:focus {
+       border-color: rgba(123, 175, 212, 0.075);
+       box-shadow: 0 1px 1px rgba(123, 175, 212, 0.075) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+       outline: 0 none;
+       }
+
+       #desiredCourse:focus {
+       border-color: rgba(123, 175, 212, 0.075);
+       box-shadow: 0 1px 1px rgba(123, 175, 212, 0.5) inset, 0 0 8px rgba(123, 175, 212, 0.075);
+       outline: 0 none;
+       }*/
+
+       #logo {
+       height: 45%;
+       width: 45%;
+       }
+
+       p.navigation {
+       font-family: "Roboto";
+       font-size: 22px;
+
+       }
     </style>
 </body>
-</html>  
+</html>

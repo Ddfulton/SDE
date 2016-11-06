@@ -40,6 +40,9 @@ def getScore(_onyen, cursor):
             if results[i]["score"] > score:
                 score = results[i]["score"]
     
+    connection.commit()
+    connection.close()
+
     return score
 
 
@@ -168,19 +171,30 @@ def removeClass(_onyen, _password, _course):
     and _course.
     #TODO: If they're not tracking the course, do nothing
     """
-    print("INFO: Marking success on %s for onyen %s" % (_course, _onyen))
+    print("INFO: Removing %s from %s" % (_course, _onyen))
 
     connection = DATABASE()
 
     cursor = connection.cursor()
 
-    sql = "update SDECheap.USERS set success = 1 where onyen = \"%s\" and password = \"%s\"and course = \"%s\";" % (_onyen, _password, _course)
+    # Check to ensure the password is the same, otherwise anybody could remove anybody from the database
+    sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
 
     cursor.execute(sql)
-    connection.commit()
-    connection.close()
+    
+    fetched_password = cursor.fetchall()[0]["password"]
 
-    return None
+    if fetched_password != _password:
+        return False
+
+    else:
+        sql = "delete from SDECheap.USERS where onyen = \"%s\" and pasword = \"%s\" and course = \"%s\"" % (_onyen, _password, _course)
+        cursor.execute(sql)
+        connection.commit()
+        
+        return True
+    
+    connection.close()
 
 
 def unregister(_onyen, _password):
@@ -195,13 +209,25 @@ def unregister(_onyen, _password):
 
     cursor = connection.cursor()
 
-    sql = "update SDECheap.USERS set success = 1 where onyen = \"%s\" and pasword = \"%s\"" % (_onyen, _password)
+    # Check to ensure the password is the same, otherwise anybody could remove anybody from the database
+    sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
 
     cursor.execute(sql)
-    connection.commit()
+    
+    fetched_password = cursor.fetchall()[0]["password"]
+
+    if fetched_password != _password:
+        return False
+
+    else:
+        sql = "delete from SDECheap.USERS where onyen = \"%s\" and pasword = \"%s\"" % (_onyen, _password)
+        cursor.execute(sql)
+        connection.commit()
+        
+        return True
+    
     connection.close()
 
-    return None
 
 
 
