@@ -40,8 +40,6 @@ def getScore(_onyen, cursor):
             if results[i]["score"] > score:
                 score = results[i]["score"]
     
-    connection.commit()
-    connection.close()
 
     return score
 

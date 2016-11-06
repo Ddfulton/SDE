@@ -94,12 +94,14 @@ def ajax():
         registration = newClient.registerCourse(goods["onyen"], goods["password"], goods["course"], 1, 0, _referringOnyen=referringOnyen)
         
         if registration == False:
+            user_email = goods["onyen"] + "@live.unc.edu"
+            driver.send_email(user_email, "Already Registered", "Dear %s,\n\nYou were already registered for %s. You can't register more than once. Instead, refer your friends to put your name in the hat multiple times!\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"], goods["course"]))
             return "User was already registered", 200
 
         driver.class_checker(goods['course'])
 
 
-        msg = "Welcome to Swap Drop Enroll!\n\nAssuming that we have the correct credentials for your ConnectCarolina login, our program will automatically enroll you in %s when a spot opens up.\n\nTo make sure that the program will work for you, please check the following in ConnectCarolina:\n\n1.   Your desired class must be in your shopping cart. \n2.  You should not have any scheduling conflicts with the class.\n3.    You should not already be enrolled in a different section of the class.*\n\n *If you are trying to enroll in CHEM 101 at 12:00PM, but you are already enrolled in CHEM 101 at 8:00AM, then ConnectCarolina will block us from enrolling you. We will be adding this swap functionality for Spring 2017 registration.\n\nWhile you are ultimately responsible for disclosing your personal information with a third party, we would like to assure you that we use a secure encrypted database to protect your login information. At no point are we able to see your password, and your information is deleted forever when you unregister from our program.\n\nRegards,\n\nSwap Drop Enroll Team" % (nextUser["course"])
+        msg = "Welcome to Swap Drop Enroll!\n\nAssuming that we have the correct credentials for your ConnectCarolina login, our program will automatically enroll you in %s when a spot opens up.\n\nTo make sure that the program will work for you, please check the following in ConnectCarolina:\n\n1.   Your desired class must be in your shopping cart. \n2.  You should not have any scheduling conflicts with the class.\n3.    You should not already be enrolled in a different section of the class.*\n\n *If you are trying to enroll in CHEM 101 at 12:00PM, but you are already enrolled in CHEM 101 at 8:00AM, then ConnectCarolina will block us from enrolling you. We will be adding this swap functionality for Spring 2017 registration.\n\nWhile you are ultimately responsible for disclosing your personal information with a third party, we would like to assure you that we use a secure encrypted database to protect your login information. At no point are we able to see your password, and your information is deleted forever when you unregister from our program.\n\nRegards,\n\nSwap Drop Enroll Team" % (goods["course"])
 
         user_email = goods["onyen"] + "@live.unc.edu"
         driver.send_email(user_email, "Welcome to Swap Drop Enroll", msg)
