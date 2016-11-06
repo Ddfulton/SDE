@@ -26,6 +26,23 @@ def boostScore(_onyen):
     connection.close()
     return None
 
+def getScore(_onyen, cursor):
+    sql = "select * from SDECheap.USERS where onyen = \"%s\"" % _onyen
+    cursor.execute(sql)
+    results = cursor.fetchall()
+
+    score = 1
+
+    if len(results) == 0:
+        pass
+    else:
+        for i in range(0, len(results)):
+            if results[i]["score"] > score:
+                score = results[i]["score"]
+    
+    return score
+
+
 
 def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen=None):
     """
@@ -52,7 +69,11 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
         return False
     
     else:
+
         cursor = connection.cursor()
+
+        _score = getScore(_onyen, cursor)
+
         sql = "insert into SDECheap.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
         cursor.execute(sql)
         connection.commit()
