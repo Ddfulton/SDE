@@ -71,7 +71,8 @@ def ajax():
             
             user_email = goods["onyen"] + "@live.unc.edu"
             print("ERROR: Onyen %s did not pass verification" % (goods["onyen"]))
-            driver.send_email(user_email, "Incorrect Password", "Your password did not match your onyen (%s). Therefore, we didn't sign you up. So try again with the right password!" % goods["onyen"])
+            msg = "Dear %s,\n\nYour password did not match your onyen when we tried to verify it. Remember, in order for this to work:\n\n1. The course must be in your shopping cart.\n\n2. You must have room in your schedule.\n\n3. You must not have any other registration issues (for example, a hold).\n\nTry again!\n\nBest,\n\nSwap Drop Enroll" % (goods["onyen"])
+            driver.send_email(user_email, "Incorrect Password", msg)
             failure_message = "%s did not pass verification. Terminating." % (goods["onyen"])
             
             return failure_message, 200
