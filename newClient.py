@@ -136,7 +136,6 @@ def getNextUser(_course):
 
     connection.close()
 
-    print(nextUser)
 
     return nextUser
 # getNextUser("AAAD 101-001")
