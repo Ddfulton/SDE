@@ -18,6 +18,17 @@
     </script><!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-86984658-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <script>
        $(document).ready(function() {
          // Pre selected for increased speed
 
@@ -32,7 +43,7 @@
            if ($('#desiredCourse').val().length < 12) {
              result = false;
            }
-           
+
            else {
              result = true;
            }
@@ -47,17 +58,17 @@
 
              $('img#MJ')
                .delay(2000)
-               .queue( function(next){ 
+               .queue( function(next){
                  $(this).css(
-                   'border: 3px solid green'); 
-                   next(); 
+                   'border: 3px solid green');
+                   next();
                  });
            }
-           
+
            else {
                $('#desiredCourse').trigger('startRumble');
                }
-             }); 
+             });
 
 
          });
@@ -84,16 +95,16 @@
                referringOnyen: false,
            };
 
-         
-         
+
+
          $.ajax({
            url: "https://secret-eyrie-28661.herokuapp.com/ajax",
-           // url: "http://127.0.0.1:5000/ajax", // for testing locally 
+           // url: "http://127.0.0.1:5000/ajax", // for testing locally
            type: "POST",
            data: JSON.stringify(theData, null, '\t'),
            contentType: 'application/json;charset=UTF-8',
          });
-       } 
+       }
 
 
 
@@ -198,9 +209,9 @@
 
        /*body {
 
-       background: /* top, transparent black, faked with gradient */ 
+       background: /* top, transparent black, faked with gradient */
          linear-gradient(
-           rgba(0, 0, 0, 0.9), 
+           rgba(0, 0, 0, 0.9),
            rgba(0, 0, 0, 0.9)
          ),
          /* bottom, image */

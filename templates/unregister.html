@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
+
   <!--TODO Validate Input-->
   <!--Paper Trail Heroku-->
   <!--Verify user information-->
@@ -14,7 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-  
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!--PAPER TIM-->
@@ -30,6 +30,16 @@
   <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto">
 
+          <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-86984658-1', 'auto');
+            ga('send', 'pageview');
+
+          </script>
       <script>
     $(document).ready(function() {
       // Pre selected for increased speed
@@ -52,17 +62,17 @@
 
           $('img#MJ')
             .delay(2000)
-            .queue( function(next){ 
+            .queue( function(next){
               $(this).css(
-                'border: 3px solid green'); 
-                next(); 
+                'border: 3px solid green');
+                next();
               });
         }
-        
+
         else {
             $('#desiredCourse').trigger('startRumble');
             }
-          }); 
+          });
 
 
       });
@@ -79,8 +89,8 @@
             password: password,
         };
 
-      
-      
+
+
       $.ajax({
         url: "/unregisterRequest",
         // url: "http://127.0.0.1:5000/unregisterRequest", // for testing locally
@@ -88,10 +98,10 @@
         data: JSON.stringify(theData, null, '\t'),
         contentType: 'application/json;charset=UTF-8',
       });
-    } 
+    }
 
 
-  
+
   </script>
 
   </head>
@@ -153,17 +163,17 @@
 
 
 
-  
-    
+
+
     <div class="col-sm-4" >
         <br><br><br><br><br><br><br><br><br><br>
-        
+
     </div>
 
     <div class="col-sm-4" id="main">
       <div id="signup">
         <div class="box" data-step="1" id="content1">
-          
+
           <form class="center-box">
             <!-- <h3 class="text-center no-top-margin">Make sure it's in your shopping cart!</h3> -->
 
@@ -185,9 +195,9 @@
                   </div>
               </div>
 
-              
 
-            
+
+
 
               <div id="text-center">
                 <br>
@@ -195,14 +205,14 @@
               </div>
           </form>
         </div>
-            
+
     <div class="box" data-step="2" style="display:none" id="content2">
     <form class="form-horizontal center-box">
       <h3 class="text-center no-top-margin">
         <img id="MJ" src="static/MJ.jpg"><b>CALL TO ACTION</b></img>
       </h3>
     </form>
-        
+
 
 
       </h3>
@@ -210,21 +220,21 @@
   </div>
 </div>
     </div>
-  
 
-  
+
+
     <div class="col-sm-4">
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        
+
 
     </div>
-  
-  </div>
-  
-  
-      
 
-      
+  </div>
+
+
+
+
+
     <div class="col-sm-4"></div>
   </div>
 </div>
@@ -253,9 +263,9 @@ body {
 
 /*body {
 
-    background: /* top, transparent black, faked with gradient */ 
+    background: /* top, transparent black, faked with gradient */
       linear-gradient(
-        rgba(0, 0, 0, 0.9), 
+        rgba(0, 0, 0, 0.9),
         rgba(0, 0, 0, 0.9)
       ),
       /* bottom, image */
@@ -327,4 +337,3 @@ p.navigation {
 
 </body>
 <html>
-
