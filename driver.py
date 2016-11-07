@@ -37,7 +37,7 @@ def verify_onyen(onyen, password):
     result = out[-3:].decode('utf-8')[0:2]
 
     if result == "YE":
-        return True 
+        return True
 
     else:
         return False
@@ -70,8 +70,8 @@ def send_email(recipient, subject, body, attachment=None):
 
     sg = sendgrid.SendGridAPIClient(apikey = "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")
 
-    if attachment != None: 
-        
+    if attachment != None:
+
         encoded_image = base64.b64encode(open(attachment, "rb").read()).decode('utf-8')
 
         data = {
@@ -96,16 +96,16 @@ def send_email(recipient, subject, body, attachment=None):
             ],
             "attachments": [
             {
-                "content": encoded_image,  
-                "filename": attachment, 
-                "name": "EnrollmentResult", 
+                "content": encoded_image,
+                "filename": attachment,
+                "name": "EnrollmentResult",
                 "type": "png"
             }
             ],
         }
 
     else:
-        
+
         data = {
             "personalizations": [
                 {
@@ -187,6 +187,7 @@ def parse_body(text):
         course = None
 
     return course, status
+
 
 def check_color(image):
     im = Image.open(image)

@@ -1,12 +1,12 @@
 """
-/*  (    (           
- *  )\ ) )\ )        
- *  (()/((()/(   (    
- *  /(_))/(_))  )\   
- *  (_)) (_))_  ((_)  
- *  / __| |   \ | __| 
- *  \__ \ | |) || _|  
- *  |___/ |___/ |___| 
+/*  (    (
+ *  )\ ) )\ )
+ *  (()/((()/(   (
+ *  /(_))/(_))  )\
+ *  (_)) (_))_  ((_)
+ *  / __| |   \ | __|
+ *  \__ \ | |) || _|
+ *  |___/ |___/ |___|
  *
  * Project: Swap Drop Enroll
  * Author: We'll never tell
@@ -35,7 +35,7 @@ import driver
 import newClient
 
 ### General configuration ###
-app = Flask(__name__)  
+app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'application/json'
 
@@ -64,7 +64,7 @@ def unregister():
 @cross_origin(origin="*")
 def ajax():
     """
-    This is where users sign up for the serice. 
+    This is where users sign up for the serice.
     """
     #TODO: Make sure class is in their shopping cart
 
@@ -72,13 +72,13 @@ def ajax():
         goods = request.json
 
         if not driver.verify_onyen(goods["onyen"], goods["password"]):
-            
+
             user_email = goods["onyen"] + "@live.unc.edu"
             print("ERROR: Onyen %s did not pass verification" % (goods["onyen"]))
             msg = "Dear %s,\n\nYour password did not match your onyen when we tried to verify it. Remember, in order for this to work:\n\n1. The course must be in your shopping cart.\n\n2. You must have room in your schedule.\n\n3. You must not have any other registration issues (for example, a hold).\n\nTry again!\n\nBest,\n\nSwap Drop Enroll" % (goods["onyen"])
             driver.send_email(user_email, "Incorrect Password", msg)
             failure_message = "%s did not pass verification. Terminating." % (goods["onyen"])
-            
+
             return failure_message, 200
 
 
@@ -92,7 +92,7 @@ def ajax():
             referringOnyen = goods['referringOnyen']
 
         registration = newClient.registerCourse(goods["onyen"], goods["password"], goods["course"], 1, 0, _referringOnyen=referringOnyen)
-        
+
         if registration == False:
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Already Registered", "Dear %s,\n\nYou were already registered for %s. You can't register more than once. Instead, refer your friends to put your name in the hat multiple times!\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"], goods["course"]))
@@ -136,11 +136,11 @@ def parser():
 
             nextUser = newClient.getNextUser(course)
             print("DEBUG: Just fetched %s" % nextUser)
-            
+
             if nextUser != None:
                 try:
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
-                    
+
                     user_email = nextUser["onyen"] + "@live.unc.edu"
                     image_title = "%s_%s.png" % (nextUser["onyen"], nextUser["course"])
 
@@ -151,10 +151,10 @@ def parser():
                         print("INFO: There was no green circle. Failure.")
                         pass
 
-                    msg = "Dear %s,\n\nWe just attempted to enroll you in %s, but there appears to have been an error. Attached is a screenshot of the enrollment confirmation page.\n\nRegards,\nSwap Drop Enroll" % (nextUser["onyen"], nextUser["course"])
+                    msg = "Dear %s,\n\nWe just attempted to enroll you in %s, but there appears to have been an error. Attached is a screenshot of the enrollment confirmation page.\n\nRegards,\nSwap Drop Enroll" % (nextUser["onyen"], nextUser["course"], attachment=image_title)
                     driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", msg)
-                    driver.send_email(user_email, "Your Swap Drop Enroll Result", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["course"]), attachment=image_title)         
-                
+                    driver.send_email(user_email, "Your Swap Drop Enroll Result", "%s attempted to enroll in %s" % (nextUser["onyen"], nextUser["course"]), attachment=image_title)
+
                 except:
                     print("DIDN'T WORK IN TRY")
 
@@ -198,7 +198,7 @@ def removeClassRequest():
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Incorrect password", "Dear %s,\n\nWe tried to unregister %s you from our database, but your passwords didn't match. If you believe this is a mistake, please don't hesitate to e-mail us at blowjangles@protonmail.com so that we can manually unregister you.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"], goods["course"]))
             return "Success", 200
-        
+
         return "Success", 200
     return "Success", 200
 

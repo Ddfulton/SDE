@@ -10,7 +10,7 @@ def DATABASE():
     connection = pymysql.connect(host='sdecheap.clcutdgbykfx.us-east-1.rds.amazonaws.com',
                                  port=3306,
                                  user='swapdropenroll',
-                                 password='ca7c799ef523f8552f4bbb308938bbea', 
+                                 password='ca7c799ef523f8552f4bbb308938bbea',
                                  db='SDECheap',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
@@ -39,7 +39,7 @@ def getScore(_onyen, cursor):
         for i in range(0, len(results)):
             if results[i]["score"] > score:
                 score = results[i]["score"]
-    
+
 
     return score
 
@@ -47,7 +47,7 @@ def getScore(_onyen, cursor):
 
 def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen=None):
     """
-    Check if the user has already registered for this course. If so, 
+    Check if the user has already registered for this course. If so,
     reject them. Get their score from this query to use later.
     If not, check their current score and add them with a new score.
     Finally, give more points to the referring onyen.
@@ -58,9 +58,6 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection = DATABASE()
     cursor = connection.cursor()
 
-    # Encrypts the onyen. It looks like this b'\x23 etc'
-    #TODO _score = getScore(_onyen)
-    # _password = bojangles.encrypt_password(_password, chickfila)
 
     cursor.execute("select * from SDECheap.USERS where onyen = \"%s\" and course = \"%s\"" % (_onyen, _course))
 
@@ -68,20 +65,22 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     if len(cursor.fetchall()) != 0:
         print("INFO: %s is already registered for %s. Not adding shit." % (_onyen, _course))
         return False
-    
+
     else:
 
         cursor = connection.cursor()
 
         _score = getScore(_onyen, cursor)
 
+        _course = _course.upper()
+
         sql = "insert into SDECheap.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
         cursor.execute(sql)
         connection.commit()
 
-        if _referringOnyen == None: 
-            pass  
-        else: 
+        if _referringOnyen == None:
+            pass
+        else:
             boostScore(_referringOnyen)
 
     connection.commit()
@@ -96,7 +95,7 @@ def getNextUser(_course):
     """
     This method needs to be faster than greased lightning.
     Query all rows with the proper course and success == 0
-    then use the weighting process to decide who gets the attempt. 
+    then use the weighting process to decide who gets the attempt.
     Returns the onyen and password.
     """
     connection = DATABASE()
@@ -117,7 +116,7 @@ def getNextUser(_course):
     if len(candidates) == 0:
         print("INFO: Zero candidates currently want %s" % _course)
         return None
-    
+
     else:
         for candidate in candidates:
 
@@ -149,7 +148,7 @@ def markSuccess(_onyen, _course):
     # TODO: RESET REFERRAL COUNT
     """
     print("INFO: Marking enrollment success for onyen %s and course %s" % (_onyen, _course))
-    
+
     connection = DATABASE()
 
     cursor = connection.cursor()
@@ -165,7 +164,7 @@ def markSuccess(_onyen, _course):
 
 def removeClass(_onyen, _password, _course):
     """
-    Removes the row with the provided _onyen 
+    Removes the row with the provided _onyen
     and _course.
     #TODO: If they're not tracking the course, do nothing
     """
@@ -179,7 +178,7 @@ def removeClass(_onyen, _password, _course):
     sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
 
     cursor.execute(sql)
-    
+
     fetched_password = cursor.fetchall()[0]["password"]
 
     if fetched_password.decode('utf-8') != _password:
@@ -189,9 +188,9 @@ def removeClass(_onyen, _password, _course):
         sql = "delete from SDECheap.USERS where onyen = \"%s\" and pasword = \"%s\" and course = \"%s\"" % (_onyen, _password, _course)
         cursor.execute(sql)
         connection.commit()
-        
+
         return True
-    
+
     connection.close()
 
 
@@ -211,8 +210,8 @@ def unregister(_onyen, _password):
     sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
 
     cursor.execute(sql)
-    
-    results = cursor.fetchall()    
+
+    results = cursor.fetchall()
 
     if len(results) == 0:
         return "NO USER"
@@ -227,12 +226,7 @@ def unregister(_onyen, _password):
             sql = "delete from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
             cursor.execute(sql)
             connection.commit()
-            
+
             return True
-    
+
     connection.close()
-
-
-
-
-
