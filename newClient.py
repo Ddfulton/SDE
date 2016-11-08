@@ -1,9 +1,8 @@
 import pymysql.cursors
 import random
+import bojangles
 
-
-chickfila = "Tq8eGl70L0MFTSB0ywWFtits"
-
+key = 'sduID72S14D47d8N'
 
 
 def DATABASE():
@@ -55,8 +54,7 @@ def getScore(_onyen, cursor):
 
     return score
 
-
-
+    
 def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen=None):
     """
     Check if the user has already registered for this course. If so,
@@ -67,6 +65,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     # TODO: See if they have a higher score than 0
     # Connect to the database with 'connection'
     # TODO: Encrypt onyen and password
+    print("INFO: Registering %s for %s" % (_onyen, _course))
     connection = DATABASE()
     cursor = connection.cursor()
 
@@ -86,8 +85,7 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
 
         _course = _course.upper()
 
-        # password = encrypted password
-        # password = bojangles.encrypt_password(_password)
+        _password = bojangles.encrypt_password(_password, key)
         sql = "insert into SDECheap.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
         cursor.execute(sql)
         connection.commit()
@@ -101,8 +99,6 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
     connection.close()
 
     return True
-
-# registerCourse("Bojangles", "bojangles6'", "AAAD 101-002", 1, 0)
 
 
 def getNextUser(_course):
@@ -121,8 +117,6 @@ def getNextUser(_course):
     connection.commit()
 
     candidates = cursor.fetchall()
-
-
 
     hat = []
 
@@ -147,12 +141,16 @@ def getNextUser(_course):
         else:
             continue
 
+
     connection.close()
 
     # Decrypt the password
-    # nextUser["password"] = bojangles.decrypt_password(nextUser["password"])
+
+    next_password = bojangles.decrypt_password(nextUser["password"], key)
+    nextUser["password"] = next_password
+
     return nextUser
-# getNextUser("AAAD 101-001")
+
 
 
 def markSuccess(_onyen, _course):
@@ -190,17 +188,22 @@ def removeClass(_onyen, _password, _course):
     # Decrypt the password
     # _password = bojagnles.decrypt_password(password)
     # Check to ensure the password is the same, otherwise anybody could remove anybody from the database
+
+    _password = bojangles.encrypt_password(_password, key)
     sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
 
     cursor.execute(sql)
 
-    fetched_password = cursor.fetchall()[0]["password"]
+    fetched_user = cursor.fetchall()[0]
+
+    fetched_password = fetched_user["password"]
+
 
     if fetched_password.decode('utf-8') != _password:
         return False
 
     else:
-        sql = "delete from SDECheap.USERS where onyen = \"%s\" and pasword = \"%s\" and course = \"%s\"" % (_onyen, _password, _course)
+        sql = "delete from SDECheap.USERS where onyen = \"%s\" and password = \"%s\" and course = \"%s\"" % (_onyen, _password, _course)
         cursor.execute(sql)
         connection.commit()
 
@@ -220,6 +223,8 @@ def unregister(_onyen, _password):
     connection = DATABASE()
 
     cursor = connection.cursor()
+
+    _password = bojangles.encrypt_password(_password, key)
 
     # Check to ensure the password is the same, otherwise anybody could remove anybody from the database
     sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)

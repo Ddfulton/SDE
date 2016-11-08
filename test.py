@@ -1,49 +1,22 @@
 import newClient
 import base64
-import Crypto
-from Crypto.Cipher import AES
+import bojangles
 import pymysql
+import driver
 
-def encrypt_password(_password, key):
-    """
-    Encrypts the password.
-    # TODO: 32 bit token as well as
-    # salt the password
-    """
+connection = newClient.DATABASE()
 
-    password = _password
+cursor = connection.cursor()
 
-    if len(password) < 16:
-        for i in range(16 - len(password)):
-            password += " "
+sql = 'select * from SDECheap.USERS;'
 
-    obj = AES.new(key, AES.MODE_CBC, 'This is an IV456')
+cursor.execute(sql)
 
-    ciphertext = obj.encrypt(password)
-    PASSWORD = base64.b64encode(ciphertext)
-    PASSWORD = PASSWORD.decode('utf-8')
+todo = cursor.fetchall()
 
-    return PASSWORD
+for i in todo:
+    email = i["onyen"] + '@live.unc.edu'
+    print(email)
+    driver.send_email(email, "User Update", "Dear users,\n\nWe have changed the encryption process to make it more secure. All onyens registered before right now were encrypted differently than the current encryption algorithm would encrypt them. Therefore, they cannot be decrypted.\n\nYour entries have been deleted and you must sign up again so that the system may encrypt your password properly.\n\nIf you have any questions, please do not hesitate to contact us at blowjangles@protonmail.com.\n\nSorry for any inconvenience,\n\nSwap Drop Enroll")
 
-
-
-def decrypt_password(_encrypted_password, key):
-
-    PASSWORD = str.encode(_encrypted_password)
-
-    PASSWORD = base64.b64decode(PASSWORD)
-
-    obj2 = AES.new(key, AES.MODE_CBC, 'This is an IV456')
-    decrypted_pasword = obj2.decrypt(PASSWORD).decode('utf-8')
-
-    return decrypted_pasword
-#
-# password = "bojangle's1"
-# key = "this is a key123"
-#
-# E = encrypt_password(password, key)
-# print(decrypt_password(E, key))
-
-import os
-
-print(os.environ['BOJANGLES'])
+connection.close()
