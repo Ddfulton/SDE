@@ -18,6 +18,18 @@ def DATABASE():
     return connection
 
 def boostScore(_onyen):
+    """
+    Opens a connection,
+    boosts the score by one of a
+    designated ONYEN, closes the
+    connection. No security present
+    on Nov. 7, 2016. (T minus one
+    day until the US presidential
+    election, on the off change this
+    laptop is found as an historical
+    artifact in the far, far away
+    future.)
+    """
     connection = DATABASE()
     cursor = connection.cursor()
     sql = "update SDECheap.USERS set score = score + 1 where onyen = \"%s\";" % (_onyen)
@@ -74,6 +86,8 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
 
         _course = _course.upper()
 
+        # password = encrypted password
+        # password = bojangles.encrypt_password(_password)
         sql = "insert into SDECheap.USERS (onyen, password, course, score, success, mobile) VALUES (\"%s\", \"%s\", \"%s\", %s, %s, \"NO MOBILE\");" % (_onyen, _password, _course, _score, _success)
         cursor.execute(sql)
         connection.commit()
@@ -94,9 +108,8 @@ def registerCourse(_onyen, _password, _course, _score, _success, _referringOnyen
 def getNextUser(_course):
     """
     This method needs to be faster than greased lightning.
-    Query all rows with the proper course and success == 0
-    then use the weighting process to decide who gets the attempt.
-    Returns the onyen and password.
+    Only decrypt the password once it has been entirely
+    retreived from the database.
     """
     connection = DATABASE()
 
@@ -136,7 +149,8 @@ def getNextUser(_course):
 
     connection.close()
 
-
+    # Decrypt the password
+    # nextUser["password"] = bojangles.decrypt_password(nextUser["password"])
     return nextUser
 # getNextUser("AAAD 101-001")
 
@@ -173,6 +187,8 @@ def removeClass(_onyen, _password, _course):
 
     cursor = connection.cursor()
 
+    # Decrypt the password
+    # _password = bojagnles.decrypt_password(password)
     # Check to ensure the password is the same, otherwise anybody could remove anybody from the database
     sql = "select * from SDECheap.USERS where onyen = \"%s\" and password = \"%s\"" % (_onyen, _password)
 
