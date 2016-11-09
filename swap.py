@@ -135,7 +135,7 @@ def parser():
             print("INFO: %s is Open" % course)
 
             nextUser = newClient.getNextUser(course)
-            print("DEBUG: Just fetched %s" % nextUser)
+            print("DEBUG: Just fetched %s" % nextUser["onyen"])
 
             if nextUser != None:
                 try:
