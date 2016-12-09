@@ -16,8 +16,9 @@
 """
 # -*- encoding: utf-8 -*-
 
-### Flask dependencies ###
-from flask import Flask, render_template, request, url_for, redirect, make_response
+# Flask dependencies #
+from flask import Flask, render_template, request
+from flask import url_for, redirect, make_response
 from flask_cors import CORS, cross_origin
 import json
 import simplejson
@@ -27,14 +28,14 @@ import subprocess
 from time import sleep
 import pymysql
 
-### Driver dependencies ###
+# Driver dependencies #
 import subprocess
 import driver
 
-### API dependencies ###
+# API dependencies #
 import newClient
 
-### General configuration ###
+# General configuration #
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'application/json'
@@ -45,8 +46,8 @@ app.config['CORS_HEADERS'] = 'application/json'
 def index():
     return render_template("index.html")
 
-@app.route('/about', methods=["GET"])
 
+@app.route('/about', methods=["GET"])
 def about():
     return render_template('about.html')
 
@@ -55,10 +56,12 @@ def about():
 def disclaimer():
     return render_template('disclaimer.html')
 
+
 @app.route('/unregister', methods = ["GET"])
 @cross_origin(origin="*")
 def unregister():
     return render_template("unregister.html")
+
 
 @app.route('/registerCourse', methods=["POST", "OPTIONS"])
 @cross_origin(origin="*")
@@ -81,8 +84,6 @@ def ajax():
 
             return failure_message, 200
 
-
-
         print("INFO: REGISTERING %s IN THE DATABASE FOR %s" % (goods['onyen'], goods['course']))
         print("INFO: They were referred by %s" % goods['referringOnyen'])
 
@@ -93,7 +94,7 @@ def ajax():
 
         registration = newClient.registerCourse(goods["onyen"], goods["password"], goods["course"], 1, 0, _referringOnyen=referringOnyen)
 
-        if registration == False:
+        if registration is False:
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Already Registered", "Dear %s,\n\nYou were already registered for %s. You can't register more than once. Instead, refer your friends to put your name in the hat multiple times!\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"], goods["course"]))
             return "User was already registered", 200
@@ -137,14 +138,14 @@ def parser():
             nextUser = newClient.getNextUser(course)
             print("DEBUG: Just fetched %s" % nextUser["onyen"])
 
-            if nextUser != None:
+            if nextUser is not None:
                 try:
                     subprocess.call(["ruby", "driver.rb", nextUser["onyen"], nextUser["password"], nextUser["course"]])
 
                     user_email = nextUser["onyen"] + "@live.unc.edu"
                     image_title = "%s_%s.png" % (nextUser["onyen"], nextUser["course"])
 
-                    if driver.check_color(image_title) == True: # If green circle
+                    if driver.check_color(image_title) is True:  # If green circle
                         newClient.markSuccess(nextUser["onyen"], nextUser["course"])
                         print("INFO: There was green circle. Marking success.")
                     else:
@@ -177,6 +178,7 @@ def parser():
             print("SPAM")
 
         return "Suh", 200
+
 
 @app.route('/removeClass', methods = ['GET'])
 @cross_origin()
@@ -215,14 +217,14 @@ def unregisterRequest():
 
         result = newClient.unregister(goods["onyen"], goods["password"])
 
-        if result == True:
+        if result is True:
             user_email = goods["onyen"] + "@live.unc.edu"
             driver.send_email(user_email, "Goodbye from Swap Drop Enroll", "Dear %s,\n\nWe have removed you completely from our database. We hope you had a positive experience.\n\nIf you ever have any questions or concerns, feel free to shoot us an e-mail at blowjangles@protonmail.com.\n\nRegards,\n\nSwap Drop Enroll" % (goods["onyen"]))
 
             return "Success", 200
         elif result == "NO USER":
             user_email = goods["onyen"] + "@live.unc.edu"
-            driver.send_email(user_email, "User does not exist","Hello,\n\nYou tried to unregister from Swap Drop Enroll but we didn't find you in the database. So you're already out. If you miss us, feel free to sign up again.\n\nRegards,\n\nSwap Drop Enroll")
+            driver.send_email(user_email, "User does not exist", "Hello,\n\nYou tried to unregister from Swap Drop Enroll but we didn't find you in the database. So you're already out. If you miss us, feel free to sign up again.\n\nRegards,\n\nSwap Drop Enroll")
 
             return "Suh dood", 200
         else:

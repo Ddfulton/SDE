@@ -193,9 +193,18 @@ def check_color(image):
     im = Image.open(image)
     pix = im.load()
 
-    if pix[551, 487] == (223, 72, 37, 255):
+    the_pixel = pix[551, 478]
+
+    print(the_pixel)
+    # If red
+    if the_pixel == (223, 72, 37, 255):
+        print("Image is red.")
         return False
-    elif pix[551, 487] == (88, 158, 19, 255):
+    # If green
+    elif the_pixel == (88, 158, 19, 255):
+        print("Image is green.")
         return True
     else:
+        print("Image is  neither red nor green.")
         return None
+check_color("ddfulton_SPAN 376-001.png")
