@@ -207,4 +207,3 @@ def check_color(image):
     else:
         print("Image is  neither red nor green.")
         return None
-check_color("ddfulton_SPAN 376-001.png")
