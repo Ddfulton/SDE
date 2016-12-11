@@ -148,13 +148,16 @@ def parser():
                     if driver.check_color(image_title) is True:  # If green circle
                         newClient.markSuccess(nextUser["onyen"], nextUser["course"])
                         print("INFO: There was green circle. Marking success.")
+                        msg = "Dear %s,\n\nWe just attempted to enroll you in %s. Attached is a screenshot of the enrollment confirmation page.\n\nRegards,\nSwap Drop Enroll" % (nextUser["onyen"], nextUser["course"])
+                        driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", msg)
+                        driver.send_email(user_email, "Your Swap Drop Enroll Result", msg, attachment=image_title)
+
                     else:
                         print("INFO: There was no green circle. Failure.")
-                        pass
 
-                    msg = "Dear %s,\n\nWe just attempted to enroll you in %s, but there appears to have been an error. Attached is a screenshot of the enrollment confirmation page.\n\nRegards,\nSwap Drop Enroll" % (nextUser["onyen"], nextUser["course"])
-                    driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", msg)
-                    driver.send_email(user_email, "Your Swap Drop Enroll Result", msg, attachment=image_title)
+                        msg = "Dear %s,\n\nWe just attempted to enroll you in %s, but there appears to have been an error. Attached is a screenshot of the enrollment confirmation page.\n\nRegards,\nSwap Drop Enroll" % (nextUser["onyen"], nextUser["course"])
+                        driver.send_email("fulton.derek@gmail.com", "INFO: Attempted enrollment", msg)
+                        driver.send_email(user_email, "Your Swap Drop Enroll Result", msg, attachment=image_title)
 
                 except:
                     print("DIDN'T WORK IN TRY")
